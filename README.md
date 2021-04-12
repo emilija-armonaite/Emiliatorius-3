@@ -1,3 +1,1 @@
-# Emiliatorius-3
-
-uuujjj
+# Projektu uzduociu valdymo sistema

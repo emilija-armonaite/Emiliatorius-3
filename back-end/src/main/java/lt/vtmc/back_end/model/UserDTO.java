@@ -10,12 +10,6 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
 
-    private Long id;
-
-    @NotNull
-    @Size(max = 255)
-    private String username;
-
     @NotNull
     @Size(max = 255)
     private String mail;

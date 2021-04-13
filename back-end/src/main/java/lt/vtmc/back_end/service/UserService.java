@@ -50,15 +50,12 @@ public class UserService {
     }
 
     private UserDTO mapToDTO(final User user, final UserDTO userDTO) {
-        userDTO.setId(user.getId());
-        userDTO.setUsername(user.getUsername());
         userDTO.setMail(user.getMail());
         userDTO.setPassword(user.getPassword());
         return userDTO;
     }
 
     private User mapToEntity(final UserDTO userDTO, final User user) {
-        user.setUsername(userDTO.getUsername());
         user.setMail(userDTO.getMail());
         user.setPassword(userDTO.getPassword());
         return user;

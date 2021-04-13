@@ -94,11 +94,6 @@ export default function SignIn() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           /> */}
-<<<<<<< HEAD
-=======
-          
-
->>>>>>> login2
           <Button
             type="submit"
             fullWidth
@@ -111,10 +106,6 @@ export default function SignIn() {
             Sign In
             
           </Button>
-<<<<<<< HEAD
-=======
-
->>>>>>> login2
           {/* <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">

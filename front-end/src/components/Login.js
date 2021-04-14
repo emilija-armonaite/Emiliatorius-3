@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom"
 import Footer from './Footer';
+import axios from "axios";
 
 // function Copyright() {
 //   return (
@@ -54,8 +55,18 @@ export default function SignIn() {
   const classes = useStyles();
   
   const history = useHistory();
-  const Submit = () => history.push("/home");
-
+  const Submit = (e) =>
+  e.preventdfault()
+   const a =axios({
+    method: 'post',
+    url: "http://localhost:8081/authenticate",
+    data: {
+      mail: 'admin@mail.com',
+      password: 'password'
+    }
+ 
+  });
+  console.log(a)
 
   return (
     <Container component="main" maxWidth="xs">

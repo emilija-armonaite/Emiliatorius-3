@@ -1,26 +1,17 @@
+import { Switch } from 'react-router';
 import './App.css';
+import Home from './components/Home';
 import Login from './components/Login.js';
-
+import { BrowserRouter as Route } from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
-      
-        <Login />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      <Login />
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/home" component={Home} />
+      </Switch>
     </div>
   );
 }

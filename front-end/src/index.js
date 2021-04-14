@@ -1,21 +1,35 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import Home from './components/Home';
 import Login from './components/Login';
+import App from './App';
 
-const App = () => (
 
+ReactDOM.render(
   <Router>
-    <Route exact path="/" component={Login} />
-    <Route exact path="/home" component={Home} />
-  </Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
 );
 
-render(<App />, document.getElementById('root'));
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// reportWebVitals();
+
+// const App = () => (
+
+//   <Router>
+//     <Route exact path="/" component={Login} />
+//     <Route exact path="/home" component={Home} />
+//   </Router>
+// );
+
+// render(<App />, document.getElementById('root'));
 
 
 // If you want to start measuring performance in your app, pass a function

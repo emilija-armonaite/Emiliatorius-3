@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import lt.vtmc.back_end.domain.User;
 import lt.vtmc.back_end.repos.UserRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
 		//Empty ArrayList is grantedAthorities
-		lt.vtmc.back_end.domain.User user = userRepo.findByMail(mail);
+		User user = userRepo.findByMail(mail);
 		return new UserDetailsImpl(user.getMail(), user.getPassword(), new ArrayList<>());
 	}
 

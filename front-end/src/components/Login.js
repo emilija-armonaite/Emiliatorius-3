@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function SignIn() {
-    const API_URL ='http://localhost:8081/authenticate';
+    const API_URL ='http://localhost:8081/';
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -75,14 +75,14 @@ export default function SignIn() {
 
   const login = (username, password) => {
     return axios
-      .post(API_URL + "signin", {
+      .post(API_URL + "authenticate", {
         username,
         password,
       })
       .then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
+        // if (response.data.accessToken) {
+        //   localStorage.setItem("user", JSON.stringify(response.data));
+        // }
   
         return response.data;
       });
@@ -135,7 +135,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={Submit}>
+            onClick={login}>
             
           
             Sign In

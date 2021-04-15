@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom"
 import Footer from './Footer';
 import axios from "axios";
 import Paper from '@material-ui/core/Paper';
+import logo from './../images/start_fight.gif'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,11 +90,12 @@ export default function SignIn() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          {/* <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
           <Typography component="h1" variant="h5">
          JOIN US
+         <img src={logo} alt="loading..." />
         </Typography>
 
         <form className={classes.form} noValidate onSubmit={Login}>

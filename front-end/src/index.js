@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+import { render } from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import Home from './components/Home';
 import Login from './components/Login';
-import App from './App';
-
+import App from './App'
 
 ReactDOM.render(
   <Router>

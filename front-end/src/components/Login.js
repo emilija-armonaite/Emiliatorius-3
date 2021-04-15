@@ -15,20 +15,8 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom"
 import Footer from './Footer';
 import axios from "axios";
-
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import {Link} from "react-router-dom"
+import Home from './Home';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -55,37 +43,31 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function SignIn() {
-    const API_URL ='http://localhost:8081/authenticate';
+  const API_URL ='http://localhost:8081/';
   const classes = useStyles();
-  const [email, setEmail] = useState('');
+  const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-  const Submit = (e) =>
-  e.preventDefault()
-   const a =axios({
-    method: 'post',
-    url: API_URL,
-    data: {
-      mail: 'admin@mail.com',
-      password: 'password'
-    }
- 
-  });
-  console.log(a)
 
-  const login = (username, password) => {
-    return axios
-      .post(API_URL + "signin", {
-        username,
+
+  const Login = (e) => {
+  
+    e.preventDefault();
+    return axios.post(API_URL + "authenticate", {
+        mail,
         password,
       })
+      
       .then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-  
+    localStorage.setItem('token', response.data.jwt);
+        if(response.data.jwt===localStorage.token) {
+    console.log(localStorage.token); 
+
+    history.push("/home");
+} 
         return response.data;
-      });
+        
+      })
   };
 
 
@@ -100,18 +82,18 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={Login}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="mail"
             label="Email Address"
-            name="email"
-            autoComplete="email"
+            name="mail"
+            autoComplete="mail"
             autoFocus
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => setMail(e.target.value)}
             />
           <TextField
             variant="outlined"
@@ -135,11 +117,14 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={Submit}>
+            // onChange={Login}
+            >
+     
+              
             
           
             Sign In
-            
+          
           </Button>
           {/* <Grid container>
             <Grid item xs>

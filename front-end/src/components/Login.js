@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom"
 import Footer from './Footer';
 import axios from "axios";
+
 
 // function Copyright() {
 //   return (
@@ -51,15 +52,19 @@ const useStyles = makeStyles((theme) => ({
 
 
 
+
+
 export default function SignIn() {
+    const API_URL ='http://localhost:8081/authenticate';
   const classes = useStyles();
-  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const history = useHistory();
   const Submit = (e) =>
-  e.preventdfault()
+  e.preventDefault()
    const a =axios({
     method: 'post',
-    url: "http://localhost:8081/authenticate",
+    url: API_URL,
     data: {
       mail: 'admin@mail.com',
       password: 'password'
@@ -67,6 +72,23 @@ export default function SignIn() {
  
   });
   console.log(a)
+
+  const login = (username, password) => {
+    return axios
+      .post(API_URL + "signin", {
+        username,
+        password,
+      })
+      .then((response) => {
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+  
+        return response.data;
+      });
+  };
+
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -89,7 +111,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
-          />
+            onChange={e => setEmail(e.target.value)}
+            />
           <TextField
             variant="outlined"
             margin="normal"
@@ -100,6 +123,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => setPassword(e.target.value)}
           />
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

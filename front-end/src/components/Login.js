@@ -15,15 +15,8 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom"
 import Footer from './Footer';
 import axios from "axios";
-// import {Link} from "react-router-dom"
-import Home from './Home';
 import Paper from '@material-ui/core/Paper';
-<<<<<<< HEAD
-import logo from './../logo/logo2'
-=======
 
-
->>>>>>> 36831f342a466a8e5f9d04c5165c44d935670e51
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
 export default function SignIn() {
   const API_URL ='http://localhost:8081/';
   const classes = useStyles();
@@ -92,11 +84,7 @@ export default function SignIn() {
 
 
   return (
-<<<<<<< HEAD
     <Grid container component="main" className={classes.root}>
-=======
-<Grid container component="main" className={classes.root}>
->>>>>>> 36831f342a466a8e5f9d04c5165c44d935670e51
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -105,10 +93,6 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-<<<<<<< HEAD
-            <logo />
-=======
->>>>>>> 36831f342a466a8e5f9d04c5165c44d935670e51
          JOIN US
         </Typography>
 
@@ -165,13 +149,7 @@ export default function SignIn() {
 
 
 
-<<<<<<< HEAD
            
-=======
-
-           
-
->>>>>>> 36831f342a466a8e5f9d04c5165c44d935670e51
             <Box mt={5}>
               <Footer />
             </Box>

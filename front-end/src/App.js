@@ -1,19 +1,19 @@
 import { Switch } from 'react-router';
 import './App.css';
 import Home from './components/Home';
-import Login from './components/Login.js';
-import { BrowserRouter as Route } from "react-router-dom"
+import Login from './components/Login';
+import { Route } from "react-router-dom"
 
 
 
 function App() {
   return (
     <div className="App">
-      <Login />
-      {/* <Switch>
+      
+      <Switch>
         <Route exact path="/" component={Login} /> 
-        <Route exact path="/home" component={Home}/>
-       </Switch> */}
+        <Route exact path="/api/projects" component={Home} />
+       </Switch>
     </div>
   );
 }

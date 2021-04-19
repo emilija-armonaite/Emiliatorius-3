@@ -51,37 +51,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function SignIn() {
   const API_URL ='http://localhost:8081/';
   const classes = useStyles();
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
+  const [mail, setMail] = useState();
+  const [password, setPassword] = useState();
   const history = useHistory();
 
-
-  const Login = (e) => {
-  
+  const login = (e) => {
+    
     e.preventDefault();
     return axios.post(API_URL + "authenticate", {
         mail,
         password,
       })
-      
       .then((response) => {
-    localStorage.setItem('token', response.data.jwt);
-
-
-    history.push("/api/projects");
-
+        localStorage.setItem('token', response.data.jwt);
+        history.push("/api/projects");
         return response.data;
-        
-      }
-
-      )
-  };
-
+      });
+    }
 
 
   return (
@@ -98,7 +87,7 @@ export default function SignIn() {
          <img src={logo} alt="loading..." />
         </Typography>
 
-        <form className={classes.form} noValidate onSubmit={Login}>
+        <form className={classes.form} noValidate onSubmit={login}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -110,7 +99,7 @@ export default function SignIn() {
             autoComplete="mail"
             autoFocus
             onChange={e => setMail(e.target.value)}
-            onKeyPress= {classes.submit}
+            handlekeydown= {classes.submit}
     
             />
           <TextField
@@ -124,7 +113,7 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
             onChange={e => setPassword(e.target.value)}
-            onKeyPress= {classes.submit}
+            handlekeydown= {classes.submit}
           />
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -136,8 +125,8 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-           
-            // onChange={Login}
+
+        
             >
      
               

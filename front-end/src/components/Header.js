@@ -34,6 +34,8 @@ export default function Header(props) {
         localStorage.clear();
         history.push("/");
     }
+    
+
     return (
         <React.Fragment>
             <Toolbar className={classes.toolbar}>

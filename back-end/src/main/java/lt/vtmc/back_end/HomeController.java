@@ -1,20 +1,16 @@
 package lt.vtmc.back_end;
-
-
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import lt.vtmc.back_end.model.AuthenticationRequest;
-import lt.vtmc.back_end.model.AuthenticationResponse;
 import lt.vtmc.back_end.service.MyUserDetailsService;
 import lt.vtmc.back_end.util.JwtUtil;
 
@@ -31,15 +27,11 @@ public class HomeController {
 	@Autowired
 	private JwtUtil jwtUtil;
 
-
-    @GetMapping("/")
-    public String welcome() {
-        return "Hello";
-    }
-    
     @PostMapping(value = "/authenticate")
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-		try {
+	public ResponseEntity<Map<String,String>> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+    	 Map<String,String> response = new HashMap<String, String>();
+    	
+    	try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authenticationRequest.getMail(), authenticationRequest.getPassword())
 			);
@@ -52,10 +44,12 @@ public class HomeController {
 				.loadUserByUsername(authenticationRequest.getMail());
 
 		final String jwt = jwtUtil.generateToken(userDetails);
+		 response.put(userDetails.getUsername(), jwt);
 
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		return ResponseEntity.accepted().body(response);
 	}
 
 }
+
 
 

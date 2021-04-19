@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import logo from './../images/nice42069.jpeg'
 
+
 var backStyle = {
     width: "100%",
     height: "1000px",

@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from "react-router-dom"
 
+
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
@@ -26,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
     const classes = useStyles();
     const { sections, title } = props;
-
     const history = useHistory();
 
 
@@ -50,13 +50,15 @@ export default function Header(props) {
                 >
                     {title}
                 </Typography>
+                <Button variant="outlined" size="small"
+                    className={classes.submit}
+                    >
+                        login
 
 
-                {/* <IconButton>
-          <SearchIcon />
-        </IconButton> */}
 
-
+                    
+        </Button>
                 <Button variant="outlined" size="small"
                     className={classes.submit}
                     onClick={logout}>

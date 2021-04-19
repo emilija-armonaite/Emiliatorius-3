@@ -58,20 +58,23 @@ export default function SignIn() {
   const [password, setPassword] = useState();
   const history = useHistory();
 
+  
   const login = (e) => {
-    
     e.preventDefault();
     return axios.post(API_URL + "authenticate", {
         mail,
         password,
       })
       .then((response) => {
-        localStorage.setItem('token', response.data.jwt);
+// returns json from back with username and jwt token returns name as a string
+        localStorage.setItem('token', Object.values(response.data));
         history.push("/api/projects");
-        return response.data;
+        const name =Object.keys(response.data)
+        console.log(name[0])
+        return name[0];
       });
     }
-
+    
 
   return (
     <Grid container component="main" className={classes.root}>

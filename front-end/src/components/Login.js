@@ -8,12 +8,12 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from "react-router-dom"
 import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box'; 
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'; 
-import Typography from '@material-ui/core/Typography'; 
-import { makeStyles } from '@material-ui/core/styles'; 
-import Container from '@material-ui/core/Container'; 
-import Footer from './Footer'; 
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Footer from './Footer';
 import axios from "axios";
 import Paper from '@material-ui/core/Paper';
 import logo from './../images/start_fight.gif';
@@ -53,15 +53,15 @@ const useStyles = makeStyles((theme) => (
       margin: theme.spacing(3, 0, 2),
     },
   }));
- 
-export default function SignIn() { 
-  const API_URL = 'http://localhost:8081/'; 
-  const classes = useStyles(); 
+
+export default function SignIn() {
+  const API_URL = 'http://localhost:8081/';
+  const classes = useStyles();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
- 
+
   const turnOnAlert = () => {
     setOpen(true);
   };
@@ -76,7 +76,7 @@ export default function SignIn() {
       mail,
       password,
     })
-      .then((response) => { 
+      .then((response) => {
         // returns json from back with username and jwt token returns name as a string
         localStorage.setItem('token', Object.values(response.data));
         history.push("/api/projects");
@@ -89,17 +89,17 @@ export default function SignIn() {
           console.log("wrong");
         });
   }
- 
-  return ( 
+
+  return (
     <Grid container component="main" className={classes.root}>
-      <CssBaseline /> 
+      <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
 
           <Typography component="h1" variant="h5">
             JOIN US
-         <img src={logo} alt="loading..." /> 
+         <img src={logo} alt="loading..." />
           </Typography>
 
           <form className={classes.form} noValidate onSubmit={login}>
@@ -125,7 +125,7 @@ export default function SignIn() {
                 horizontal: 'right'
               }}>
               <Alert variant="outlined" severity="warning">
-              Incorrect password or email
+                Incorrect password or email
                   </Alert>
             </Snackbar>
             <Box mt={5}>
@@ -135,5 +135,5 @@ export default function SignIn() {
         </div>
       </Grid>
     </Grid>
-  ); 
+  );
 }

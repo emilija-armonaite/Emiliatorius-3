@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
+import Header from './Header' 
+import Footer from './Footer' 
 import logo from './../images/nice42069.jpeg'
 
 

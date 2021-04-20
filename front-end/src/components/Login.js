@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
 import Avatar from '@material-ui/icons/Cake';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
+import React, { useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import { useHistory } from "react-router-dom"
+import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useHistory } from "react-router-dom"
 import Footer from './Footer';
 import axios from "axios";
 import Paper from '@material-ui/core/Paper';
 import logo from './../images/start_fight.gif'
-
-
+import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -57,9 +60,17 @@ export default function SignIn() {
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
+  const [open, setOpen] = React.useState(false);
 
+  const turnOnAlert = () => {
+    setOpen(true);
+  };
+  const turnOffAlert = () => {
+    setOpen(false);
+  };
   
   const login = (e) => {
+    turnOffAlert();
     e.preventDefault();
     return axios.post(API_URL + "authenticate", {
         mail,
@@ -72,6 +83,10 @@ export default function SignIn() {
         const name =Object.keys(response.data)
         console.log(name[0])
         return name[0];
+      },
+      (error) => {
+        turnOnAlert();
+        console.log("wrong");
       });
     }
     
@@ -103,8 +118,7 @@ export default function SignIn() {
             autoFocus
             onChange={e => setMail(e.target.value)}
             handlekeydown= {classes.submit}
-    
-            />
+          />
           <TextField
             variant="outlined"
             margin="normal"
@@ -128,22 +142,17 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-
-        
-            >
+            disabled={!password ||! mail}
+          >
+            Sign In</Button>
      
-              
-            
-          
-            Sign In
-          
-          </Button>
-
-
-
-
-
-           
+              <Snackbar open={open} 
+              anchorOrigin={{vertical:'bottom',
+              horizontal:'right' }}>
+                  <Alert variant="outlined" severity="warning">
+                    Rašyk tikrą prisijungimą
+                  </Alert>
+              </Snackbar>
             <Box mt={5}>
               <Footer />
             </Box>

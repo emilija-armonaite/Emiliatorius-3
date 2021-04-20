@@ -125,7 +125,7 @@ export default function SignIn() {
                 horizontal: 'right'
               }}>
               <Alert variant="outlined" severity="warning">
-                Rašyk tikrą prisijungimą
+              Incorrect password or email
                   </Alert>
             </Snackbar>
             <Box mt={5}>

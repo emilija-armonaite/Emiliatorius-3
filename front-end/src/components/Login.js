@@ -81,11 +81,12 @@ export default function SignIn() {
     })
       .then((response) => {
         // returns json from back with username and jwt token returns name as a string
-        localStorage.setItem('token', Object.values(response.data));
+        localStorage.setItem('token', JSON.stringify(response.data));
         history.push("/api/projects");
         const name = Object.keys(response.data)
-        console.log(name[0])
-        return name[0];
+        // console.log(name[0])
+        // console.log(response);
+        return response;
       },
         (error) => {
           turnOnAlert();

@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from "classnames";
+// import classNames from "classnames";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -277,8 +277,8 @@ export default function Header(props) {
           transition
           disablePortal
           className={
-            classNames({ [classes.popperClose]: !openProfile }) +
-            " " +
+            // classNames({ [classes.popperClose]: !openProfile }) +
+            // " " +
             classes.popperNav
           }
         >

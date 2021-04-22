@@ -121,7 +121,7 @@ export default function SignIn() {
             />
 
             <Button type="submit" fullWidth variant="contained" color="primary"
-              className={classes.submit} disabled={!password || !mail}>
+              className={classes.submit} disabled={!password && !mail}>
               Sign In</Button>
 
             <Snackbar open={open}

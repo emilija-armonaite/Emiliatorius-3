@@ -17,7 +17,6 @@ function Copyright() {
 function TimeY() {
     return (
         <Typography variant="body2" color="textSecondary">
-
             {new Date().getFullYear()}
         </Typography>
 
@@ -35,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100vh',
+        // minHeight: '100vh',
     },
     main: {
         marginTop: theme.spacing(8),

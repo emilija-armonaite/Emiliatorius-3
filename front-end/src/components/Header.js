@@ -50,7 +50,7 @@ export default function Header(props) {
                 > 
                     {title} 
                 </Typography> 
-                <Button variant="outlined" size="small"
+                {/* <Button variant="outlined" size="small"
                     className={classes.submit}
                     >
                         login
@@ -58,7 +58,7 @@ export default function Header(props) {
  
  
                     
-        </Button> 
+        </Button>  */}
                 <Button variant="outlined" size="small" 
                     className={classes.submit} 
                     onClick={logout}>

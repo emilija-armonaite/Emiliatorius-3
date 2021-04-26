@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -22,7 +22,7 @@ import { green } from '@material-ui/core/colors';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
 
-
+import axios from "axios";
 
 const useStyles = makeStyles({
     root: {
@@ -31,7 +31,12 @@ const useStyles = makeStyles({
 });
 
 
+
+
 export default function AddProject() {
+
+    const API_URL = 'http://localhost:8081/';
+
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
 
@@ -42,6 +47,42 @@ export default function AddProject() {
     const handleClose = () => {
         setOpen(false);
     };
+
+
+    const [name, setName] = useState("");
+    const [description, setDesc] = useState();
+
+    const writeName = e => {
+        // console.log(`Typed => ${e.target.value}`);
+        setName(e.target.value);
+    }
+    const writeDesc = e => {
+        // console.log(`Typed => ${e.target.value}`);
+        setDesc(e.target.value);
+    }
+
+    const submitB = () => {
+        console.log({ name });
+        console.log({ description });
+        setOpen(false);
+    }
+
+
+
+    const submitProject = (e) => {
+
+        e.preventDefault();
+        return axios.post(API_URL + "/api/projects", {
+            description,
+            name,
+        })
+            .then((response) => {
+
+                return response;
+            });
+    }
+
+
 
     return (
         <div>
@@ -60,41 +101,40 @@ export default function AddProject() {
       </Button> */}
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title" style={{ backgroundColor: "#c1c7c5" }} >Create project</DialogTitle>
-                <DialogContent style={{ backgroundColor: "#c1c7c5" }}>
-                    <DialogContentText>
+                <form className={classes.form} noValidate onSubmit={submitProject}>
+                    <DialogTitle id="form-dialog-title" style={{ backgroundColor: "#c1c7c5" }} >Create project</DialogTitle>
+                    <DialogContent style={{ backgroundColor: "#c1c7c5" }}>
+                        <DialogContentText>
 
-                    </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="projectName"
-                        label="Project name"
-                        type="text"
-                        fullWidth
-                    />
-                    {/* <TextareaAutosize
-                        rowsMax={4}
-                        aria-label="maximum height"
-                        placeholder="Maximum 4 rows"
-                        defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua."
-                    /> */}
+                        </DialogContentText>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="projectName"
+                            label="Project name"
+                            type="text"
+                            fullWidth
+                            value={name}
+                            onChange={writeName}
 
-                    <TextField
-                        // mt={5}
-                        id="outlined-textarea"
-                        label="About project"
-                        placeholder="Project is..."
-                        multiline
-                        fullWidth
-                        variant="outlined"
-                    />
-                </DialogContent>
+                        />
 
-                <DialogActions style={{ backgroundColor: "#c1c7c5" }}>
+                        <TextField
+                            // mt={5}
+                            id="outlined-textarea"
+                            label="About project"
+                            placeholder="Project is..."
+                            multiline
+                            fullWidth
+                            variant="outlined"
+                            value={description}
+                            onChange={writeDesc}
+                        />
+                    </DialogContent>
 
-                    {/* <Fab onClick={handleClose} size="medium" color="secondary" aria-label="exit">
+                    <DialogActions style={{ backgroundColor: "#c1c7c5" }}>
+
+                        {/* <Fab onClick={handleClose} size="medium" color="secondary" aria-label="exit">
                         <RemoveIcon />
                     </Fab>
 
@@ -103,23 +143,15 @@ export default function AddProject() {
                     </Fab> */}
 
 
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
+                        <Button onClick={handleClose} color="primary">
+                            Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
-                        Confirm
+                        <Button type="submite" onClick={submitB} color="primary" className={classes.submit}>
+                            Confirm
                     </Button>
-                </DialogActions>
+                    </DialogActions>
+                </form>
             </Dialog>
         </div>
     );
 }
-
-
-
-
-
-
-
-
-

@@ -1,15 +1,20 @@
 package lt.vtmc.back_end.service;
 
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
-import lt.vtmc.back_end.domain.Project;
-import lt.vtmc.back_end.domain.User;
-import lt.vtmc.back_end.model.ProjectDTO;
-import lt.vtmc.back_end.repos.ProjectRepository;
-import lt.vtmc.back_end.repos.UserRepository;
+
+import javax.transaction.Transactional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import lt.vtmc.back_end.domain.Project;
+import lt.vtmc.back_end.domain.ProjectStatus;
+import lt.vtmc.back_end.domain.Task;
+import lt.vtmc.back_end.model.ProjectDTO;
+import lt.vtmc.back_end.repos.ProjectRepository;
+import lt.vtmc.back_end.repos.UserRepository;
 
 
 @Service
@@ -19,34 +24,44 @@ public class ProjectService {
     private final UserRepository userRepository;
 
     public ProjectService(final ProjectRepository projectRepository,
-            final UserRepository userRepository) {
+    		final UserRepository userRepository) {
         this.projectRepository = projectRepository;
         this.userRepository = userRepository;
     }
 
-    public List<ProjectDTO> findAll() {
-        return projectRepository.findAll()
-                .stream()
-                .map(project -> mapToDTO(project, new ProjectDTO()))
-                .collect(Collectors.toList());
+    public List<Project> findAll() {
+        return projectRepository.findAll();
     }
 
-    public ProjectDTO get(final Long id) {
+    public Project get(final Long id) {
         return projectRepository.findById(id)
-                .map(project -> mapToDTO(project, new ProjectDTO()))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public Long create(final ProjectDTO projectDTO) {
         final Project project = new Project();
-        mapToEntity(projectDTO, project);
+        project.setName(projectDTO.getName());
+        project.setDescription(projectDTO.getDescription());
+        project.setProjectTaskTasks(new HashSet<Task>());
+        project.setStatus(ProjectStatus.IN_PROGRESS.toString());
         return projectRepository.save(project).getId();
     }
+    
+//    public void addTask(final Long id, final Task task) {
+//    	final Project project = projectRepository.findById(id)
+//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//    	Set<Task> tasks = project.getProjectTaskTasks();
+//    	tasks.add(task);
+//    	project.setProjectTaskTasks(tasks);
+//    	projectRepository.save(project);
+//    }
 
     public void update(final Long id, final ProjectDTO projectDTO) {
         final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        mapToEntity(projectDTO, project);
+        project.setName(projectDTO.getName());
+        project.setDescription(projectDTO.getDescription());
+//        mapToEntity(projectDTO, project);
         projectRepository.save(project);
     }
 
@@ -54,30 +69,6 @@ public class ProjectService {
         projectRepository.deleteById(id);
     }
 
-    private ProjectDTO mapToDTO(final Project project, final ProjectDTO projectDTO) {
-        projectDTO.setId(project.getId());
-        projectDTO.setName(project.getName());
-        projectDTO.setDescription(project.getDescription());
-        projectDTO.setStatus(project.getStatus());
-        projectDTO.setTasksAmount(project.getTasksAmount());
-        projectDTO.setTasksLeft(project.getTasksLeft());
-        projectDTO.setUserProject(project.getUserProject() == null ? null : project.getUserProject().getId());
-        return projectDTO;
-    }
 
-    private Project mapToEntity(final ProjectDTO projectDTO, final Project project) {
-        project.setName(projectDTO.getName());
-        project.setDescription(projectDTO.getDescription());
-        project.setStatus(projectDTO.getStatus());
-        project.setTasksAmount(projectDTO.getTasksAmount());
-        project.setTasksLeft(projectDTO.getTasksLeft());
-        if (projectDTO.getUserProject() != null && 
-                (project.getUserProject() == null || !project.getUserProject().getId().equals(projectDTO.getUserProject()))) {
-            final User userProject = userRepository.findById(projectDTO.getUserProject())
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "userProject not found"));
-            project.setUserProject(userProject);
-        }
-        return project;
-    }
 
 }

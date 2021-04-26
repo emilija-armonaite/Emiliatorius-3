@@ -13,7 +13,7 @@ function Routes() {
         <Router>
             <Switch>
                 <Route exact path='/' component={Login} />
-                <ProtectedRoute path='/projects' component={Home} />
+                <ProtectedRoute path='/api/projects' component={Home} />
             </Switch>
         </Router>
     );

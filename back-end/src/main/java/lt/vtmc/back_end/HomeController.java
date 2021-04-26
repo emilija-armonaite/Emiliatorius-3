@@ -28,8 +28,8 @@ public class HomeController {
 	private JwtUtil jwtUtil;
 
     @PostMapping(value = "/authenticate")
-	public ResponseEntity<Map<String,String>> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-    	 Map<String,String> response = new HashMap<String, String>();
+	public ResponseEntity<Map<String,Object>> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+    	 Map<String,Object> response = new HashMap<String, Object>();
     	
     	try {
 			authenticationManager.authenticate(
@@ -44,7 +44,9 @@ public class HomeController {
 				.loadUserByUsername(authenticationRequest.getMail());
 
 		final String jwt = jwtUtil.generateToken(userDetails);
-		 response.put(userDetails.getUsername(), jwt);
+//		 response.put(userDetails.getUsername(), jwt);
+		response.put("token", jwt);
+		response.put("mail", userDetails.getUsername());
 
 		return ResponseEntity.accepted().body(response);
 	}

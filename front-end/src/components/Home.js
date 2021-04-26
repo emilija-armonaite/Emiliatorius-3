@@ -7,8 +7,8 @@ export default function Home() {
     return (
         <div className="container">
             <Header />
-            <ProjectList />
-            <Footer />
+            {/* <ProjectList />
+            <Footer /> */}
         </div>
     )
 }

@@ -23,7 +23,7 @@ export default function ProjectCard() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style= {{backgroundColor: "#7D8C87"}}>
       <CardActionArea>
         {/* <CardMedia
           className={classes.media}

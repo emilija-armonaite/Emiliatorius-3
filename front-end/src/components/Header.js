@@ -22,7 +22,7 @@ import Notifications from "@material-ui/icons/Notifications";
 import Grow from "@material-ui/core/Grow";
 
 import SinginName from './Login';
-
+import Grid from '@material-ui/core/Grid';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -257,8 +257,11 @@ export default function Header(props) {
         </Poppers> */}
       </div>
       <div className={classes.manager}>
+      {/* <Grid container spacing={4}> */}
+        {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}></Grid> */}
+        {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}> */}
         <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
+          color={window.innerWidth > 959 ? "transparent" : "#BF5A36"}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
           aria-owns={openProfile ? "profile-menu-list-grow" : null}
@@ -266,7 +269,7 @@ export default function Header(props) {
           onClick={handleClickProfile}
           className={classes.buttonLink}
         >
-          <Person className={classes.icons} />
+          <Person style={{color:"#BF5A36"}} className={classes.icons} />
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>
@@ -329,8 +332,9 @@ export default function Header(props) {
           )}
         </Poppers>
       </div>
+      
     </div>
-
+  
   );
 }
 

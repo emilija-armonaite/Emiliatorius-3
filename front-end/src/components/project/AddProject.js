@@ -24,7 +24,7 @@ export default function AddProject() {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root}> 
             <CardActionArea>
                 <CardContent>
                     <AddRounded style={{ fontSize: 100 }} />

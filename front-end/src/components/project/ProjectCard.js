@@ -10,12 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    // maxWidth: 345,
     height: 200,
-    // margin: 15,
-  },
-  media: {
-    height: 140,
   },
 });
 
@@ -23,13 +18,8 @@ export default function ProjectCard() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} style= {{backgroundColor: "#7D8C87"}}>
-      <CardActionArea>
-        {/* <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        /> */}
+    <Card className={classes.root} style={{ backgroundColor: "#c1c7c5", opacity: 0.93, color: "#232F32" }}>
+      <CardActionArea style={{ height: 200 }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Projekto pavadinimas
@@ -39,14 +29,14 @@ export default function ProjectCard() {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      {/* <CardActions>
         <Button size="small" color="primary">
-          Share
+          Edit
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Delete
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }

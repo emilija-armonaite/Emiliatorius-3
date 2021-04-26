@@ -11,12 +11,7 @@ import AddRounded from '@material-ui/icons/AddRounded';
 
 const useStyles = makeStyles({
     root: {
-        // maxWidth: 345,
-        // margin: 15,
         height: 200,
-    },
-    media: {
-        height: 140,
     },
 });
 
@@ -24,8 +19,8 @@ export default function AddProject() {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}> 
-            <CardActionArea>
+        <Card className={classes.root} style={{ backgroundColor: "#c1c7c5", opacity: 0.93, color: "#232F32" }}>
+            <CardActionArea style={{ height: 200 }}>
                 <CardContent>
                     <AddRounded style={{ fontSize: 100 }} />
                     <Typography gutterBottom variant="h6" component="h2">New Project

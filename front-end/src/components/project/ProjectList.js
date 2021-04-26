@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
     textAlign: "center",
   },
-
   // paper: {
   //   padding: theme.spacing(2),
   //   textAlign: 'justify',
@@ -24,11 +23,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProjectList() {
   const classes = useStyles();
+  const projects = [{}, {}];
 
   return (
     <div className={classes.root}>
-      <h1 style= {{color: "#a5b5b3"}}> Project List</h1>
-      <Grid container spacing={4}>
+      <h1 style={{ color: "#BF5A36" }}> Project List</h1>
+      <Grid container spacing={3}>
 
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <AddProject />
@@ -36,24 +36,7 @@ export default function ProjectList() {
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <ProjectCard />
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
+
       </Grid>
     </div>
   );

@@ -27,34 +27,37 @@ export default function ProjectList() {
 
   return (
     <div className={classes.root}>
-      <h1 style= {{color: "#a5b5b3"}}> Project List</h1>
-      <Grid container spacing={4}>
+      <h1 style={{ color: "#a5b5b3" }}> Project List</h1>
+      <Grid container spacing={3}>
+{/* <Grid> </Grid> */}
+        {/* <Grid line xs={12} sm={12} md={12} lg={12} xl={12} spacing={5}> */}
 
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <AddProject />
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <AddProject />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <ProjectCard />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <ProjectCard />
-        </Grid>
-      </Grid>
+      {/* </Grid> */}
     </div>
   );
 }

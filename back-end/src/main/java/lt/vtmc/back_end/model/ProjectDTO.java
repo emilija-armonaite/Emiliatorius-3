@@ -2,6 +2,7 @@ package lt.vtmc.back_end.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,6 @@ import lombok.Setter;
 @Setter
 public class ProjectDTO {
 
-    private Long id;
-
     @NotNull
     @Size(max = 255)
     private String name;
@@ -19,14 +18,14 @@ public class ProjectDTO {
     @Size(max = 255)
     private String description;
 
-    @Size(max = 255)
-    private String status;
+	public ProjectDTO(@NotNull @Size(max = 255) String name, @Size(max = 255) String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
 
-    private Integer tasksAmount;
-
-    private Integer tasksLeft;
-
-    @NotNull
-    private Long userProject;
+	public ProjectDTO() {
+		super();
+	}
 
 }

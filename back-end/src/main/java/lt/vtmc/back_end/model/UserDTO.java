@@ -18,4 +18,15 @@ public class UserDTO {
     @Size(max = 255)
     private String password;
 
+	public UserDTO(@NotNull @Size(max = 255) String mail, @NotNull @Size(max = 255) String password) {
+		super();
+		this.mail = mail;
+		this.password = password;
+	}
+
+	public UserDTO() {
+		super();
+	}
+    
+    
 }

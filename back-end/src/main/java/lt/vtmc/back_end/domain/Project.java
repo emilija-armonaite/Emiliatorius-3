@@ -53,7 +53,7 @@ public class Project {
     private Set<Task> projectTaskTasks;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_project_id", nullable = false)
+    @JoinColumn(name = "user_project_id")
     private User userProject;
 
 }

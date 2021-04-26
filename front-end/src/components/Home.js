@@ -2,6 +2,8 @@ import React from 'react'
 import Header from './Header' 
 import Footer from './Footer' 
 import logo from './../images/nice42069.jpeg'
+import AddProject from './AddProject'
+
 
 
 // var backStyle = {
@@ -16,6 +18,7 @@ export default function Home() {
             {/* <section style={}> */}
                 <Header />
                 <img src={logo} alt="Logo" />
+               <AddProject/>
                 <h2>Labas rytas</h2>
                 <h4>This is our home page</h4>
                 <Footer />

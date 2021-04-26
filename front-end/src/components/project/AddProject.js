@@ -23,6 +23,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
 
 
+
 const useStyles = makeStyles({
     root: {
         height: 200,
@@ -44,12 +45,9 @@ export default function AddProject() {
 
     return (
         <div>
-
             <Card className={classes.root} style={{ backgroundColor: "#c1c7c5", opacity: 0.93, color: "#232F32" }}>
                 <CardActionArea onClick={handleClickOpen} style={{ height: 200 }}>
                     <CardContent >
-
-
                         <AddRounded style={{ fontSize: 100 }} />
                         <Typography gutterBottom variant="h6" component="h2">New Project
                 </Typography>
@@ -60,9 +58,10 @@ export default function AddProject() {
             {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                create project
       </Button> */}
+
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Create project</DialogTitle>
-                <DialogContent>
+                <DialogTitle id="form-dialog-title" style={{ backgroundColor: "#c1c7c5" }} >Create project</DialogTitle>
+                <DialogContent style={{ backgroundColor: "#c1c7c5" }}>
                     <DialogContentText>
 
                     </DialogContentText>
@@ -93,7 +92,7 @@ export default function AddProject() {
                     />
                 </DialogContent>
 
-                <DialogActions>
+                <DialogActions style={{ backgroundColor: "#c1c7c5" }}>
 
                     {/* <Fab onClick={handleClose} size="medium" color="secondary" aria-label="exit">
                         <RemoveIcon />
@@ -106,14 +105,12 @@ export default function AddProject() {
 
                     <Button onClick={handleClose} color="primary">
                         Cancel
-          </Button>
+                    </Button>
                     <Button onClick={handleClose} color="primary">
-                        Subscribe
-          </Button>
+                        Confirm
+                    </Button>
                 </DialogActions>
             </Dialog>
-
-
         </div>
     );
 }

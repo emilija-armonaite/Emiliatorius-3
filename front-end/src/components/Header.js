@@ -269,7 +269,7 @@ export default function Header(props) {
           onClick={handleClickProfile}
           className={classes.buttonLink}
         >
-          <Person style={{color:"#BF5A36"}} className={classes.icons} />
+          <Person style={{color:"#BF5A36", fontSize:40}} className={classes.icons} />
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>

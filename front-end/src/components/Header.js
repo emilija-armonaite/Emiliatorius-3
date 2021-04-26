@@ -257,9 +257,9 @@ export default function Header(props) {
         </Poppers> */}
       </div>
       <div className={classes.manager}>
-      {/* <Grid container spacing={4}> */}
-        {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}></Grid> */}
-        {/* <Grid item xs={12} sm={12} md={6} lg={3} xl={3}> */}
+      <Grid container >
+         <Grid item xs={11} sm={11} md={8} lg={11} xl={11}></Grid> 
+         <Grid item xs={1} sm={1} md={1} lg={1} xl={1}> 
         <Button
           color={window.innerWidth > 959 ? "transparent" : "#BF5A36"}
           justIcon={window.innerWidth > 959}
@@ -331,6 +331,8 @@ export default function Header(props) {
             </Grow>
           )}
         </Poppers>
+        </Grid>
+        </Grid>
       </div>
       
     </div>

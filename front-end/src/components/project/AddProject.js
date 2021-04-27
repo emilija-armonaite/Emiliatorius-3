@@ -21,7 +21,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import { green } from '@material-ui/core/colors';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
-
+import GetProjects from "./GetProjects"
 import axios from "axios";
 
 const useStyles = makeStyles({
@@ -76,10 +76,11 @@ export default function AddProject() {
             description,
             name
         },
-        {
-            headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem("token")}
-        }
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token")
+                }
+            }
         )
             .then((response) => {
 
@@ -91,16 +92,17 @@ export default function AddProject() {
 
     return (
         <div>
-            <Card className={classes.root} style={{ backgroundColor: "#c1c7c5", opacity: 0.93, color: "#232F32" }}>
+            
+            <Card className={classes.root} style={{ backgroundColor: "#9aa3ad", color: "#232F32" }}>
                 <CardActionArea onClick={handleClickOpen} style={{ height: 200 }}>
                     <CardContent >
                         <AddRounded style={{ fontSize: 100 }} />
-                        <Typography gutterBottom variant="h6" component="h2">New Project
+                        <Typography gutterBottom variant="h5" component="h2" className="name">New Project
                 </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
-
+      
             {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                create project
       </Button> */}
@@ -154,9 +156,11 @@ export default function AddProject() {
                         <Button type="submite" onClick={submitB} color="primary" className={classes.submit}>
                             Confirm
                     </Button>
+
                     </DialogActions>
                 </form>
             </Dialog>
+            
         </div>
     );
 }

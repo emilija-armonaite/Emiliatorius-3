@@ -29,19 +29,17 @@ const GetProjects = () => {
 
     return (
         <div>
-       
-            {projects && projects.map(project => {
-                return (
-
-                    // <Grid item xs={12} sm={12} md={4} lg={3} xl={3}>
-
-                    <ProjectCard key={project.id} name={project.name} description={project.description} />
-                    //  </Grid>
-                )
-            })
-            }
+            <Grid>
+                {projects && projects.map(project => {
+                    return (
+                        // <Grid item xs={12} sm={12} md={4} lg={3} xl={3}>
+                        <ProjectCard key={project.id} name={project.name} description={project.description} />
+                        //  </Grid>
+                    )
+                })
+                }
+            </Grid>
         </div>
-   
     );
 }
 export default GetProjects;

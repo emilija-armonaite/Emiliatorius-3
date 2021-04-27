@@ -31,7 +31,7 @@ import GetProjects from "./GetProjects"
 
 import axios from "axios";
 import { Box } from '@material-ui/core';
-import GetProjects from './GetProjects';
+
 
 const useStyles = makeStyles({
     root: {
@@ -108,7 +108,6 @@ export default function AddProject() {
 
                     'Authorization': 'Bearer ' + user.token
 
-                    'Authorization': 'Bearer ' + localStorage.getItem("token")
 
                 }
             }

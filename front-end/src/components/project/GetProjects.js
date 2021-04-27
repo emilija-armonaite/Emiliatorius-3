@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProjectCard from './ProjectCard';
 import { Grid } from '@material-ui/core';
+import AddProject from './AddProject';
 
 
 const GetProjects = () => {
@@ -27,16 +28,20 @@ const GetProjects = () => {
     }, [])
 
     return (
-        <Grid container spacing={3} style={{ padding: "15px" }}>
+        <div>
+       
             {projects && projects.map(project => {
                 return (
-                    <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-                        <ProjectCard key={project.id} name={project.name} description={project.description} />
-                    </Grid>
+
+                    // <Grid item xs={12} sm={12} md={4} lg={3} xl={3}>
+
+                    <ProjectCard key={project.id} name={project.name} description={project.description} />
+                    //  </Grid>
                 )
             })
             }
-        </Grid>
+        </div>
+   
     );
 }
 export default GetProjects;

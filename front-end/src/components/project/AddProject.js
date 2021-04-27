@@ -21,7 +21,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import { green } from '@material-ui/core/colors';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
-
+import GetProjects from "./GetProjects"
 import axios from "axios";
 
 const useStyles = makeStyles({
@@ -92,6 +92,7 @@ export default function AddProject() {
 
     return (
         <div>
+            
             <Card className={classes.root} style={{ backgroundColor: "#576978", color: "#232F32" }}>
                 <CardActionArea onClick={handleClickOpen} style={{ height: 200 }}>
                     <CardContent >
@@ -101,7 +102,7 @@ export default function AddProject() {
                     </CardContent>
                 </CardActionArea>
             </Card>
-
+      
             {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                create project
       </Button> */}
@@ -155,9 +156,11 @@ export default function AddProject() {
                         <Button type="submite" onClick={submitB} color="primary" className={classes.submit}>
                             Confirm
                     </Button>
+
                     </DialogActions>
                 </form>
             </Dialog>
+            
         </div>
     );
 }

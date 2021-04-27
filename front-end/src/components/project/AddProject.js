@@ -24,8 +24,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Hidden from '@material-ui/core/Hidden';
 
 
+
 import axios from "axios";
 import { Box } from '@material-ui/core';
+import GetProjects from './GetProjects';
 
 const useStyles = makeStyles({
     root: {
@@ -44,10 +46,12 @@ export default function AddProject() {
     const classes = useStyles();
     const [name, setName] = useState("");
     const [description, setDesc] = useState("");
+const [test123] =useState("");
+ 
+
 
     const handleClickOpen = () => {
         setOpen(true);
-
     };
 
     const handleClose = () => {
@@ -58,12 +62,13 @@ export default function AddProject() {
 
         setName("");
         setDesc("");
+     
     }
 
     const user = JSON.parse(localStorage.getItem("token"));
 
 
-   
+
 
 
     const writeName = e => {
@@ -81,8 +86,8 @@ export default function AddProject() {
         console.log({ name });
         console.log({ description });
         setOpen(false);
-      
-        // window.location.reload(true);
+
+        window.location.reload(true);
     }
 
 

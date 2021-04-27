@@ -45,7 +45,7 @@ export default function AddProject() {
 
     return (
         <div>
-            <Card className={classes.root} style={{ backgroundColor: "#c1c7c5", opacity: 0.93, color: "#232F32" }}>
+            <Card className={classes.root} style={{ backgroundColor: "#576978", opacity: 0.85, color: "#232F32" }}>
                 <CardActionArea onClick={handleClickOpen} style={{ height: 200 }}>
                     <CardContent >
                         <AddRounded style={{ fontSize: 100 }} />

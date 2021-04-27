@@ -82,6 +82,7 @@ export default function SignIn() {
       .then((response) => {
         // returns json from back with username and jwt token returns name as a string
         localStorage.setItem('token', JSON.stringify(response.data));
+        console.log(localStorage.getItem('token'))
         history.push("/api/projects");
         const name = Object.keys(response.data)
         // console.log(name[0])

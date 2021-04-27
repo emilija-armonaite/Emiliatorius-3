@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 
 export default function AddProject() {
 
-    const API_URL = 'http://localhost:8081/';
+    const API_URL = 'http://localhost:8081';
 
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
@@ -74,8 +74,13 @@ export default function AddProject() {
         e.preventDefault();
         return axios.post(API_URL + "/api/projects", {
             description,
-            name,
-        })
+            name
+        },
+        {
+            headers:{
+                'Authorization': 'Bearer ' + localStorage.getItem("token")}
+        }
+        )
             .then((response) => {
 
                 return response;

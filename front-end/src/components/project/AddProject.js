@@ -22,6 +22,7 @@ import { green } from '@material-ui/core/colors';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
 
+
 import axios from "axios";
 
 const useStyles = makeStyles({
@@ -48,9 +49,11 @@ export default function AddProject() {
         setOpen(false);
     };
 
+    const user = JSON.parse(localStorage.getItem("token"));
+
 
     const [name, setName] = useState("");
-    const [description, setDesc] = useState();
+    const [description, setDesc] = useState("");
 
     const writeName = e => {
         // console.log(`Typed => ${e.target.value}`);
@@ -65,10 +68,11 @@ export default function AddProject() {
         console.log({ name });
         console.log({ description });
         setOpen(false);
+        // window.location.reload(true);
     }
 
-
-
+ 
+  
     const submitProject = (e) => {
 
         e.preventDefault();
@@ -76,15 +80,22 @@ export default function AddProject() {
             description,
             name
         },
-        {
-            headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem("token")}
-        }
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + user.token
+                }
+            }
         )
             .then((response) => {
 
                 return response;
-            });
+            },
+            (error) => {
+            
+              console.log("wrong");
+            }
+            
+            );
     }
 
 
@@ -113,19 +124,22 @@ export default function AddProject() {
 
                         </DialogContentText>
                         <TextField
-                            autoFocus
-                            margin="dense"
+                            // autoFocus
+                            // margin="dense"
                             id="projectName"
                             label="Project name"
                             type="text"
+                            multiline
+                            fullWidth
+                            variant="outlined"
                             fullWidth
                             value={name}
                             onChange={writeName}
+                            margin="normal"
 
                         />
 
                         <TextField
-                            // mt={5}
                             id="outlined-textarea"
                             label="About project"
                             placeholder="Project is..."
@@ -151,12 +165,15 @@ export default function AddProject() {
                         <Button onClick={handleClose} color="primary">
                             Cancel
                     </Button>
-                        <Button type="submite" onClick={submitB} color="primary" className={classes.submit}>
+                        <Button type="submite" onClick={submitB} color="primary" className={classes.submit} disabled={!name}>
                             Confirm
                     </Button>
                     </DialogActions>
                 </form>
             </Dialog>
+           
         </div>
     );
 }
+
+

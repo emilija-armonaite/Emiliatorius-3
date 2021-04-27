@@ -17,7 +17,7 @@ export default function ProjectCard({ name, description }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} style={{ backgroundColor: "#576978", color: "#232F32" }}>
+    <Card className={classes.root} style={{ backgroundColor: "#9aa3ad", color: "#232F32" }}>
       <CardActionArea style={{ height: 200 }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" className="name">

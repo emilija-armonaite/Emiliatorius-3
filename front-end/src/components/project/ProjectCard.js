@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +18,7 @@ export default function ProjectCard({ name, description }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} style={{ backgroundColor: "#c1c7c5", opacity: 0.93, color: "#232F32" }}>
+    <Card className={classes.root} style={{ backgroundColor: "#576978", opacity: 0.85, color: "#232F32" }}>
       <CardActionArea style={{ height: 200 }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" className="name">
@@ -37,5 +38,6 @@ export default function ProjectCard({ name, description }) {
         </Button>
       </CardActions> */}
     </Card>
+
   );
 }

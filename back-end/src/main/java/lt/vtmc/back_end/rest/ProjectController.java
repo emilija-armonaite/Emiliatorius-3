@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import lt.vtmc.back_end.domain.Project;
+import lt.vtmc.back_end.domain.Task;
 import lt.vtmc.back_end.model.ProjectDTO;
+import lt.vtmc.back_end.model.TaskDTO;
+import lt.vtmc.back_end.repos.TaskRepository;
 import lt.vtmc.back_end.service.ProjectService;
+import lt.vtmc.back_end.service.TaskService;
 
 
 @RestController
@@ -28,9 +33,14 @@ import lt.vtmc.back_end.service.ProjectService;
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final TaskService taskService;
+    private final TaskRepository taskRepository;
 
-    public ProjectController(final ProjectService projectService) {
+    public ProjectController(final ProjectService projectService,
+    		final TaskService taskService, final TaskRepository taskRepository) {
         this.projectService = projectService;
+        this.taskService = taskService;
+        this.taskRepository = taskRepository;
     }
 
     @GetMapping
@@ -48,12 +58,20 @@ public class ProjectController {
         return new ResponseEntity<>(projectService.create(projectDTO), HttpStatus.CREATED);
     }
     
-//    @PutMapping("/{id}/tasks")
-//    public ResponseEntity<Void> addTask(@PathVariable final Long id,
-//            @RequestBody @Valid final Task task) {
-//        projectService.addTask(id, task);
-//        return ResponseEntity.ok().build();
-//    }
+    @PutMapping("/{id}/tasks")
+    public ResponseEntity<Void> addTask(@PathVariable final Long id,
+            @RequestBody @Valid final TaskDTO taskDTO) {
+    	Long taskId = taskService.create(id, taskDTO);
+    	Task task = taskRepository.findById(taskId)
+    			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        projectService.addTask(id, task);
+        return ResponseEntity.ok().build();
+    }
+    
+    @GetMapping("/{id}/tasks")
+	public ResponseEntity<List<Task>> getAllProjectTasks(@PathVariable final Long id) {
+	    return ResponseEntity.ok(taskService.findAll(id));
+	}
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateProject(@PathVariable final Long id,

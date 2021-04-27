@@ -1,9 +1,9 @@
 package lt.vtmc.back_end.rest;
 
 import java.util.List;
+
 import javax.validation.Valid;
-import lt.vtmc.back_end.model.TaskDTO;
-import lt.vtmc.back_end.service.TaskService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lt.vtmc.back_end.domain.Task;
+import lt.vtmc.back_end.model.TaskDTO;
+import lt.vtmc.back_end.service.TaskService;
+
 
 @RestController
 @CrossOrigin("*")
@@ -29,20 +33,20 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<TaskDTO>> getAllTasks() {
-        return ResponseEntity.ok(taskService.findAll());
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Task>> getAllTasks() {
+//        return ResponseEntity.ok(taskService.findAll());
+//    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskDTO> getTask(@PathVariable final Long id) {
+    public ResponseEntity<Task> getTask(@PathVariable final Long id) {
         return ResponseEntity.ok(taskService.get(id));
     }
 
-    @PostMapping
-    public ResponseEntity<Long> createTask(@RequestBody @Valid final TaskDTO taskDTO) {
-        return new ResponseEntity<>(taskService.create(taskDTO), HttpStatus.CREATED);
-    }
+//    @PostMapping
+//    public ResponseEntity<Long> createTask(@RequestBody @Valid final TaskDTO taskDTO) {
+//        return new ResponseEntity<>(taskService.create(taskDTO), HttpStatus.CREATED);
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateTask(@PathVariable final Long id,

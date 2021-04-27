@@ -18,8 +18,8 @@ export default function ProjectCard({ name, description }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} style={{ backgroundColor: "#576978", opacity: 0.85, color: "#232F32" }}>
-      <CardActionArea style={{ height: 200 }}>
+    <Card className={classes.root} style={{ backgroundColor: "#576978", color: "#232F32" }}>
+      <CardActionArea style={{ height: 150 }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" className="name">
             {name}
@@ -29,14 +29,14 @@ export default function ProjectCard({ name, description }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
-        <Button size="small" color="primary">
+      <CardActions>
+        <Button size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Edit
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Delete
         </Button>
-      </CardActions> */}
+      </CardActions>
     </Card>
 
   );

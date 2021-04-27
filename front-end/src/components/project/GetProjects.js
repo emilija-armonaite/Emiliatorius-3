@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProjectCard from './ProjectCard';
+import { Grid } from '@material-ui/core';
+
 
 const GetProjects = () => {
     const API_URL = "http://localhost:8081";
@@ -25,16 +27,16 @@ const GetProjects = () => {
     }, [])
 
     return (
-        <div className="container">
-            <div className="row">
-                {projects && projects.map(project => {
-                    return (
+        <Grid container spacing={3} style={{ padding: "15px" }}>
+            {projects && projects.map(project => {
+                return (
+                    <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
                         <ProjectCard key={project.id} name={project.name} description={project.description} />
-                    )
-                })
-                }
-            </div>
-        </div>
+                    </Grid>
+                )
+            })
+            }
+        </Grid>
     );
 }
 export default GetProjects;

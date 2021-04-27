@@ -76,10 +76,11 @@ export default function AddProject() {
             description,
             name
         },
-        {
-            headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem("token")}
-        }
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token")
+                }
+            }
         )
             .then((response) => {
 
@@ -91,11 +92,11 @@ export default function AddProject() {
 
     return (
         <div>
-            <Card className={classes.root} style={{ backgroundColor: "#576978", opacity: 0.85, color: "#232F32" }}>
+            <Card className={classes.root} style={{ backgroundColor: "#576978", color: "#232F32" }}>
                 <CardActionArea onClick={handleClickOpen} style={{ height: 200 }}>
                     <CardContent >
                         <AddRounded style={{ fontSize: 100 }} />
-                        <Typography gutterBottom variant="h6" component="h2">New Project
+                        <Typography gutterBottom variant="h5" component="h2" className="name">New Project
                 </Typography>
                     </CardContent>
                 </CardActionArea>

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import AddProject from "./AddProject"
 import GetProjects from './GetProjects';
+import ProjectCard from './ProjectCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,14 +20,12 @@ export default function ProjectList() {
 
   return (
     <div className={classes.root}>
-      <h1 style={{ color: "#232F32", fontSize: "35px", width: '100%', textAlign: 'center' }}> My Projects</h1>
+      <h1 style={{ color: "#232F32", fontSize: "35px", width: '100%', textAlign: 'center' }}>My Projects</h1>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
           <AddProject />
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
-          <GetProjects />
-        </Grid>
+        <GetProjects />
       </Grid>
     </div>
   );

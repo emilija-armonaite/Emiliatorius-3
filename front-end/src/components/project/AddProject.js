@@ -21,8 +21,17 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import { green } from '@material-ui/core/colors';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
+
+import Hidden from '@material-ui/core/Hidden';
+
+
+
+
 import GetProjects from "./GetProjects"
+
 import axios from "axios";
+import { Box } from '@material-ui/core';
+import GetProjects from './GetProjects';
 
 const useStyles = makeStyles({
     root: {
@@ -36,9 +45,14 @@ const useStyles = makeStyles({
 export default function AddProject() {
 
     const API_URL = 'http://localhost:8081';
-
+    const nameIsEmpty = "inline";
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
+    const [name, setName] = useState("");
+    const [description, setDesc] = useState("");
+
+ 
+
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -46,16 +60,27 @@ export default function AddProject() {
 
     const handleClose = () => {
         setOpen(false);
+        removeText();
     };
+    const removeText = () => {
+
+        setName("");
+        setDesc("");
+     
+    }
+
+    const user = JSON.parse(localStorage.getItem("token"));
 
 
-    const [name, setName] = useState("");
-    const [description, setDesc] = useState();
+
+
 
     const writeName = e => {
-        // console.log(`Typed => ${e.target.value}`);
         setName(e.target.value);
+
     }
+
+
     const writeDesc = e => {
         // console.log(`Typed => ${e.target.value}`);
         setDesc(e.target.value);
@@ -65,6 +90,8 @@ export default function AddProject() {
         console.log({ name });
         console.log({ description });
         setOpen(false);
+
+        window.location.reload(true);
     }
 
 
@@ -78,14 +105,24 @@ export default function AddProject() {
         },
             {
                 headers: {
+
+                    'Authorization': 'Bearer ' + user.token
+
                     'Authorization': 'Bearer ' + localStorage.getItem("token")
+
                 }
             }
         )
             .then((response) => {
 
                 return response;
-            });
+            },
+                (error) => {
+
+                    console.log("wrong");
+                }
+
+            );
     }
 
 
@@ -114,53 +151,58 @@ export default function AddProject() {
                         <DialogContentText>
 
                         </DialogContentText>
+
+
+
+
                         <TextField
-                            autoFocus
-                            margin="dense"
+                            // autoFocus
+                            // margin="dense"
                             id="projectName"
                             label="Project name"
-                            type="text"
-                            fullWidth
-                            value={name}
-                            onChange={writeName}
 
-                        />
-
-                        <TextField
-                            // mt={5}
-                            id="outlined-textarea"
-                            label="About project"
-                            placeholder="Project is..."
                             multiline
                             fullWidth
                             variant="outlined"
-                            value={description}
-                            onChange={writeDesc}
+
+                            value={name}
+                            onChange={writeName}
+                            margin="normal"
+
                         />
+
+                        <Box display={nameIsEmpty}>
+
+                            <TextField
+
+                                id="outlined-textarea"
+                                label="About project"
+                                placeholder="Project is..."
+                                multiline
+                                fullWidth
+                                variant="outlined"
+                                value={description}
+                                onChange={writeDesc}
+                            />
+                        </Box>
                     </DialogContent>
 
                     <DialogActions style={{ backgroundColor: "#c1c7c5" }}>
-
-                        {/* <Fab onClick={handleClose} size="medium" color="secondary" aria-label="exit">
-                        <RemoveIcon />
-                    </Fab>
-
-                    <Fab onClick={handleClose} size="medium" color="primary" aria-label="add">
-                        <AddIcon />
-                    </Fab> */}
 
 
                         <Button onClick={handleClose} color="primary">
                             Cancel
                     </Button>
-                        <Button type="submite" onClick={submitB} color="primary" className={classes.submit}>
+                        <Button type="submite" onClick={submitB} color="primary" className={classes.submit} disabled={!name}>
                             Confirm
                     </Button>
 
                     </DialogActions>
                 </form>
             </Dialog>
-            
+
         </div>
     );
 }
+
+

@@ -21,9 +21,11 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import { green } from '@material-ui/core/colors';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Tabs from '@material-ui/core/Tabs';
+import Hidden from '@material-ui/core/Hidden';
 
 
 import axios from "axios";
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles({
     root: {
@@ -37,28 +39,39 @@ const useStyles = makeStyles({
 export default function AddProject() {
 
     const API_URL = 'http://localhost:8081';
-
+    const nameIsEmpty = "inline";
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
+    const [name, setName] = useState("");
+    const [description, setDesc] = useState("");
 
     const handleClickOpen = () => {
         setOpen(true);
+
     };
 
     const handleClose = () => {
         setOpen(false);
+        removeText();
     };
+    const removeText = () => {
+
+        setName("");
+        setDesc("");
+    }
 
     const user = JSON.parse(localStorage.getItem("token"));
 
 
-    const [name, setName] = useState("");
-    const [description, setDesc] = useState("");
+   
+
 
     const writeName = e => {
-        // console.log(`Typed => ${e.target.value}`);
         setName(e.target.value);
+
     }
+
+
     const writeDesc = e => {
         // console.log(`Typed => ${e.target.value}`);
         setDesc(e.target.value);
@@ -68,11 +81,12 @@ export default function AddProject() {
         console.log({ name });
         console.log({ description });
         setOpen(false);
+      
         // window.location.reload(true);
     }
 
- 
-  
+
+
     const submitProject = (e) => {
 
         e.preventDefault();
@@ -90,11 +104,11 @@ export default function AddProject() {
 
                 return response;
             },
-            (error) => {
-            
-              console.log("wrong");
-            }
-            
+                (error) => {
+
+                    console.log("wrong");
+                }
+
             );
     }
 
@@ -123,43 +137,43 @@ export default function AddProject() {
                         <DialogContentText>
 
                         </DialogContentText>
+
+
+
+
                         <TextField
                             // autoFocus
                             // margin="dense"
                             id="projectName"
                             label="Project name"
-                            type="text"
+
                             multiline
                             fullWidth
                             variant="outlined"
-                            fullWidth
+
                             value={name}
                             onChange={writeName}
                             margin="normal"
 
                         />
 
-                        <TextField
-                            id="outlined-textarea"
-                            label="About project"
-                            placeholder="Project is..."
-                            multiline
-                            fullWidth
-                            variant="outlined"
-                            value={description}
-                            onChange={writeDesc}
-                        />
+                        <Box display={nameIsEmpty}>
+
+                            <TextField
+
+                                id="outlined-textarea"
+                                label="About project"
+                                placeholder="Project is..."
+                                multiline
+                                fullWidth
+                                variant="outlined"
+                                value={description}
+                                onChange={writeDesc}
+                            />
+                        </Box>
                     </DialogContent>
 
                     <DialogActions style={{ backgroundColor: "#c1c7c5" }}>
-
-                        {/* <Fab onClick={handleClose} size="medium" color="secondary" aria-label="exit">
-                        <RemoveIcon />
-                    </Fab>
-
-                    <Fab onClick={handleClose} size="medium" color="primary" aria-label="add">
-                        <AddIcon />
-                    </Fab> */}
 
 
                         <Button onClick={handleClose} color="primary">
@@ -171,7 +185,7 @@ export default function AddProject() {
                     </DialogActions>
                 </form>
             </Dialog>
-           
+
         </div>
     );
 }

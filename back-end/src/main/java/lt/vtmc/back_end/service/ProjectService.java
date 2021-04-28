@@ -2,6 +2,7 @@ package lt.vtmc.back_end.service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -47,21 +48,20 @@ public class ProjectService {
         return projectRepository.save(project).getId();
     }
     
-//    public void addTask(final Long id, final Task task) {
-//    	final Project project = projectRepository.findById(id)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//    	Set<Task> tasks = project.getProjectTaskTasks();
-//    	tasks.add(task);
-//    	project.setProjectTaskTasks(tasks);
-//    	projectRepository.save(project);
-//    }
+    public void addTask(final Long id, final Task task) {
+    	final Project project = projectRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    	Set<Task> tasks = project.getProjectTaskTasks();
+    	tasks.add(task);
+    	project.setProjectTaskTasks(tasks);
+    	projectRepository.save(project);
+    }
 
     public void update(final Long id, final ProjectDTO projectDTO) {
         final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         project.setName(projectDTO.getName());
         project.setDescription(projectDTO.getDescription());
-//        mapToEntity(projectDTO, project);
         projectRepository.save(project);
     }
 

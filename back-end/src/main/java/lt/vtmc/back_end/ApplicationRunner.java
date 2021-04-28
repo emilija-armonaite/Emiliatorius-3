@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.stereotype.Component;
 
 import lt.vtmc.back_end.model.ProjectDTO;
+import lt.vtmc.back_end.model.TaskDTO;
 import lt.vtmc.back_end.model.UserDTO;
 import lt.vtmc.back_end.service.ProjectService;
 import lt.vtmc.back_end.service.TaskService;
@@ -34,6 +35,12 @@ public class ApplicationRunner implements org.springframework.boot.ApplicationRu
 		ProjectDTO p2 = new ProjectDTO("Project 02", "Description");
 		projectService.create(p2);
 		
+		TaskDTO t = new TaskDTO("Task00", "UserStory");
+		taskService.create((long) 10001, t);
+		TaskDTO t1 = new TaskDTO("Task01", "UserStory");
+		taskService.create((long) 10001, t1);
+		TaskDTO t2 = new TaskDTO("Task02", "UserStory");
+		taskService.create((long) 10001, t2);
 
 	}
 

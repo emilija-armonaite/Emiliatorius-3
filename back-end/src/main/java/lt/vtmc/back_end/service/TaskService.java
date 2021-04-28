@@ -1,5 +1,7 @@
 package lt.vtmc.back_end.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 import lt.vtmc.back_end.domain.Project;
@@ -19,6 +21,8 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
     private final ProjectRepository projectRepository;
+    
+    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public TaskService(final TaskRepository taskRepository,
             final ProjectRepository projectRepository) {
@@ -43,9 +47,13 @@ public class TaskService {
         task.setUserStory(taskDTO.getUserStory());
         task.setPriority(TaskPriority.MEDIUM.toString());
         task.setStatus(TaskStatus.TO_DO.toString());
+        task.setCreationDate(LocalDateTime.now().format(dateFormat));
+        task.setUpdateDate(LocalDateTime.now().format(dateFormat));
         Project project = projectRepository.findById(projectId)
         		.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         task.setProjectTask(project);
+        project.setTasksAmount(project.getProjectTaskTasks().size() + 1);
+        projectRepository.save(project);
         return taskRepository.save(task).getId();
     }
 
@@ -54,6 +62,7 @@ public class TaskService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         task.setName(taskDTO.getName());
         task.setUserStory(taskDTO.getUserStory());
+        task.setUpdateDate(LocalDateTime.now().format(dateFormat));
         taskRepository.save(task);
     }
 

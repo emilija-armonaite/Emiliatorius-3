@@ -36,7 +36,7 @@ public class Task {
     )
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -45,14 +45,13 @@ public class Task {
     @Column(nullable = false)
     private String priority;
 
-    @Column(nullable = false)
     private String status;
 
     @Column
-    private LocalDateTime creationDate;
+    private String creationDate;
 
     @Column
-    private LocalDateTime updateDate;
+    private String updateDate;
     
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

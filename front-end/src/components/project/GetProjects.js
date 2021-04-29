@@ -15,15 +15,25 @@ const GetProjects = () => {
             },
         })
             .then(response => {
-                console.log(response);
+              //  console.log(response);
                 console.log(response.data);
-                console.log(...response.data);
+              //  console.log(...response.data);
+              console.log(projects);
                 setProjects(response.data);
             })
             .catch(err => {
                 console.log(err);
             })
     }, [])
+
+// const handleUpdate = async (id)=>{
+//     await fetch(API_URL + "/api/projects/" + id, {
+//         method: 'UPDATE'
+//     })
+//     const newProjects = projects.filter(projects =>projects.id !=id);
+// setProjects(newProjects)
+// }
+
 
     return (
         <>

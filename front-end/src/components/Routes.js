@@ -14,6 +14,7 @@ function Routes() {
             <Switch>
                 <Route exact path='/' component={Login} />
                 <ProtectedRoute path='/api/projects' component={Home} />
+                {/* <ProtectedRoute path='/api/projects/:id'/> */}
             </Switch>
         </Router>
     );

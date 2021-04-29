@@ -20,7 +20,7 @@ const GetProjects = () => {
               //  console.log(...response.data);
             //   console.log(projects);
                 setProjects(response.data);
-                console.log(projects);
+                // console.log(projects);
             })
             .catch(err => {
                 console.log(err);
@@ -34,14 +34,14 @@ const GetProjects = () => {
 //     const newProjects = projects.filter(projects =>projects.id !=id);
 // setProjects(newProjects)
 // }
-
+// project=projects
 
     return (
         <>
             {projects && projects.map(project => {
                 return (
                     <Grid item xs={12} sm={12} md={4} lg={3} xl={3}>
-                        <ProjectCard key={project.id} name={project.name} description={project.description} />
+                        <ProjectCard key={project.id}  name={project.name} description={project.description} id = {project.id} />
                     </Grid>
                 )
             })

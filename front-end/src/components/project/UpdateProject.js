@@ -10,7 +10,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import Button from '@material-ui/core/Button'; 
+import Button from '@material-ui/core/Button';
 import GetProjects from './GetProjects';
 
 
@@ -21,18 +21,29 @@ const useStyles = makeStyles({
     },
 });
 
-export default function UpdateProject({ projects }) {
+
+    const UpdateProject = ({ id }) => {
+        const user = JSON.parse(localStorage.getItem("token"));
+        axios.put(`http://localhost:8081/api/projects/${id}`, {
+            headers: {
+                "Authorization": "Bearer " + user.token
+            }
+        })
+            .then(response => {
+                console.log(response.data)
+            }).catch(err => {
+                console.log(err);
+            })
    
-    const [open, setOpen] = React.useState(false);
- 
 
 
+    const [open, setOpen] = React.useState(true);
     const [name, setName] = useState("");
     const [description, setDesc] = useState("");
     const classes = useStyles();
     const handleClickOpen = () => {
-      
 
+        console.log(GetProjects.project.id);
         setOpen(true);
     };
 
@@ -41,6 +52,7 @@ export default function UpdateProject({ projects }) {
         // removeText();
     };
 
+    
 
 
     const writeName = e => {
@@ -67,14 +79,6 @@ export default function UpdateProject({ projects }) {
         <div>
 
 
-            <Button color="primary"
-                onClick={handleClickOpen} 
-               
-
-                size="small" style={{ width: '100%', textAlign: "center" }}>
-                Edit
-  </Button>
-
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <form className={classes.form} noValidate
                 //   onSubmit={submitProject}
@@ -84,9 +88,6 @@ export default function UpdateProject({ projects }) {
                         <DialogContentText>
 
                         </DialogContentText>
-
-
-
 
                         <TextField
                             // autoFocus
@@ -137,3 +138,4 @@ export default function UpdateProject({ projects }) {
         </div>
     );
 }
+export default UpdateProject;

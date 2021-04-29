@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function ProjectCard({ name, description }) {
+export default function ProjectCard({ name, description, id }) {
   const classes = useStyles();
 
   return (
@@ -28,6 +28,9 @@ export default function ProjectCard({ name, description }) {
           <Typography variant="body2" color="textSecondary" component="p" className="description">
             {description}
           </Typography>
+          {/* <Typography variant="body2" color="textSecondary" component="p" className="id">
+            {id}
+          </Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions>
@@ -36,7 +39,10 @@ export default function ProjectCard({ name, description }) {
          >
           Edit
         </Button> */}
-        <UpdateProject/>
+        <Button onClick={() => UpdateProject({ id })} size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
+          Update
+        </Button>
+        {/* <UpdateProject/> */}
         <Button size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Delete
         </Button>

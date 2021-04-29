@@ -76,10 +76,6 @@ export default function Header(props) {
 
 
 
-
-
-
-
   function logout() {
     localStorage.clear();
     history.push("/");
@@ -88,178 +84,18 @@ export default function Header(props) {
 
   return (
 
-
-    // <React.Fragment> 
-
-    //     {/* <Toolbar className={classes.toolbar}> 
-
-    //         <Typography 
-    //             component="h2" 
-    //             variant="h5" 
-    //             color="inherit" 
-    //             align="center" 
-    //             noWrap 
-    //             className={classes.toolbarTitle} 
-    //         > 
-    //             {title} 
-    //         </Typography> 
-    //         <Button variant="outlined" size="small"
-    //             className={classes.submit}
-    //             >
-    //                 login
-
-
-
-
-    // </Button> 
-    //         <Button variant="outlined" size="small" 
-    //             className={classes.submit} 
-    //             onClick={logout}>
-    //             Sign Out 
-    // </Button> 
-    //     </Toolbar>  */}
-    //     <p>nigerigner</p>
-    //     {/* <Paper>
-    //         <ClickAwayListener onClickAway={handleCloseProfile}>
-    //           <MenuList role="menu">
-    //             <MenuItem
-    //               onClick={handleCloseProfile}
-    //               className={classes.dropdownItem}
-    //             >
-    //               Profile
-    //             </MenuItem>
-    //             <MenuItem
-    //               onClick={handleCloseProfile}
-    //               className={classes.dropdownItem}
-    //             >
-    //               Settings
-    //             </MenuItem>
-    //             <Divider light />
-    //             <MenuItem
-    //               onClick={handleCloseProfile}
-    //               className={classes.dropdownItem}
-    //             >
-    //               Logout
-    //             </MenuItem>
-    //           </MenuList>
-    //         </ClickAwayListener>
-    //       </Paper> */}
-    // </React.Fragment> 
-
-
     <div>
       <div className={classes.searchWrapper}>
-        {/* <CustomInput
-          formControlProps={{
-            className: classes.margin + " " + classes.search
-          }}
-          inputProps={{
-            placeholder: "Search",
-            inputProps: {
-              "aria-label": "Search"
-            }
-          }}
-        /> */}
-        {/* <Button color="white" aria-label="edit" justIcon round>
-          <Search />
-        </Button> */}
+       
       </div>
-      {/* <Button
-        color={window.innerWidth > 959 ? "transparent" : "white"}
-        justIcon={window.innerWidth > 959}
-        simple={!(window.innerWidth > 959)}
-        aria-label="Dashboard"
-        className={classes.buttonLink}
-      >
-        <Dashboard className={classes.icons} />
-        <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>Dashboard</p>
-        </Hidden>
-      </Button> */}
+     
       <div className={classes.manager}>
-        {/* <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
-          aria-owns={openNotification ? "notification-menu-list-grow" : null}
-          aria-haspopup="true"
-          onClick={handleClickNotification}
-          className={classes.buttonLink}
-        >
-          <Notifications className={classes.icons} />
-          <span className={classes.notifications}>5</span>
-          <Hidden mdUp implementation="css">
-            <p onClick={handleCloseNotification} className={classes.linkText}>
-              Notification
-            </p>
-          </Hidden>
-        </Button> */}
-
-
-        {/* <Poppers
-          open={Boolean(openNotification)}
-          anchorEl={openNotification}
-          transition
-          disablePortal
-          className={
-            classNames({ [classes.popperClose]: !openNotification }) +
-            " " +
-            classes.popperNav
-          }
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              id="notification-menu-list-grow"
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom"
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleCloseNotification}>
-                  <MenuList role="menu">
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      Mike John responded to your email
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      You have 5 new tasks
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      You{"'"}re now friend with Andrew
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      Another Notification
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={classes.dropdownItem}
-                    >
-                      Another One
-                    </MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Poppers> */}
+      
       </div>
       <div className={classes.manager}>
       <Grid container >
-         <Grid item xs={11} sm={11} md={11} lg={11} xl={11}></Grid> 
-         <Grid item xs={1} sm={1} md={1} lg={1} xl={1}> 
+         <Grid item xs={11} sm={10} md={10} lg={10} xl={10}></Grid> 
+         <Grid item xs={2} sm={2} md={2} lg={2} xl={2}> 
         <Button
           color={window.innerWidth > 959 ? "transparent" : "#BF5A36"}
           justIcon={window.innerWidth > 959}
@@ -271,7 +107,7 @@ export default function Header(props) {
         >
           <Person style={{color:"#BF5A36", fontSize:40}} className={classes.icons} />
           <Hidden mdUp implementation="css">
-            <p className={classes.linkText}>Profile</p>
+            {/* <p className={classes.linkText}>Profile</p> */}
           </Hidden>
         </Button>
         <Poppers
@@ -280,8 +116,7 @@ export default function Header(props) {
           transition
           disablePortal
           className={
-            // classNames({ [classes.popperClose]: !openProfile }) +
-            // " " +
+          
             classes.popperNav
           }
         >
@@ -307,13 +142,8 @@ export default function Header(props) {
              
                     <MenuItem
 
-
-
-
                       className={classes.submit}
                       onClick={logout}
-
-
 
 
                     >

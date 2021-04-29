@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import DeleteProject from './DeleteProject';
 
 const useStyles = makeStyles({
   root: {
@@ -13,12 +14,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ProjectCard({ name, description }) {
+export default function ProjectCard({ name, description, id }) {
+
   const classes = useStyles();
 
   return (
     <Card className={classes.root} style={{ backgroundColor: "#9aa3ad", color: "#232F32" }}>
-      <CardActionArea style={{ height: 200 }}>
+      <CardActionArea style={{ height: 150 }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" className="name">
             {name}
@@ -28,15 +30,15 @@ export default function ProjectCard({ name, description }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
+      <CardActions>
         <Button size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Edit
         </Button>
-        <Button size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
+        <Button onClick={() => DeleteProject({ id })} size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Delete
         </Button>
-      </CardActions> */}
+        <DeleteProject />
+      </CardActions>
     </Card>
-
   );
 }

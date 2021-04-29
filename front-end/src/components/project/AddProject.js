@@ -145,8 +145,8 @@ export default function AddProject() {
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <form className={classes.form} noValidate onSubmit={submitProject}>
-                    <DialogTitle id="form-dialog-title" style={{ backgroundColor: "#c1c7c5" }} >Create project</DialogTitle>
-                    <DialogContent style={{ backgroundColor: "#c1c7c5" }}>
+                    <DialogTitle id="form-dialog-title" style={{ backgroundColor: "#b7bec7" }} >Create project</DialogTitle>
+                    <DialogContent style={{ backgroundColor: "#b7bec7" }}>
                         <DialogContentText>
 
                         </DialogContentText>
@@ -186,7 +186,7 @@ export default function AddProject() {
                         </Box>
                     </DialogContent>
 
-                    <DialogActions style={{ backgroundColor: "#c1c7c5" }}>
+                    <DialogActions style={{ backgroundColor: "#b7bec7" }}>
 
 
                         <Button onClick={handleClose} color="primary">

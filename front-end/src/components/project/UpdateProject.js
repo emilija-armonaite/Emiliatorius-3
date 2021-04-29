@@ -16,6 +16,8 @@ const UpdateProject = ({ id }) => {
         .then(response => {
             console.log( user.token)
             console.log(response.data)
+            
+        window.location.reload(true);
         })
         .catch(err => {
             console.log(err);

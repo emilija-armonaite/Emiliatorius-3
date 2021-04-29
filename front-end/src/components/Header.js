@@ -304,13 +304,7 @@ export default function Header(props) {
                     >
                      {user.mail}
                       </MenuItem>
-                    {/* <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
-                      Settings
-                    </MenuItem>
-                    <Divider light /> */}
+             
                     <MenuItem
 
 

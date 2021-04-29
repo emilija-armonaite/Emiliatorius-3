@@ -19,6 +19,7 @@ import Paper from '@material-ui/core/Paper';
 import logo from './../images/start_fight.gif';
 import MuiAlert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import mainFoto from './../images/fotoMain.jpeg';
 
 
 function Alert(props) {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => (
       height: '100vh',
     },
     image: {
-      backgroundImage: 'url(https://source.unsplash.com/random)',
+      backgroundImage: `url(${mainFoto})` ,
       backgroundRepeat: 'no-repeat',
       backgroundColor:
         theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],

@@ -18,8 +18,9 @@ const GetProjects = () => {
               //  console.log(response);
                 console.log(response.data);
               //  console.log(...response.data);
-              console.log(projects);
+            //   console.log(projects);
                 setProjects(response.data);
+                console.log(projects);
             })
             .catch(err => {
                 console.log(err);

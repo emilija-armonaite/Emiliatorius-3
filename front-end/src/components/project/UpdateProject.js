@@ -10,7 +10,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'; 
+import GetProjects from './GetProjects';
 
 
 
@@ -20,18 +21,17 @@ const useStyles = makeStyles({
     },
 });
 
-export default function UpdateProject({projects}) {
-    const API_URL = "http://localhost:8081";
-    // const [projects, setProjects] = useState([]);
-    const user = JSON.parse(localStorage.getItem("token"));
+export default function UpdateProject({ projects }) {
+   
     const [open, setOpen] = React.useState(false);
-    // const [projects, setProjects] = useState([]);
+ 
+
 
     const [name, setName] = useState("");
     const [description, setDesc] = useState("");
     const classes = useStyles();
     const handleClickOpen = () => {
-  
+      
 
         setOpen(true);
     };
@@ -50,7 +50,7 @@ export default function UpdateProject({projects}) {
 
 
     const writeDesc = e => {
-        // console.log(`Typed => ${e.target.value}`);
+
         setDesc(e.target.value);
     }
 
@@ -67,14 +67,18 @@ export default function UpdateProject({projects}) {
         <div>
 
 
-            <Button color="primary" onClick={handleClickOpen} size="small" style={{ width: '100%', textAlign: "center" }}>
+            <Button color="primary"
+                onClick={handleClickOpen} 
+               
+
+                size="small" style={{ width: '100%', textAlign: "center" }}>
                 Edit
   </Button>
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <form className={classes.form} noValidate
                 //   onSubmit={submitProject}
-                 >
+                >
                     <DialogTitle id="form-dialog-title" style={{ backgroundColor: "#c1c7c5" }} >Create project</DialogTitle>
                     <DialogContent style={{ backgroundColor: "#c1c7c5" }}>
                         <DialogContentText>

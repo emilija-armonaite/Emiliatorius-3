@@ -71,7 +71,7 @@ export default function Header(props) {
     }
   };
   const handleCloseProfile = () => {
-       setOpenProfile(null);
+    setOpenProfile(null);
   };
 
 
@@ -86,81 +86,81 @@ export default function Header(props) {
 
     <div>
       <div className={classes.searchWrapper}>
-       
+
       </div>
-     
+
       <div className={classes.manager}>
-      
+
       </div>
       <div className={classes.manager}>
-      <Grid container >
-         <Grid item xs={11} sm={10} md={10} lg={10} xl={10}></Grid> 
-         <Grid item xs={2} sm={2} md={2} lg={2} xl={2}> 
-        <Button
-          color={window.innerWidth > 959 ? "transparent" : "#BF5A36"}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
-          aria-owns={openProfile ? "profile-menu-list-grow" : null}
-          aria-haspopup="true"
-          onClick={handleClickProfile}
-          className={classes.buttonLink}
-        >
-          <Person style={{color:"#BF5A36", fontSize:40}} className={classes.icons} />
-          <Hidden mdUp implementation="css">
-            {/* <p className={classes.linkText}>Profile</p> */}
-          </Hidden>
-        </Button>
-        <Poppers
-          open={Boolean(openProfile)}
-          anchorEl={openProfile}
-          transition
-          disablePortal
-          className={
-          
-            classes.popperNav
-          }
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              id="profile-menu-list-grow"
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom"
-              }}
+        <Grid container >
+          <Grid item xs={11} sm={10} md={10} lg={10} xl={10}></Grid>
+          <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+            <Button
+              color={window.innerWidth > 959 ? "transparent" : "#BF5A36"}
+              justIcon={window.innerWidth > 959}
+              simple={!(window.innerWidth > 959)}
+              aria-owns={openProfile ? "profile-menu-list-grow" : null}
+              aria-haspopup="true"
+              onClick={handleClickProfile}
+              className={classes.buttonLink}
             >
-              <Paper>
-                <ClickAwayListener onClickAway={handleCloseProfile}>
-                  <MenuList role="menu">
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
+              <Person style={{ color: "#3f51b5", fontSize: 40 }} className={classes.icons} />
+              <Hidden mdUp implementation="css">
+                {/* <p className={classes.linkText}>Profile</p> */}
+              </Hidden>
+            </Button>
+            <Poppers
+              open={Boolean(openProfile)}
+              anchorEl={openProfile}
+              transition
+              disablePortal
+              className={
 
-                    >
-                     {user.mail}
-                      </MenuItem>
-             
-                    <MenuItem
+                classes.popperNav
+              }
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  id="profile-menu-list-grow"
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom"
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleCloseProfile}>
+                      <MenuList role="menu">
+                        <MenuItem
+                          onClick={handleCloseProfile}
+                          className={classes.dropdownItem}
 
-                      className={classes.submit}
-                      onClick={logout}
+                        >
+                          {user.mail}
+                        </MenuItem>
+
+                        <MenuItem
+
+                          className={classes.submit}
+                          onClick={logout}
 
 
-                    >
-                      Logout
+                        >
+                          Logout
                     </MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Poppers>
-        </Grid>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Poppers>
+          </Grid>
         </Grid>
       </div>
-      
+
     </div>
-  
+
   );
 }
 

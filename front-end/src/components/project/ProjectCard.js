@@ -32,13 +32,12 @@ export default function ProjectCard({ name, description, id }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
+        <Button onClick={() => UpdateProject({ id })} size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Edit
         </Button>
         <Button onClick={() => DeleteProject({ id })} size="small" color="primary" style={{ width: '100%', textAlign: "center" }}>
           Delete
         </Button>
-        <DeleteProject />
       </CardActions>
     </Card>
   );

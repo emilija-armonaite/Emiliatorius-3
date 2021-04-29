@@ -31,7 +31,7 @@ export default function UpdateProject({projects}) {
     const [description, setDesc] = useState("");
     const classes = useStyles();
     const handleClickOpen = () => {
-        // console.log(handleUpdate);
+  
 
         setOpen(true);
     };
@@ -61,47 +61,6 @@ export default function UpdateProject({projects}) {
 
         window.location.reload(true);
     }
-
-    // const submitProject = (e) => {
-
-    //     e.preventDefault();
-    //     return axios.post(API_URL + "/api/projects", {
-    //         description,
-    //         name
-    //     },
-    //         {
-    //             headers: {
-
-    //                 'Authorization': 'Bearer ' + user.token
-
-
-    //             }
-    //         }
-    //     )
-    //         .then((response) => {
-
-    //             return response;
-    //         }
-
-    //         );
-    // }
-    // useEffect(() => {
-    //     axios.get(API_URL + "/api/projects", {
-    //         headers: {
-    //             "Authorization": "Bearer " + user.token 
-    //         },
-    //     })
-    //         .then(response => {
-    //        //     console.log(response);
-    //      console.log(response.data);
-    //          //   console.log(...response.data);
-    //             setProjects(response.data);
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }, [])
-
 
 
     return (

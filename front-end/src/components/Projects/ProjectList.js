@@ -29,7 +29,7 @@ export default function ProjectList({ id, name, description }) {
     }
 
     return (
-        <div className="card mt-3">
+        <div className="card h-100 mt-3">
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>

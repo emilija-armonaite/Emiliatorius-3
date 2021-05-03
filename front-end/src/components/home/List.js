@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProjectsList from "../Projects/ProjectList"
+import ProjectFrom from "../Projects/ProjectFrom"
+
 
 export default function List() {
 
@@ -27,6 +29,9 @@ export default function List() {
         <>
             <div className="container">
                 <div className="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                        <ProjectFrom />
+                    </div>
                     {projects.map(project =>
                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
                             <ProjectsList key={project.id} id={project.id} name={project.name} description={project.description} />

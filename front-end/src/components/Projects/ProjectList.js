@@ -17,10 +17,11 @@ export default function ProjectList({ id, name, description }) {
             .then((willDelete) => {
                 if (willDelete) {
                     DeleteProject({ id });
-                    window.location.reload(true);
+                   
                     swal("Poof! Your project has been deleted!", {
                         icon: "success",
                     });
+                    setTimeout(() => window.location.reload(), 1500);
                 }
                 else {
                     swal("Your project is safe!");

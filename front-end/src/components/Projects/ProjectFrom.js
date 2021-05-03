@@ -3,8 +3,8 @@ import Popup from './Popup';
 import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-// import render from "react-bootstrap/render";
 
+import AddProject from './AddProject';
 
 
 
@@ -20,10 +20,11 @@ function PrjectFrom() {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      {/* <Button variant="primary" onClick={() => setModalShow(true)}>
          
 New Project
-      </Button>
+      </Button> */}
+      <AddProject/>
 
       <Popup
         show={modalShow}

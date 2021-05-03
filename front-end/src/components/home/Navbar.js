@@ -1,7 +1,6 @@
 import React from 'react'
 import Logout from "../login/Logout"
 import Username from "../login/UserName"
-import ProjectFrom from "../Projects/ProjectFrom"
 
 export default function Navbar() {
     return (
@@ -20,7 +19,7 @@ export default function Navbar() {
             </nav>
             <div className="row">
                 <div className="col">
-                    <ProjectFrom />
+                   
                 </div>
             </div>
         </div>

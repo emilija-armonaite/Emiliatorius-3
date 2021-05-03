@@ -75,6 +75,9 @@ export default function Popup(props) {
         }
       );
   }
+
+
+  // const [modalShow, setModalShow] = React.useState(false);
   return (
 
 
@@ -103,7 +106,7 @@ export default function Popup(props) {
               <label for="exampleInputPassword1">About project</label>
               <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." />
             </div>
-        
+
           </form>
         </Modal.Body>
         <Modal.Footer>

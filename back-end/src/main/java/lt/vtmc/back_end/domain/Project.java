@@ -1,6 +1,8 @@
 package lt.vtmc.back_end.domain;
 
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,7 +52,7 @@ public class Project {
     @Column
     private Integer tasksLeft;
 
-    @OneToMany(mappedBy = "projectTask")
+    @OneToMany(mappedBy = "projectTask", cascade = CascadeType.ALL)
     private Set<Task> projectTaskTasks;
 
     @ManyToOne(fetch = FetchType.LAZY)

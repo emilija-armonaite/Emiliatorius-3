@@ -1,5 +1,7 @@
+
 import React from 'react';
 import axios from 'axios';
+
 
 const DeleteProject = ({ id }) => {
 
@@ -13,9 +15,11 @@ const DeleteProject = ({ id }) => {
         .then(response => {
             console.log(response.data)
             window.location.reload(true);
+            
         })
         .catch(err => {
             console.log(err);
+            
         })
 
     return (

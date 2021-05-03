@@ -21,7 +21,8 @@ function PrjectFrom() {
   return (
     <>
       <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
+         
+New Project
       </Button>
 
       <Popup

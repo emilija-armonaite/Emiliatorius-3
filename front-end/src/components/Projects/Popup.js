@@ -96,12 +96,12 @@ export default function Popup(props) {
           <form onSubmit={submitProject}>
             <div class="form-group">
               <label for="exampleInputEmail1">Project name</label>
-              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Enter email" />
+              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" />
 
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Enter email" />
+              <label for="exampleInputPassword1">About project</label>
+              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." />
             </div>
         
           </form>

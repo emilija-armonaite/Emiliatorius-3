@@ -4,6 +4,7 @@ import Username from "../login/UserName"
 import ProjectFrom from "../Projects/ProjectFrom"
 import { BiSearchAlt } from "react-icons/bi";
 import Dropdown from 'react-bootstrap/Dropdown'
+// import { IconName } from "react-icons/bs";
 
 
 export default function Navbar() {
@@ -23,7 +24,7 @@ export default function Navbar() {
                 <Dropdown>
                     <Dropdown.Toggle  >
 
-                        Dropdown Button
+                      cia turi buti icona
   </Dropdown.Toggle>
 
                     <Dropdown.Menu>

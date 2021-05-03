@@ -17,7 +17,7 @@ export default function ProjectList({ projects, id, name, description }) {
             .then((willDelete) => {
                 if (willDelete) {
                     DeleteProject({ id });
-                   
+
                     swal("Poof! Your project has been deleted!", {
                         icon: "success",
                     });
@@ -30,8 +30,8 @@ export default function ProjectList({ projects, id, name, description }) {
     }
 
     return (
-        <div>
-            <div className="card h-100 mt-3">
+      
+            <div className="card text-center h-100">
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">{description}</p>
@@ -40,6 +40,6 @@ export default function ProjectList({ projects, id, name, description }) {
                     </button>
                 </div>
             </div>
-        </div>
+     
     )
 }

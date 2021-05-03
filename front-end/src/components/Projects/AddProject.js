@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Popup from './Popup';
 import { BiMessageAdd } from "react-icons/bi";
+import { IoAddOutline } from "react-icons/io5";
 
 export default function AddProject() {
 
@@ -19,7 +20,7 @@ export default function AddProject() {
     return (
        
 
-            <div className="card mt-3 h-100" onClick={() => setModalShow(true)} style={{cursor:"pointer"}}>
+            <div className="card text-center mt-3 h-100" onClick={() => setModalShow(true)} style={{cursor:"pointer"}}>
                 <div className="card-body">
 
                     {/* <Button variant="primary"
@@ -28,7 +29,8 @@ export default function AddProject() {
 
                         New Project
                </Button> */}
-               <BiMessageAdd />
+               <IoAddOutline style={{ fontSize: 100 }}/>
+               <p>Create new project</p>
                     <Popup
                         show={modalShow}
                         onHide={() => setModalShow(false)}

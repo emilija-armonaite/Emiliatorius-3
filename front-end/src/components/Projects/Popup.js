@@ -115,8 +115,8 @@ export default function Popup(props) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-          <button type="submit" onClick={submitProject} class="btn btn-primary">Submit</button>
+          <Button variant="outline-dark" onClick={props.onHide}>Close</Button>
+          <button type="submit" onClick={submitProject} class="btn btn-outline-info">Submit</button>
         </Modal.Footer>
       </Modal>
 

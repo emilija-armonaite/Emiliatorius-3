@@ -3,6 +3,7 @@ import Logout from "../login/Logout"
 import Username from "../login/UserName"
 import ProjectFrom from "../Projects/ProjectFrom"
 import { BiSearchAlt } from "react-icons/bi";
+import { FaUserAstronaut } from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown'
 // import { IconName } from "react-icons/bs";
 
@@ -22,14 +23,13 @@ export default function Navbar() {
 
 
                 <Dropdown>
-                    <Dropdown.Toggle  >
-
-                      cia turi buti icona
-  </Dropdown.Toggle>
+                    <Dropdown.Toggle variant="outline-info">
+                        <FaUserAstronaut />
+                    </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item >       <Username />  </Dropdown.Item>
-                        <Dropdown.Item > <Logout /></Dropdown.Item>
+                        <Dropdown.Item> <Username /> </Dropdown.Item>
+                        <Dropdown.Item> <Logout /> </Dropdown.Item>
                         {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
                     </Dropdown.Menu>
                 </Dropdown>

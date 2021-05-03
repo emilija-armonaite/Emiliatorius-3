@@ -18,27 +18,27 @@ export default function AddProject() {
 
 
     return (
-       
 
-            <div className="card text-center mt-3 h-100" onClick={() => setModalShow(true)} style={{cursor:"pointer"}}>
-                <div className="card-body">
 
-                    {/* <Button variant="primary"
+        <div className="card text-center mt-3 h-100" onClick={() => setModalShow(true)} style={{ cursor: "pointer" }}>
+            <div className="card-body">
+
+                {/* <Button variant="primary"
                         onClick={() => setModalShow(true)}
                     >
 
                         New Project
                </Button> */}
-               <IoAddOutline style={{ fontSize: 100 }}/>
-               <p>Create new project</p>
-                    <Popup
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                    />
+                <IoAddOutline style={{ fontSize: 100 }} />
+                <p>Create new project</p>
+                <Popup
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
 
 
-                </div>
             </div>
+        </div>
 
 
     )

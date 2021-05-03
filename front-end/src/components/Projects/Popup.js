@@ -11,7 +11,7 @@ export default function Popup(props) {
 
   const API_URL = 'http://localhost:8081';
   const nameIsEmpty = "inline";
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(props.show);
   const [name, setName] = useState("");
   const [description, setDesc] = useState("");
   const user = JSON.parse(localStorage.getItem("token"));
@@ -44,17 +44,21 @@ export default function Popup(props) {
     // console.log(`Typed => ${e.target.value}`);
     setDesc(e.target.value);
   }
-
-  const submitB = () => {
-    console.log({ name });
-    console.log({ description });
-    setOpen(false);
-
-    //window.location.reload(true);
+  const restart =() =>{
+    {window.location.reload(true)}
   }
+
+  // const submitB = () => {
+  //   console.log({ name });
+  //   console.log({ description });
+  //   setOpen(false);
+
+  //   //window.location.reload(true);
+  // }
 
   const submitProject = (e) => {
     e.preventDefault();
+    console.log(open);
     return axios.post(API_URL + "/api/projects", {
       description,
       name
@@ -67,8 +71,10 @@ export default function Popup(props) {
       }
     )
       .then((response) => {
+        
         window.location.reload(true);
         return response;
+
       },
         (error) => {
           console.log("wrong");
@@ -115,7 +121,7 @@ export default function Popup(props) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-dark" onClick={props.onHide}>Close</Button>
+          <Button variant="outline-dark" onClick={restart}>Close</Button>
           <button type="submit" onClick={submitProject} class="btn btn-outline-info">Submit</button>
         </Modal.Footer>
       </Modal>

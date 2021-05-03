@@ -8,7 +8,6 @@ export default function Home() {
         <div className="container">
             <Navbar />
             <List />
-            <ProjectsList/>
         </div>
     )
 }

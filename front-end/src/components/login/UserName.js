@@ -7,9 +7,10 @@ export default function UserName() {
     
     return (
         <div>
-              <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                  {a}   
-              </button>
+              </button> */}
+              <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{a}</a>
         </div>
     )
 }

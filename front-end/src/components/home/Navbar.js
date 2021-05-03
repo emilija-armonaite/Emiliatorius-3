@@ -1,11 +1,8 @@
 import React from 'react'
 import Logout from "../login/Logout"
 import Username from "../login/UserName"
-<<<<<<< HEAD
 import ProjectFrom from "../Projects/ProjectFrom"
 import { BiSearchAlt } from "react-icons/bi";
-=======
->>>>>>> BoostrapT
 
 export default function Navbar() {
     return (

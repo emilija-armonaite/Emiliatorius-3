@@ -2,6 +2,7 @@ import React from 'react'
 import Logout from "../login/Logout"
 import Username from "../login/UserName"
 import Dropdown from 'react-bootstrap/Dropdown'
+// import { IconName } from "react-icons/bs";
 
 
 export default function Navbar() {
@@ -21,7 +22,7 @@ export default function Navbar() {
                 <Dropdown>
                     <Dropdown.Toggle  >
 
-                        Dropdown Button
+                      cia turi buti icona
   </Dropdown.Toggle>
 
                     <Dropdown.Menu>

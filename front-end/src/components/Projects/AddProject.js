@@ -16,17 +16,17 @@ export default function AddProject() {
 
 
     return (
-        <div>
+       
 
-            <div className="card mt-3">
+            <div className="card mt-3 h-100" onClick={() => setModalShow(true)} style={{cursor:"pointer"}}>
                 <div className="card-body">
 
-                    <Button variant="primary"
+                    {/* <Button variant="primary"
                         onClick={() => setModalShow(true)}
                     >
 
                         New Project
-               </Button>
+               </Button> */}
                     <Popup
                         show={modalShow}
                         onHide={() => setModalShow(false)}
@@ -37,6 +37,5 @@ export default function AddProject() {
             </div>
 
 
-        </div>
     )
 }

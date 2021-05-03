@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-
+import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -72,6 +72,11 @@ export default function Popup(props) {
       },
         (error) => {
           console.log("wrong");
+          swal({
+            text: "No project name or description!",
+            icon: "warning",
+            button: "Try again",
+          });
         }
       );
   }

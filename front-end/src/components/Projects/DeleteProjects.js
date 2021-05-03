@@ -12,7 +12,6 @@ const DeleteProject = ({ id }) => {
     })
         .then(response => {
             console.log(response.data)
-            // window.location.reload(true);
         })
         .catch(err => {
             console.log(err);

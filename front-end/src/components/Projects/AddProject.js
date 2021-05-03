@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Popup from './Popup';
+import { BiMessageAdd } from "react-icons/bi";
 
 export default function AddProject() {
 
@@ -27,6 +28,7 @@ export default function AddProject() {
 
                         New Project
                </Button> */}
+               <BiMessageAdd />
                     <Popup
                         show={modalShow}
                         onHide={() => setModalShow(false)}

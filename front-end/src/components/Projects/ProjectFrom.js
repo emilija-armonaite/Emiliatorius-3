@@ -20,10 +20,7 @@ function PrjectFrom() {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={() => setModalShow(true)}>
-         
-New Project
-      </Button> */}
+   
       <AddProject/>
 
       <Popup
@@ -34,28 +31,5 @@ New Project
   );
 }
 
-
-  
-//   return <>
-      
-      
-//     <input
-//     className="btn btn-outline-danger my-2 my-sm-0 m-2"
-//       type="button"
-//       value="Create"
-//       onClick={togglePopup}
-//     />
-  
-    
-//     {isOpen && <Popup
-//       content={<>
-//         <b>Design your Popup</b>
-//         <p>Lorem ipsum dolor sit amet, consectetur adipiscin</p>
-//         <button>Test button</button>
-//       </>}
-//       handleClose={togglePopup}
-//     />}
-//   </>
-// }
 
 export default PrjectFrom;

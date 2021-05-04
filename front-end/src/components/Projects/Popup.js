@@ -17,48 +17,20 @@ export default function Popup(props) {
   const user = JSON.parse(localStorage.getItem("token"));
 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-
-
-  };
-  const handleClose = () => {
-    setOpen(false);
-    removeText();
-  };
   const removeText = () => {
     setName("");
     setDesc("");
 
   }
 
-
-
-
-  const writeName = e => {
-    setName(e.target.value);
-
-  }
-
-  const writeDesc = e => {
-    // console.log(`Typed => ${e.target.value}`);
-    setDesc(e.target.value);
-  }
   const restart =() =>{
     {window.location.reload(true)}
   }
 
-  // const submitB = () => {
-  //   console.log({ name });
-  //   console.log({ description });
-  //   setOpen(false);
-
-  //   //window.location.reload(true);
-  // }
-
   const submitProject = (e) => {
     e.preventDefault();
-    console.log(open);
+    // console.log(open);
+    console.log(props);
     return axios.post(API_URL + "/api/projects", {
       description,
       name
@@ -86,15 +58,8 @@ export default function Popup(props) {
         }
       );
   }
-
-
-  // const [modalShow, setModalShow] = React.useState(false);
   return (
-
-
-
     <div>
-
       <Modal
         {...props}
         size="lg"
@@ -125,9 +90,6 @@ export default function Popup(props) {
           <button type="submit" onClick={submitProject} class="btn btn-outline-info">Submit</button>
         </Modal.Footer>
       </Modal>
-
-
-
     </div>
   );
 }

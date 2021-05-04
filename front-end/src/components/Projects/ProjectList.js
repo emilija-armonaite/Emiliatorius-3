@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DeleteProject from "./DeleteProjects"
 import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
 import { RiEdit2Line } from "react-icons/ri";
-
+import EditProject from './EditProject';
+import UpdateProject from "./UpdateProject"
 export default function ProjectList({ projects, id, name, description }) {
 
     const getDeleteAlert = () => {
@@ -17,7 +18,6 @@ export default function ProjectList({ projects, id, name, description }) {
             .then((willDelete) => {
                 if (willDelete) {
                     DeleteProject({ id });
-
                     swal("Poof! Your project has been deleted!", {
                         icon: "success",
                     });
@@ -29,17 +29,18 @@ export default function ProjectList({ projects, id, name, description }) {
             });
     }
 
+   
+
     return (
-      
-            <div className="card text-center h-100">
-                <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
-                    <p className="card-text">{description}</p>
-                    <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Edit <RiEdit2Line /> </button>
-                    <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
-                    </button>
-                </div>
+
+        <div className="card text-center h-100">
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">{description}</p>
+                <EditProject id={id} name={name} description={description} />
+                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />  </button>
             </div>
-     
+        </div>
+
     )
 }

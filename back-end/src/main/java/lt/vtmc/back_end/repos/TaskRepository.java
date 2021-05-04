@@ -11,4 +11,5 @@ import lt.vtmc.back_end.domain.Task;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 	
 	List<Task> findByProjectTask(Project project);
+	
 }

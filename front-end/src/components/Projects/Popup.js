@@ -23,12 +23,9 @@ export default function Popup(props) {
 
   }
 
-
-
   const restart =() =>{
     {window.location.reload(true)}
   }
-
 
   const submitProject = (e) => {
     e.preventDefault();
@@ -61,15 +58,8 @@ export default function Popup(props) {
         }
       );
   }
-
-
-  // const [modalShow, setModalShow] = React.useState(false);
   return (
-
-
-
     <div>
-
       <Modal
         {...props}
         size="lg"
@@ -100,9 +90,6 @@ export default function Popup(props) {
           <button type="submit" onClick={submitProject} class="btn btn-outline-info">Submit</button>
         </Modal.Footer>
       </Modal>
-
-
-
     </div>
   );
 }

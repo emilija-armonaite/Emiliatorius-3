@@ -68,7 +68,7 @@ public class ProjectService {
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	
-    	if(status.isBlank() || status == null) {
+    	if(status == null || status.isBlank()) {
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     	}
     	if(status.equals(ProjectStatus.IN_PROGRESS.toString())) {

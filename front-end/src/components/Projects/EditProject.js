@@ -1,19 +1,16 @@
 
 import React, { useState } from 'react'
-
 import axios from "axios";
 import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { RiEdit2Line } from "react-icons/ri";
 
 
 export default function EditProject(id) {
 
-
-
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
@@ -27,10 +24,10 @@ export default function EditProject(id) {
   const [description, setDesc] = useState(id.description);
   const user = JSON.parse(localStorage.getItem("token"));
 
- 
-  // const restart = () => {
-  //   { window.location.reload(true) }
-  // }
+
+  const restart = () => {
+    { window.location.reload(true) }
+  }
 
   const submitProject = (e) => {
     e.preventDefault();
@@ -41,17 +38,14 @@ export default function EditProject(id) {
     },
       {
         headers: {
-
           'Authorization': 'Bearer ' + user.token
         }
       }
     )
       .then((response) => {
-
-        window.location.reload(true);
+        restart();
         handleClose();
         return response;
-
       },
         (error) => {
           console.log("wrong");
@@ -66,8 +60,9 @@ export default function EditProject(id) {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
-       Update project
+
+      <Button variant="primary" onClick={handleShow} className="btn btn-outline-info my-2 my-sm-0" type="submit">
+        Edit   <RiEdit2Line />
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -86,7 +81,6 @@ export default function EditProject(id) {
               <label for="exampleInputPassword1">About project</label>
               <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." defaultValue={id.description} />
             </div>
-
           </form>
 
         </Modal.Body>

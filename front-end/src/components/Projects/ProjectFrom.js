@@ -20,10 +20,7 @@ function PrjectFrom() {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={() => setModalShow(true)}>
-         
-New Project
-      </Button> */}
+   
       <AddProject/>
 
       <Popup

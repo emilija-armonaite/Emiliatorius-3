@@ -39,7 +39,7 @@ export default function ProjectList({ projects, id, name, description }) {
                 <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Edit <RiEdit2Line /> </button>
                 <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
                 </button>
-                <Link to={`/api/projects/${id}/tasks`}>Link to projects</Link>
+                <Link to={`/projects/${id}/tasks`}>Link to tasks</Link>
             </div>
         </div>
     )

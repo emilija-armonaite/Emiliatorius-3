@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
+  Link,
+  Redir
 } from "react-router-dom";
 import Home from './components/home/Home';
 import ProtectedRoute from "./components/Routes/ProtectedRoute"
@@ -18,8 +19,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path='/' component={Login} />
-        <ProtectedRoute path='/api/projects' component={Home} />
-        <ProtectedRoute path="/api/projects/:id/tasks" component={TasksList} />
+        <ProtectedRoute exact path='/projects' component={Home} />
+        <ProtectedRoute path="/projects/:id/tasks" component={TasksList} />
       </Switch>
     </Router>
   );

@@ -11,16 +11,24 @@ const TasksList = ({ match }) => {
     }, [])
 
     const fetchTask = async () => {
-        const response = await axios(
+        await axios(
             `http://localhost:8081/api/projects/${match.params.id}/tasks`, {
             headers: {
                 "Authorization": "Bearer " + user.token
+            },
+            params: {
+                id: `${match.params.id}`
             }
         }
-        )
-        console.log(response.data);
-        console.log(...response.data);
-        setTasks(...response.data);
+        ).then(response => {
+            console.log(response)
+            // console.log(...response.data);
+            // setTasks(response.data);
+        }).catch(err => {
+            console.log(err);
+        })
+
+
     }
 
     return (

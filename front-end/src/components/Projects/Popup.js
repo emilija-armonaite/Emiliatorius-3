@@ -23,8 +23,8 @@ export default function Popup(props) {
 
   }
 
-  const restart =() =>{
-    {window.location.reload(true)}
+  const restart = () => {
+    { window.location.reload(true) }
   }
 
   const submitProject = (e) => {
@@ -43,7 +43,7 @@ export default function Popup(props) {
       }
     )
       .then((response) => {
-        
+
         window.location.reload(true);
         return response;
 
@@ -75,12 +75,12 @@ export default function Popup(props) {
           <form onSubmit={submitProject}>
             <div class="form-group">
               <label for="exampleInputEmail1">Project name</label>
-              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" />
+              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" maxlength="100" />
 
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">About project</label>
-              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." />
+              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." maxlength="500" />
             </div>
 
           </form>

@@ -4,7 +4,6 @@ import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
 import { RiEdit2Line } from "react-icons/ri";
 import EditProject from './EditProject';
-import UpdateProject from "./UpdateProject"
 export default function ProjectList({ projects, id, name, description }) {
 
     const getDeleteAlert = () => {

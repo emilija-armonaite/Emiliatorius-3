@@ -28,18 +28,17 @@ public class ApplicationRunner implements org.springframework.boot.ApplicationRu
 		UserDTO user = new UserDTO("admin@mail.com", "password");
 		userService.create(user);
 		
-		ProjectDTO p = new ProjectDTO("Project 00", "Description");
-		projectService.create(p);
-		ProjectDTO p1 = new ProjectDTO("Project 01", "Description");
-		projectService.create(p1);
-		ProjectDTO p2 = new ProjectDTO("Project 02", "Description");
-		projectService.create(p2);
+		for(int i = 0; i <= 10; i++) {
+			ProjectDTO p = new ProjectDTO("Project " + i, "Description");
+			projectService.create(p);
+		}
 		
-		TaskDTO t = new TaskDTO("Task00", "UserStory");
+		
+		TaskDTO t = new TaskDTO("Task00", "UserStory", "MEDIUM");
 		taskService.create((long) 10001, t);
-		TaskDTO t1 = new TaskDTO("Task01", "UserStory");
+		TaskDTO t1 = new TaskDTO("Task01", "UserStory", "MEDIUM");
 		taskService.create((long) 10001, t1);
-		TaskDTO t2 = new TaskDTO("Task02", "UserStory");
+		TaskDTO t2 = new TaskDTO("Task02", "UserStory", "MEDIUM");
 		taskService.create((long) 10001, t2);
 
 	}

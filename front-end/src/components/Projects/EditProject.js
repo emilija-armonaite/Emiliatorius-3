@@ -23,24 +23,19 @@ export default function EditProject(id) {
   const API_URL = 'http://localhost:8081';
   const nameIsEmpty = "inline";
   // const [open, setOpen] = React.useState(false);
-  const [name, setName] = useState("fdf");
-  const [description, setDesc] = useState("");
+  const [name, setName] = useState(id.name);
+  const [description, setDesc] = useState(id.description);
   const user = JSON.parse(localStorage.getItem("token"));
 
-  const removeText = () => {
-    setName("");
-    setDesc("");
-
-  }
-
-  const restart = () => {
-    { window.location.reload(true) }
-  }
+ 
+  // const restart = () => {
+  //   { window.location.reload(true) }
+  // }
 
   const submitProject = (e) => {
     e.preventDefault();
-    // console.log(id);
-    return axios.put(API_URL + `/api/projects/${id}`, {
+    console.log(id);
+    return axios.put(API_URL + "/api/projects/" + id.id, {
       description,
       name
     },
@@ -54,6 +49,7 @@ export default function EditProject(id) {
       .then((response) => {
 
         window.location.reload(true);
+        handleClose();
         return response;
 
       },

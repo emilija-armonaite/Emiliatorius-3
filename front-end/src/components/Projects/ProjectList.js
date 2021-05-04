@@ -29,12 +29,7 @@ export default function ProjectList({ projects, id, name, description }) {
             });
     }
 
-    const getEditProjectPop = () => {
-
-        console.log({ id, name, description });
-
-        EditProject({id});
-    }
+   
 
     return (
 
@@ -42,8 +37,7 @@ export default function ProjectList({ projects, id, name, description }) {
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
-            <UpdateProject projectId={id}/>
-                 {/* <button onClick={() => UpdateProject({id})} className="btn btn-outline-info my-2 my-sm-0" type="submit">Edit  <RiEdit2Line /> </button>  */}
+                <EditProject id={id} name={name} description={description} />
                 <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />  </button>
             </div>
         </div>

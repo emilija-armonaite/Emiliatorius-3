@@ -16,9 +16,6 @@ const TasksList = ({ match }) => {
             headers: {
                 "Authorization": "Bearer " + user.token
             },
-            params: {
-                id: `${match.params.id}`
-            }
         }
         ).then(response => {
             console.log(response)

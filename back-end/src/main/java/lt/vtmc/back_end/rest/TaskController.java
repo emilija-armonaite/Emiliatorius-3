@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lt.vtmc.back_end.domain.Task;
@@ -52,6 +53,13 @@ public class TaskController {
     public ResponseEntity<Void> updateTask(@PathVariable final Long id,
             @RequestBody @Valid final TaskDTO taskDTO) {
         taskService.update(id, taskDTO);
+        return ResponseEntity.ok().build();
+    }
+    
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Void> updateTaskStatus(@PathVariable final Long id, 
+    		@RequestParam final String status) {
+        taskService.updateStatus(id, status);
         return ResponseEntity.ok().build();
     }
 

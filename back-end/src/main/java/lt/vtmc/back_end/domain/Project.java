@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Project {
 
     @Id
@@ -52,7 +54,7 @@ public class Project {
     @Column
     private Integer tasksLeft;
 
-    @OneToMany(mappedBy = "projectTask", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "projectTask", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private Set<Task> projectTaskTasks;
 
     @ManyToOne(fetch = FetchType.LAZY)

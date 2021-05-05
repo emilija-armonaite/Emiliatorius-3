@@ -4,9 +4,8 @@ import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
 import { RiEdit2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import TasksList from '../Tasks/TasksList';
-
 import EditProject from './EditProject';
+
 export default function ProjectList({ projects, id, name, description }) {
 
     const getDeleteAlert = () => {
@@ -31,7 +30,7 @@ export default function ProjectList({ projects, id, name, description }) {
             });
     }
 
-   
+
 
     return (
         <div className="card text-center h-100">

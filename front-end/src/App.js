@@ -1,12 +1,9 @@
-
 import './App.css';
 import Login from "./components/login/Login"
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
-  Redir
 } from "react-router-dom";
 import Home from './components/home/Home';
 import ProtectedRoute from "./components/Routes/ProtectedRoute"

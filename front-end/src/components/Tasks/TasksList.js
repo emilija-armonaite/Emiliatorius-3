@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import NavBar from "../home/Navbar"
+import TaskCard from './TaskCard';
 
-const TasksList = ({ match }) => {
+const Tasks = ({ match }) => {
 
-    const [task, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([]);
     const user = JSON.parse(localStorage.getItem("token"));
 
     useEffect(() => {
@@ -16,40 +18,29 @@ const TasksList = ({ match }) => {
             headers: {
                 "Authorization": "Bearer " + user.token
             },
-        }
-        ).then(response => {
-            console.log(response)
-            // console.log(...response.data);
-            // setTasks(response.data);
-        }).catch(err => {
-            console.log(err);
         })
-
-
+            .then(response => {
+                console.log(response)
+                console.log(match)
+                setTasks(response.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     return (
         <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">US</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>{task.id}</td>
-                        <td>{task.name}</td>
-                        <td>{task.userStory}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <NavBar />
+            <div>
+                {tasks.map(task =>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
+                        <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} />
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
 
-export default TasksList;
+export default Tasks;

@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import DeleteProject from "./DeleteProjects"
 import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
-import { RiEdit2Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
 import EditProject from './EditProject';
 
 export default function ProjectList({ projects, id, name, description }) {
@@ -29,8 +27,6 @@ export default function ProjectList({ projects, id, name, description }) {
                 }
             });
     }
-
-
 
     return (
         <div className="card text-center h-100">

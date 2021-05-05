@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
+
+import React, { useState } from 'react'
 import axios from "axios";
 import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { RiEdit2Line } from "react-icons/ri";
 
 
+export default function EditProject(id) {
 
-export default function Popup(props) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+    console.log(id);
+  }
 
   const API_URL = 'http://localhost:8081';
   const nameIsEmpty = "inline";
-  const [open, setOpen] = React.useState(props.show);
-  const [name, setName] = useState("");
-  const [description, setDesc] = useState("");
+  // const [open, setOpen] = React.useState(false);
+  const [name, setName] = useState(id.name);
+  const [description, setDesc] = useState(id.description);
   const user = JSON.parse(localStorage.getItem("token"));
 
-
-  const removeText = () => {
-    setName("");
-    setDesc("");
-
-  }
 
   const restart = () => {
     { window.location.reload(true) }
@@ -29,24 +31,21 @@ export default function Popup(props) {
 
   const submitProject = (e) => {
     e.preventDefault();
-    // console.log(open);
-    console.log(props);
-    return axios.post(API_URL + "/api/projects", {
+    console.log(id);
+    return axios.put(API_URL + "/api/projects/" + id.id, {
       description,
       name
     },
       {
         headers: {
-
           'Authorization': 'Bearer ' + user.token
         }
       }
     )
       .then((response) => {
-
-        window.location.reload(true);
+        restart();
+        handleClose();
         return response;
-
       },
         (error) => {
           console.log("wrong");
@@ -58,38 +57,43 @@ export default function Popup(props) {
         }
       );
   }
+
   return (
     <div>
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+
+      <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0" type="submit">
+        Edit   <RiEdit2Line />
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Create project
-        </Modal.Title>
+          <Modal.Title>Edit Project</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+
           <form onSubmit={submitProject}>
             <div class="form-group">
               <label for="exampleInputEmail1">Project name</label>
-              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" maxlength="100" />
+              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" defaultValue={id.name} />
 
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">About project</label>
-              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." maxlength="500" />
+              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." defaultValue={id.description} />
             </div>
-
           </form>
+
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-dark" onClick={restart}>Close</Button>
-          <button type="submit" onClick={submitProject} class="btn btn-outline-info">Submit</button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={submitProject}>
+            Save Changes
+          </Button>
         </Modal.Footer>
       </Modal>
+
     </div>
-  );
+  )
 }

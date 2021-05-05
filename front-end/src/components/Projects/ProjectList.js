@@ -3,6 +3,7 @@ import DeleteProject from "./DeleteProjects"
 import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
 import EditProject from './EditProject';
+import { Link } from "react-router-dom";
 
 export default function ProjectList({ projects, id, name, description }) {
 

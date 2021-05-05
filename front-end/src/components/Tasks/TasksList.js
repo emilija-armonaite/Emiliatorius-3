@@ -35,7 +35,7 @@ const Tasks = ({ match }) => {
             <div>
                 {tasks.map(task =>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
-                        <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} />
+                        <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} status={task.status} creationDate={task.creationDate} updateDate={task.updateDate}/>
                     </div>
                 )}
             </div>

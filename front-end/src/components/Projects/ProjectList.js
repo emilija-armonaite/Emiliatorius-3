@@ -40,8 +40,9 @@ export default function ProjectList({ projects, id, name, description }) {
                 <EditProject id={id} name={name} description={description} />
                 <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
                 </button>
-                <Link to={`/projects/${id}/tasks`}>Link to tasks</Link>
+               
             </div>
+            <Link to={`/projects/${id}/tasks`}>Link to tasks</Link>
         </div>
     )
 }

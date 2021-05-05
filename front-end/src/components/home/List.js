@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProjectsList from "../Projects/ProjectList"
-// import ProjectFrom from "../Projects/ProjectFrom"
 import AddProject from '../Projects/AddProject';
 
 export default function List() {

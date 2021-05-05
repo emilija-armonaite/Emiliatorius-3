@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import DeleteProject from "./DeleteProjects"
 import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
-import { RiEdit2Line } from "react-icons/ri";
 import EditProject from './EditProject';
 export default function ProjectList({ projects, id, name, description }) {
 
@@ -29,9 +28,7 @@ export default function ProjectList({ projects, id, name, description }) {
     }
 
    
-
     return (
-
         <div className="card text-center h-100">
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
@@ -40,6 +37,5 @@ export default function ProjectList({ projects, id, name, description }) {
                 <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />  </button>
             </div>
         </div>
-
     )
 }

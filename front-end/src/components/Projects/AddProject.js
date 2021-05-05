@@ -30,20 +30,19 @@ export default function AddProject() {
                     'Authorization': 'Bearer ' + user.token
                 }
             }
-        )
-            .then((response) => {
-                window.location.reload(true);
-                return response;
-            },
-                (error) => {
-                    console.log("wrong");
-                    swal({
-                        text: "No project name or description!",
-                        icon: "warning",
-                        button: "Try again",
-                    });
-                }
-            );
+        ).then((response) => {
+            window.location.reload(true);
+            return response;
+        },
+            (error) => {
+                console.log("wrong");
+                swal({
+                    text: "No project name or description!",
+                    icon: "warning",
+                    button: "Try again",
+                });
+            }
+        );
     }
 
     return (

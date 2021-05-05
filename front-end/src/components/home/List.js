@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProjectsList from "../Projects/ProjectList"
-import ProjectFrom from "../Projects/ProjectFrom"
+import AddProject from '../Projects/AddProject';
 
 export default function List() {
 
@@ -17,6 +17,7 @@ export default function List() {
         })
             .then(response => {
                 setProjects(response.data);
+                console.log(response.data)
             })
             .catch(err => {
                 console.log(err);
@@ -28,7 +29,9 @@ export default function List() {
             <div className="container">
                 <div className="row">
                     <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
-                        <ProjectFrom />
+                        {/* <ProjectFrom /> */}
+
+                        <AddProject/>
                     </div>
                     {projects.map(project =>
                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">

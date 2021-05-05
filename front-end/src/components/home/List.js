@@ -29,9 +29,7 @@ export default function List() {
             <div className="container">
                 <div className="row">
                     <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
-                        {/* <ProjectFrom /> */}
-
-                        <AddProject/>
+                        <AddProject />
                     </div>
                     {projects.map(project =>
                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">

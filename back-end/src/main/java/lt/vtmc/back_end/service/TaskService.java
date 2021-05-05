@@ -30,8 +30,12 @@ public class TaskService {
         this.taskRepository = taskRepository;
         this.projectRepository = projectRepository;
     }
+    
+    public List<Task> getAll() {
+    	return taskRepository.findAll();
+    }
 
-    public List<Task> findAll(final Long id) {
+    public List<Task> findAllByProject(final Long id) {
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	return taskRepository.findByProjectTask(project);
@@ -50,7 +54,7 @@ public class TaskService {
         task.setCreationDate(LocalDateTime.now().format(dateFormat));
         task.setUpdateDate(LocalDateTime.now().format(dateFormat));
         
-        if(taskDTO.getPriority().isBlank() || taskDTO.getPriority() == null) {
+        if( taskDTO.getPriority() == null || taskDTO.getPriority().isBlank()) {
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     	}
         if(taskDTO.getPriority().equals(TaskPriority.LOW.toString())) {
@@ -79,7 +83,7 @@ public class TaskService {
     	final Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	
-    	if(status.isBlank() || status == null) {
+    	if(status == null || status.isBlank()) {
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     	}
     	if(status.equals(TaskStatus.TO_DO.toString())) {
@@ -103,7 +107,7 @@ public class TaskService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         task.setName(taskDTO.getName());
         
-        if(taskDTO.getPriority().isBlank() || taskDTO.getPriority() == null) {
+        if(taskDTO.getPriority() == null || taskDTO.getPriority().isBlank()) {
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     	}
         if(taskDTO.getPriority().equals(TaskPriority.LOW.toString())) {

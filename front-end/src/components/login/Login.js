@@ -20,7 +20,7 @@ export default function Login() {
             // returns json from back with username and jwt token returns name as a string
             localStorage.setItem('token', JSON.stringify(response.data));
             console.log(localStorage.getItem('token'))
-            history.push('/home')
+            history.push('/projects')
             const name = Object.keys(response.data)
             return response.mail;
           },

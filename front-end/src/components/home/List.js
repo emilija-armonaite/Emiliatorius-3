@@ -17,6 +17,7 @@ export default function List() {
         })
             .then(response => {
                 setProjects(response.data);
+                console.log(response.data)
             })
             .catch(err => {
                 console.log(err);

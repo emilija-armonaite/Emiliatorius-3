@@ -64,7 +64,7 @@ const maxSymbolsDesc = 250;
   return (
     <div>
 
-      <Button variant="primary" onClick={handleShow} className="btn btn-outline-info my-2 my-sm-0" type="submit">
+      <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0" type="submit">
         Edit   <RiEdit2Line />
       </Button>
 

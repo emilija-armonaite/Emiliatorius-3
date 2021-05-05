@@ -1,4 +1,3 @@
-
 import './App.css';
 import Login from "./components/login/Login"
 import {
@@ -9,17 +8,18 @@ import {
 import Home from './components/home/Home';
 import ProtectedRoute from "./components/Routes/ProtectedRoute"
 import password from "./components/login/password"
+import TasksList from './components/Tasks/TasksList';
 
 function App() {
   return (
-    
+
     <Router>
-            <Switch>
-                <Route exact path='/' component={Login} />
-                <ProtectedRoute path='/home' component={Home} />
-                <Route exact path='/password' component={password} />
-            </Switch>
-        </Router>
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <ProtectedRoute exact path='/projects' component={Home} />
+        <ProtectedRoute path="/projects/:id/tasks" component={TasksList} />
+      </Switch>
+    </Router>
   );
 }
 

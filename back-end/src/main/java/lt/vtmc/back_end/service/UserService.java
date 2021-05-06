@@ -40,7 +40,7 @@ public class UserService {
 
     public UserDTO get(final Long id) {
         log.trace("Entering method get");
-        log.debug("Checking if user with given id exists");
+        log.debug("Checking if user with id: " + id + " exists");
         log.info("Returning user");
         return userRepository.findById(id)
                 .map(user -> mapToDTO(user, new UserDTO()))
@@ -53,13 +53,15 @@ public class UserService {
         final User user = new User();
         mapToEntity(userDTO, user);
         log.info("User created successfully");
-        log.info("Returning user id");
-        return userRepository.save(user).getId();
+
+        Long id = userRepository.save(user).getId();
+        log.info("Returning user id: " + id);
+        return id;
     }
 
     public void update(final Long id, final UserDTO userDTO) {
         log.trace("Entering method update");
-        log.debug("Checking if user with given id exists");
+        log.debug("Checking if user with id: " + id + " exists");
         final User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         mapToEntity(userDTO, user);
@@ -70,7 +72,7 @@ public class UserService {
     public void delete(final Long id) {
         log.trace("Entering method delete");
         userRepository.deleteById(id);
-        log.info("User deleted successfully");
+        log.info("User with id: " + id + " deleted successfully");
     }
 
     private UserDTO mapToDTO(final User user, final UserDTO userDTO) {

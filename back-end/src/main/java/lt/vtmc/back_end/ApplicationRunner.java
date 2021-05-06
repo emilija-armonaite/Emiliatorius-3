@@ -1,10 +1,15 @@
 package lt.vtmc.back_end;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 import lt.vtmc.back_end.model.ProjectDTO;
+import lt.vtmc.back_end.model.ReturnProject;
 import lt.vtmc.back_end.model.TaskDTO;
 import lt.vtmc.back_end.model.UserDTO;
 import lt.vtmc.back_end.service.ProjectService;
@@ -22,25 +27,31 @@ public class ApplicationRunner implements org.springframework.boot.ApplicationRu
 	
 	@Autowired
 	private TaskService taskService;
+	
+	private final Logger log = LoggerFactory.getLogger(ApplicationRunner.class);
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		log.trace("Entering method run");
+		
+		log.debug("Creating first admin user");
 		UserDTO user = new UserDTO("admin@mail.com", "password");
 		userService.create(user);
 		
-		for(int i = 0; i <= 10; i++) {
+		log.debug("Creating projects with tasks");
+		for(int i = 0; i <= 15; i++) {
 			ProjectDTO p = new ProjectDTO("Project " + i, "Description");
 			projectService.create(p);
 		}
 		
+		List<ReturnProject> projects = projectService.findAll();
+		for (ReturnProject p : projects) {
+			for(int j = 0; j <= 4; j++) {
+				TaskDTO t = new TaskDTO("Task " + j, "UserStory", "MEDIUM");
+				taskService.create(p.getId(), t);
+			}
+		}
 		
-		TaskDTO t = new TaskDTO("Task00", "UserStory", "MEDIUM");
-		taskService.create((long) 10001, t);
-		TaskDTO t1 = new TaskDTO("Task01", "UserStory", "MEDIUM");
-		taskService.create((long) 10001, t1);
-		TaskDTO t2 = new TaskDTO("Task02", "UserStory", "MEDIUM");
-		taskService.create((long) 10001, t2);
-
 	}
 
 }

@@ -5,20 +5,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.opencsv.CSVWriter;
@@ -45,11 +41,22 @@ public class ProjectController {
     private final TaskService taskService;
     private final TaskRepository taskRepository;
 
+    private final Logger log = LoggerFactory.getLogger(ProjectController.class);
+
     public ProjectController(final ProjectService projectService,
     		final TaskService taskService, final TaskRepository taskRepository) {
         this.projectService = projectService;
         this.taskService = taskService;
         this.taskRepository = taskRepository;
+    }
+
+    public String currentUserName() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            final String currentPrincipalName = authentication.getName();
+            return currentPrincipalName;
+        }
+        return "no user";
     }
 
     @GetMapping
@@ -64,6 +71,7 @@ public class ProjectController {
 
     @PostMapping
     public ResponseEntity<Long> createProject(@RequestBody @Valid ProjectDTO projectDTO) {
+        log.info("User: " + currentUserName());
         return new ResponseEntity<>(projectService.create(projectDTO), HttpStatus.CREATED);
     }
     
@@ -71,6 +79,7 @@ public class ProjectController {
     @ApiOperation(value="addTask", notes="Priorities: LOW, MEDIUM, HIGH")
     public ResponseEntity<Void> addTask(@PathVariable final Long id,
             @RequestBody @Valid final TaskDTO taskDTO) {
+        log.info("User: " + currentUserName());
     	Long taskId = taskService.create(id, taskDTO);
     	Task task = taskRepository.findById(taskId)
     			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -87,6 +96,7 @@ public class ProjectController {
     @ApiOperation(value="updateStatus", notes="Statuses: IN_PROGRESS, DONE")
     public ResponseEntity<Void> updateStatus(@PathVariable final Long id, 
     		@RequestParam final String status) {
+        log.info("User: " + currentUserName());
         projectService.updateStatus(id, status);
         return ResponseEntity.ok().build();
     }
@@ -94,12 +104,14 @@ public class ProjectController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateProject(@PathVariable final Long id,
             @RequestBody @Valid final ProjectDTO projectDTO) {
+        log.info("User: " + currentUserName());
         projectService.update(id, projectDTO);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProject(@PathVariable final Long id) {
+        log.info("User: " + currentUserName());
         projectService.delete(id);
         return ResponseEntity.noContent().build();
     }

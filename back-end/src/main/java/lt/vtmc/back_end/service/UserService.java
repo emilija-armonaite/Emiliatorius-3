@@ -6,6 +6,8 @@ import lt.vtmc.back_end.domain.User;
 import lt.vtmc.back_end.model.UserDTO;
 import lt.vtmc.back_end.repos.UserRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +17,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UserService {
+
+    private final Logger log = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
     
@@ -26,6 +30,8 @@ public class UserService {
     }
 
     public List<UserDTO> findAll() {
+        log.trace("Entering method findAll");
+        log.info("Returning all users");
         return userRepository.findAll()
                 .stream()
                 .map(user -> mapToDTO(user, new UserDTO()))
@@ -33,26 +39,38 @@ public class UserService {
     }
 
     public UserDTO get(final Long id) {
+        log.trace("Entering method get");
+        log.debug("Checking if user with given id exists");
+        log.info("Returning user");
         return userRepository.findById(id)
                 .map(user -> mapToDTO(user, new UserDTO()))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public Long create(final UserDTO userDTO) {
+        log.trace("Entering method create");
+        log.info("Creating user");
         final User user = new User();
         mapToEntity(userDTO, user);
+        log.info("User created successfully");
+        log.info("Returning user id");
         return userRepository.save(user).getId();
     }
 
     public void update(final Long id, final UserDTO userDTO) {
+        log.trace("Entering method update");
+        log.debug("Checking if user with given id exists");
         final User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         mapToEntity(userDTO, user);
         userRepository.save(user);
+        log.info("User updated successfully");
     }
 
     public void delete(final Long id) {
+        log.trace("Entering method delete");
         userRepository.deleteById(id);
+        log.info("User deleted successfully");
     }
 
     private UserDTO mapToDTO(final User user, final UserDTO userDTO) {

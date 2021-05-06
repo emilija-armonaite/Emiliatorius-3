@@ -19,7 +19,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-		//Empty ArrayList is grantedAthorities
+		//Empty ArrayList is grantedAuthorities
 		User user = userRepo.findByMail(mail);
 		return new UserDetailsImpl(user.getMail(), user.getPassword(), new ArrayList<>());
 	}

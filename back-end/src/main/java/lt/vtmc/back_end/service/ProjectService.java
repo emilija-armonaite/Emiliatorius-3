@@ -1,50 +1,53 @@
 package lt.vtmc.back_end.service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import lt.vtmc.back_end.domain.Project;
 import lt.vtmc.back_end.domain.ProjectStatus;
 import lt.vtmc.back_end.domain.Task;
 import lt.vtmc.back_end.model.ProjectDTO;
 import lt.vtmc.back_end.model.ReturnProject;
 import lt.vtmc.back_end.repos.ProjectRepository;
-import lt.vtmc.back_end.repos.TaskRepository;
-import lt.vtmc.back_end.repos.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
 public class ProjectService {
 
+	private final Logger log = LoggerFactory.getLogger(ProjectService.class);
+	
     private final ProjectRepository projectRepository;
-    private final UserRepository userRepository;
-    private final TaskRepository taskRepository;
 
-    public ProjectService(final ProjectRepository projectRepository,
-    		final UserRepository userRepository, final TaskRepository taskRepository) {
+    public ProjectService(final ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
-        this.userRepository = userRepository;
-        this.taskRepository = taskRepository;
     }
 
     public List<ReturnProject> findAll() {
+    	log.trace("Entering method findAll");
+    	log.info("Returning all projects");
         return projectRepository.findAll()
         		.stream().map(pro -> mapToReturnProject(pro, new ReturnProject()))
         		.collect(Collectors.toList());
     }
 
     public Project get(final Long id) {
+    	log.trace("Entering method get");
+    	log.debug("Checking if project with given id exists");
+    	log.info("Returning project with id: " + id);
         return projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public Long create(final ProjectDTO projectDTO) {
+    	log.trace("Entering method create");
+    	log.debug("Creating project");
         final Project project = new Project();
         project.setName(projectDTO.getName());
         project.setDescription(projectDTO.getDescription());
@@ -52,45 +55,61 @@ public class ProjectService {
         project.setStatus(ProjectStatus.IN_PROGRESS.toString());
         project.setTasksAmount(0);
         project.setTasksLeft(0);
+        log.info("Project created successfully");
+        log.info("Returning project id");
         return projectRepository.save(project).getId();
     }
     
     public void addTask(final Long id, final Task task) {
+    	log.trace("Entering method addTask");
+    	log.debug("Checking if project with given id exists");
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	Set<Task> tasks = project.getProjectTaskTasks();
     	tasks.add(task);
     	project.setProjectTaskTasks(tasks);
     	projectRepository.save(project);
+    	log.info("Task added successfully");
     }
     
     public void updateStatus(final Long id, final String status) {
+    	log.trace("Entering method updateStatus");
+    	log.debug("Checking if project with given id exists");
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	
     	if(status == null || status.isBlank()) {
+    		log.error("Status value is null or blank");
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     	}
     	if(status.equals(ProjectStatus.IN_PROGRESS.toString())) {
+    	    log.info("Status updated to IN_PROGRESS");
     		project.setStatus(ProjectStatus.IN_PROGRESS.toString());
     	}
     	if(status.equals(ProjectStatus.DONE.toString())) {
+            log.info("Status updated to DONE");
     		project.setStatus(ProjectStatus.DONE.toString());
     	}
     	
      projectRepository.save(project);
+     log.info("Status updated successfully");
     }
 
     public void update(final Long id, final ProjectDTO projectDTO) {
+    	log.trace("Entering method update");
+    	log.debug("Checking if project with given id exists");
         final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         project.setName(projectDTO.getName());
         project.setDescription(projectDTO.getDescription());
         projectRepository.save(project);
+        log.info("Project updated successfully");
     }
 
     public void delete(final Long id) {
+    	log.trace("Entering method delete");
         projectRepository.deleteById(id);
+        log.info("Project and its tasks deleted successfully");
     }
 
     private ReturnProject mapToReturnProject(final Project project, final ReturnProject returnProject) {

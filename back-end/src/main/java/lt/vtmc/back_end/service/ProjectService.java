@@ -39,7 +39,7 @@ public class ProjectService {
 
     public Project get(final Long id) {
     	log.trace("Entering method get");
-    	log.debug("Checking if project with given id exists");
+    	log.debug("Checking if project with id: " + id + " exists");
     	log.info("Returning project with id: " + id);
         return projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -47,6 +47,11 @@ public class ProjectService {
 
     public Long create(final ProjectDTO projectDTO) {
     	log.trace("Entering method create");
+    	log.debug("Checking if name is not blank or null");
+    	if(projectDTO.getName().isBlank()){
+            log.error("Name value is null or blank");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     	log.debug("Creating project");
         final Project project = new Project();
         project.setName(projectDTO.getName());
@@ -55,32 +60,33 @@ public class ProjectService {
         project.setStatus(ProjectStatus.IN_PROGRESS.toString());
         project.setTasksAmount(0);
         project.setTasksLeft(0);
+        Long id = projectRepository.save(project).getId();
         log.info("Project created successfully");
-        log.info("Returning project id");
-        return projectRepository.save(project).getId();
+        log.info("Returning project with id: " + id);
+        return id;
     }
     
     public void addTask(final Long id, final Task task) {
     	log.trace("Entering method addTask");
-    	log.debug("Checking if project with given id exists");
+        log.debug("Checking if project with id: " + id + " exists");
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	Set<Task> tasks = project.getProjectTaskTasks();
     	tasks.add(task);
     	project.setProjectTaskTasks(tasks);
     	projectRepository.save(project);
-    	log.info("Task added successfully");
+    	log.info("Task added successfully with id: " + task.getId());
     }
     
     public void updateStatus(final Long id, final String status) {
     	log.trace("Entering method updateStatus");
-    	log.debug("Checking if project with given id exists");
+        log.debug("Checking if project with id: " + id + " exists");
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    	
-    	if(status == null || status.isBlank()) {
+        log.debug("Checking if status is not blank or null");
+    	if(status.isBlank()) {
     		log.error("Status value is null or blank");
-    		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    		throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     	}
     	if(status.equals(ProjectStatus.IN_PROGRESS.toString())) {
     	    log.info("Status updated to IN_PROGRESS");
@@ -92,24 +98,24 @@ public class ProjectService {
     	}
     	
      projectRepository.save(project);
-     log.info("Status updated successfully");
+     log.info("Status updated successfully for project with id: " + id);
     }
 
     public void update(final Long id, final ProjectDTO projectDTO) {
     	log.trace("Entering method update");
-    	log.debug("Checking if project with given id exists");
+        log.debug("Checking if project with id: " + id + " exists");
         final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         project.setName(projectDTO.getName());
         project.setDescription(projectDTO.getDescription());
         projectRepository.save(project);
-        log.info("Project updated successfully");
+        log.info("Project with id: " + id + " updated successfully");
     }
 
     public void delete(final Long id) {
     	log.trace("Entering method delete");
         projectRepository.deleteById(id);
-        log.info("Project and its tasks deleted successfully");
+        log.info("Project with id: " + id + " and its tasks deleted successfully");
     }
 
     private ReturnProject mapToReturnProject(final Project project, final ReturnProject returnProject) {

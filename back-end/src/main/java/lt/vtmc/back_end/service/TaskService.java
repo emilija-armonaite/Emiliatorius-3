@@ -43,16 +43,16 @@ public class TaskService {
 
     public List<Task> findAllByProject(final Long id) {
     	log.trace("Entering method findAllByProject");
-    	log.debug("Checking if project with given id exists");
+        log.debug("Checking if project with id: " + id + " exists");
     	final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    	log.info("Returning all task for project: " + project.getName());
+    	log.info("Returning all task for project with id: " + id);
     	return taskRepository.findByProjectTask(project);
     }
 
     public Task get(final Long id) {
     	log.trace("Entering method get");
-    	log.debug("Checking if task with given id exists");
+    	log.debug("Checking if task with id: " + id + " exists");
     	log.info("Returning task with id: " + id);
         return taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -68,9 +68,9 @@ public class TaskService {
         task.setCreationDate(LocalDateTime.now().format(dateFormat));
         task.setUpdateDate(LocalDateTime.now().format(dateFormat));
         
-        if( taskDTO.getPriority() == null || taskDTO.getPriority().isBlank()) {
+        if(taskDTO.getPriority().isBlank()) {
         	log.error("Priority value is null or blank");
-    		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    		throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     	}
         if(taskDTO.getPriority().equals(TaskPriority.LOW.toString())) {
         	task.setPriority(TaskPriority.LOW.toString());
@@ -81,7 +81,7 @@ public class TaskService {
         if(taskDTO.getPriority().equals(TaskPriority.HIGH.toString())) {
         	task.setPriority(TaskPriority.HIGH.toString());
         }
-        log.debug("Adding task to project");
+        log.debug("Adding task to project with id: " + projectId);
         Project project = projectRepository.findById(projectId)
         		.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         task.setProjectTask(project);
@@ -91,19 +91,19 @@ public class TaskService {
     	Long prId = task.getProjectTask().getId();
     	updateCount(prId);
     	log.info("task created successfully");
-        log.info("Returning task id");
+        log.info("Returning task with id: " + task.getId());
         return task.getId();
     }
     
     public void updateStatus(final Long id, final String status) {
     	log.trace("Entering method updateStatus");
-    	log.debug("Checking if task with given id exists");
+    	log.debug("Checking if task with id: " + id + " exists");
     	final Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     	
-    	if(status == null || status.isBlank()) {
+    	if(status.isBlank()) {
     		log.error("Status value is null or blank");
-    		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    		throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     	}
     	if(status.equals(TaskStatus.TO_DO.toString())) {
             log.info("Status updated to TO_DO");
@@ -119,6 +119,7 @@ public class TaskService {
     	}
     	
     	taskRepository.save(task);
+        log.info("Status updated successfully for task with id: " + id);
     	
     	Long prId = task.getProjectTask().getId();
     	updateCount(prId);
@@ -126,13 +127,14 @@ public class TaskService {
 
     public void update(final Long id, final TaskDTO taskDTO) {
     	log.trace("Entering method update");
-    	log.debug("Checking if task with given id exists");
+        log.debug("Checking if task with id: " + id + " exists");
         final Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         task.setName(taskDTO.getName());
         
-        if(taskDTO.getPriority() == null || taskDTO.getPriority().isBlank()) {
-    		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if(taskDTO.getPriority().isBlank()) {
+            log.error("Priority value is null or blank");
+    		throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     	}
         if(taskDTO.getPriority().equals(TaskPriority.LOW.toString())) {
         	task.setPriority(TaskPriority.LOW.toString());
@@ -147,7 +149,7 @@ public class TaskService {
         task.setUserStory(taskDTO.getUserStory());
         task.setUpdateDate(LocalDateTime.now().format(dateFormat));
         taskRepository.save(task);
-        log.info("Task updated successfully");
+        log.info("Task with id: " + id + " updated successfully");
     }
 
     public void delete(final Long id) {
@@ -155,7 +157,7 @@ public class TaskService {
     	final Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         taskRepository.deleteById(id);
-        log.info("Task deleted successfully");
+        log.info("Task with id: " + id + " deleted successfully");
         
         Long prId = task.getProjectTask().getId();
         updateCount(prId);

@@ -57,7 +57,7 @@ export default function AddProject() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Project</Modal.Title>
+                    <Modal.Title>Create Project</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={submitProject}>
@@ -78,7 +78,7 @@ export default function AddProject() {
                         Close
           </Button>
                     <Button variant="primary" onClick={submitProject}>
-                        Save Changes
+                        Create
           </Button>
                 </Modal.Footer>
             </Modal>

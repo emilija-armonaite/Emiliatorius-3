@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react'
 import { IoAddOutline } from "react-icons/io5";
 import axios from "axios";
 import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ReactDOM from "react-dom";
 
 
 export default function AddProject() {
@@ -35,12 +36,29 @@ export default function AddProject() {
             return response;
         },
             (error) => {
-                console.log("wrong");
-                swal({
-                    text: "No project name or description!",
-                    icon: "warning",
-                    button: "Try again",
-                });
+                // console.log(error.response.status);
+
+                switch (error.response.status) {
+
+                    case 400:
+                        swal({
+                            text: "No project name or description!",
+                            icon: "warning",
+                            button: "Try again",
+                        });
+                        break;
+
+                    case 500:
+                        swal({
+                            text: "The Project name exists!",
+                            icon: "warning",
+                            button: "Try again",
+                        });
+                        break;
+
+                    default:
+                        break;
+                }
             }
         );
     }

@@ -51,12 +51,27 @@ const maxSymbolsDesc = 250;
         return response;
       },
         (error) => {
-          console.log("wrong");
-          swal({
-            text: "No project name or description!",
-            icon: "warning",
-            button: "Try again",
-          });
+          switch (error.response.status) {
+
+            case 400:
+                swal({
+                    text: "No project name or description!",
+                    icon: "warning",
+                    button: "Try again",
+                });
+                break;
+
+            case 500:
+                swal({
+                    text: "The Project name exists!",
+                    icon: "warning",
+                    button: "Try again",
+                });
+                break;
+
+            default:
+                break;
+        }
         }
       );
   }

@@ -60,6 +60,10 @@ public class TaskService {
 
     public Long create(final Long projectId,final TaskDTO taskDTO) {
     	log.trace("Entering method create");
+        if(taskDTO.getName().isBlank()){
+            log.error("Name value is null or blank");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     	log.debug("Creating task");
         final Task task = new Task();
         task.setName(taskDTO.getName());
@@ -127,11 +131,14 @@ public class TaskService {
 
     public void update(final Long id, final TaskDTO taskDTO) {
     	log.trace("Entering method update");
+        if(taskDTO.getName().isBlank()){
+            log.error("Name value is null or blank");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
         log.debug("Checking if task with id: " + id + " exists");
         final Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         task.setName(taskDTO.getName());
-        
         if(taskDTO.getPriority().isBlank()) {
             log.error("Priority value is null or blank");
     		throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

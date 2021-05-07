@@ -1,8 +1,33 @@
 import React from 'react'
 import { RiEdit2Line } from "react-icons/ri";
 import { FaTrash } from "react-icons/fa";
+import DeleteTask from './DeleteTask';
+import swal from 'sweetalert';
+import EditTask from './EditTask'
 
 export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
+
+    const getDeleteAlert = () => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this task!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    DeleteTask({ id });
+                    swal("Poof! Your task has been deleted!", {
+                        icon: "success",
+                    });
+                    setTimeout(() => window.location.reload(), 1500);
+                }
+                else {
+                    swal("Your task is safe!");
+                }
+            });
+    }
 
     return (
         <div>
@@ -15,8 +40,8 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                     <p className="card-text">{status}</p>
                     <p className="card-text">{creationDate}</p>
                     <p className="card-text">{updateDate}</p>
-                    <button className="btn btn-outline-info btn-sm my-2 my-sm-0 m-2" type="submit">Edit <RiEdit2Line /></button>
-                    <button className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
+                    <EditTask id={id}/>
+                    <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
                 </div>
             </div>
         </div>

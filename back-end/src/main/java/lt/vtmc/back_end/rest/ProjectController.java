@@ -75,7 +75,7 @@ public class ProjectController {
         return new ResponseEntity<>(projectService.create(projectDTO), HttpStatus.CREATED);
     }
     
-    @PutMapping("/{id}/tasks")
+    @PostMapping("/{id}/tasks")
     @ApiOperation(value="addTask", notes="Priorities: LOW, MEDIUM, HIGH")
     public ResponseEntity<Void> addTask(@PathVariable final Long id,
             @RequestBody @Valid final TaskDTO taskDTO) {

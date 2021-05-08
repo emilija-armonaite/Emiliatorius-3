@@ -15,14 +15,15 @@ export default function EditTask(id) {
     const maxSymbolsName = 50;
     const maxSymbolsStory = 250;
     const API_URL = 'http://localhost:8081';
-    const [name, setName] = useState("");
-    const [userStory, setUserStory] = useState("");
-    const [priority, setPriority] = useState("MEDIUM");
+    const [name, setName] = useState(id.name);
+    const [userStory, setUserStory] = useState(id.userStory);
+    const [priority, setPriority] = useState(id.priority);
     const user = JSON.parse(localStorage.getItem("token"));
 
 
     const submitProject = (e) => {
         e.preventDefault();
+        console.log(id);
         return axios.put(API_URL + "/api/tasks/" + id.id, {
             name,
             priority,
@@ -61,17 +62,17 @@ export default function EditTask(id) {
                     <form onSubmit={submitProject}>
                         <div class="form-group">
                             <label for="exampleInputEmail1">task name</label>
-                            <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" maxlength={maxSymbolsName} />
+                            <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" defaultValue={id.name}  maxlength={maxSymbolsName} />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">User story</label>
-                            <input type="text" onChange={(e) => setUserStory(e.target.value)} className="form-control m-2" placeholder="User story" maxLength={maxSymbolsStory} />
+                            <input type="text" onChange={(e) => setUserStory(e.target.value)} className="form-control m-2" placeholder="User story" defaultValue={id.userStory} maxLength={maxSymbolsStory} />
                             <text className="text-muted float-right"> {userStory.length} / {maxSymbolsStory}</text>
                         </div>
                         <div class="form-group">
                         <label for="priority">priority</label>
-                            <select  onChange={(e) => setPriority(e.target.value)}  class="custom-select" >
+                            <select  onChange={(e) => setPriority(e.target.value)}  defaultValue={id.priority} class="custom-select" >
                                 <option value="LOW">Low</option>
                                 <option selected value="MEDIUM">Medium</option>
                                 <option value="HIGH">High</option>

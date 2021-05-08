@@ -106,6 +106,10 @@ public class ProjectService {
         log.debug("Checking if project with id: " + id + " exists");
         final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if(projectDTO.getName().isBlank()){
+            log.error("Name value is null or blank");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
         project.setName(projectDTO.getName());
         project.setDescription(projectDTO.getDescription());
         projectRepository.save(project);

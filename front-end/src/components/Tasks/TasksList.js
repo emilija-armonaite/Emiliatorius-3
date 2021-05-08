@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import NavBar from "../home/Navbar"
 import TaskCard from './TaskCard';
+import AddTask from './AddTask';
 
 const Tasks = ({ match }) => {
 
@@ -33,6 +34,7 @@ const Tasks = ({ match }) => {
         <div>
             <NavBar />
             <div>
+            <AddTask id={match.params.id} />
                 {tasks.map(task =>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
                         <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} status={task.status} creationDate={task.creationDate} updateDate={task.updateDate}/>

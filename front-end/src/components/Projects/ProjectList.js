@@ -1,4 +1,4 @@
-import React, { useState, useHistory, useEffect } from 'react'
+import React from 'react'
 import DeleteProject from "./DeleteProjects"
 import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
@@ -41,7 +41,6 @@ export default function ProjectList({ projects, id, name, description }) {
             });
     }
 
-
     return (
         <div className="card text-center h-100">
             <div className="card-body">
@@ -50,7 +49,6 @@ export default function ProjectList({ projects, id, name, description }) {
                 <EditProject id={id} name={name} description={description} />
                 <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
                 </button>
-
             </div>
             <Link to={`/projects/${id}/tasks`}>Link to tasks</Link>
         </div>

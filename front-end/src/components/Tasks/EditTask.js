@@ -50,7 +50,7 @@ export default function EditTask(id) {
 
     return (
         <div>
-            <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0" type="submit">
+            <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
             Edit   <RiEdit2Line />
             </Button>
 

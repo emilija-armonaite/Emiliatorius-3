@@ -49,8 +49,10 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                     <p className="card-text">{status}</p>
                     <p className="card-text">{creationDate}</p>
                     <p className="card-text">{updateDate}</p>
-                    <EditTask id={id} name={name} userStory={userStory} priority={priority} />
-                    <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
+                    <div className="buttons m-3" style={{ display: "flex" }}>
+                        <EditTask id={id} name={name} userStory={userStory} priority={priority} />
+                        <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
+                    </div>
                 </div>
             </div>
         </div>

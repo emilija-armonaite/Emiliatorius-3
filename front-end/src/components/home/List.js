@@ -33,7 +33,7 @@ export default function List() {
                     </div>
                     {projects.map(project =>
                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
-                            <ProjectsList key={project.id} projects={projects} id={project.id} name={project.name} description={project.description} />
+                            <ProjectsList key={project.id} projects={projects} id={project.id} name={project.name} description={project.description} status={project.status} tasksAmount={project.tasksAmount} tasksLeft={project.tasksLeft} />
                         </div>
                     )}
                 </div>

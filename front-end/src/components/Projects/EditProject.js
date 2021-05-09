@@ -25,8 +25,8 @@ export default function EditProject(id) {
   const [description, setDesc] = useState(id.description);
   const user = JSON.parse(localStorage.getItem("token"));
 
-const maxSymbolsName = 50;
-const maxSymbolsDesc = 250;
+  const maxSymbolsName = 50;
+  const maxSymbolsDesc = 250;
 
   const restart = () => {
     { window.location.reload(true) }
@@ -54,24 +54,24 @@ const maxSymbolsDesc = 250;
           switch (error.response.status) {
 
             case 400:
-                swal({
-                    text: "No project name or description!",
-                    icon: "warning",
-                    button: "Try again",
-                });
-                break;
+              swal({
+                text: "No project name or description!",
+                icon: "warning",
+                button: "Try again",
+              });
+              break;
 
             case 500:
-                swal({
-                    text: "The Project name exists!",
-                    icon: "warning",
-                    button: "Try again",
-                });
-                break;
+              swal({
+                text: "The Project name exists!",
+                icon: "warning",
+                button: "Try again",
+              });
+              break;
 
             default:
-                break;
-        }
+              break;
+          }
         }
       );
   }
@@ -79,7 +79,7 @@ const maxSymbolsDesc = 250;
   return (
     <div>
 
-      <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0" type="submit">
+      <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
         Edit   <RiEdit2Line />
       </Button>
 
@@ -92,12 +92,12 @@ const maxSymbolsDesc = 250;
           <form onSubmit={submitProject}>
             <div class="form-group">
               <label for="exampleInputEmail1">Project name</label>
-              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" defaultValue={id.name}  maxlength={maxSymbolsName}/>
-<text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
+              <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" defaultValue={id.name} maxlength={maxSymbolsName} />
+              <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">About project</label>
-              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." defaultValue={id.description}  maxLength={maxSymbolsDesc}/>
+              <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." defaultValue={id.description} maxLength={maxSymbolsDesc} />
               <text className="text-muted float-right"> {description.length} / {maxSymbolsDesc}</text>
             </div>
           </form>

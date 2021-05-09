@@ -4,8 +4,9 @@ import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
 import EditProject from './EditProject';
 import { Link } from "react-router-dom";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
-export default function ProjectList({ projects, id, name, description }) {
+export default function ProjectList({ projects, id, name, description, status, tasksAmount, tasksLeft }) {
 
     const getDeleteAlert = () => {
 
@@ -43,14 +44,22 @@ export default function ProjectList({ projects, id, name, description }) {
 
     return (
         <div className="card text-center h-100">
-            <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text">{description}</p>
+            <Link to={`/projects/${id}/tasks`} style={{ textDecoration: "none", color: "black" }}>
+                <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                    <p className="card-text">{description}</p>
+                    <p className="card-text">{status}</p>
+                </div>
+                <div>
+                    <div> Tasks {`${tasksAmount - tasksLeft}/${tasksAmount}`}</div>
+                    <ProgressBar striped variant="info" now={tasksAmount - tasksLeft} label={`${tasksAmount - tasksLeft}/${tasksAmount}`} max={tasksAmount} />
+                </div>
+            </Link>
+            <div className="buttons m-3" style={{ display: "flex" }}>
                 <EditProject id={id} name={name} description={description} />
-                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
+                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
                 </button>
             </div>
-            <Link to={`/projects/${id}/tasks`}>Link to tasks</Link>
         </div>
     )
 }

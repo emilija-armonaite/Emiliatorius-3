@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProjectsList from "../Projects/ProjectList"
 import AddProject from '../Projects/AddProject';
+import ExportProject from '../Projects/ExportProject';
+import ExportTask from '../Tasks/ExportTasks';
 
 export default function List() {
 
@@ -26,6 +28,8 @@ export default function List() {
 
     return (
         <div>
+            <ExportProject />
+            <ExportTask />
             <div className="container">
                 <div className="row">
                     <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">

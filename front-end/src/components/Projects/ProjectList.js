@@ -4,7 +4,8 @@ import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
 import EditProject from './EditProject';
 import { Link } from "react-router-dom";
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export default function ProjectList({ projects, id, name, description, status, tasksAmount, tasksLeft }) {
 
@@ -43,21 +44,32 @@ export default function ProjectList({ projects, id, name, description, status, t
     }
 
     return (
-        <div className="card text-center h-100">
+        <div className="card text-left h-100 w-100" style={{ backgroundColor: "#faf3f3", borderRadius: "20px"}}>
             <Link to={`/projects/${id}/tasks`} style={{ textDecoration: "none", color: "black" }}>
+                <div className="cardTop" style={{ display: "flex" }}>
+                    <div style={{ width: "20%", marginLeft: "10px", marginTop: "10px" }}>
+                        <CircularProgressbar
+                            value={tasksAmount - tasksLeft}
+                            text={`${tasksAmount - tasksLeft}/${tasksAmount}`}
+                            maxValue={tasksAmount}
+                            styles={buildStyles({
+                                // textColor: "red",
+                                // pathColor: "lightblue",
+                                // trailColor: "gold"
+                            })} />
+                    </div>
+                    <div>
+                        <p className="card-text mt-4 mx-5">{status}</p>
+                    </div>
+                </div>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
-                    <p className="card-text">{description}</p>
-                    <p className="card-text">{status}</p>
-                </div>
-                <div>
-                    <div> Tasks {`${tasksAmount - tasksLeft}/${tasksAmount}`}</div>
-                    <ProgressBar striped variant="info" now={tasksAmount - tasksLeft} label={`${tasksAmount - tasksLeft}/${tasksAmount}`} max={tasksAmount} />
+                    <p className="card-text text-muted">{description}</p>
                 </div>
             </Link>
-            <div className="buttons m-3" style={{ display: "flex" }}>
+            <div className="buttons mb-3 mr-3" style={{ display: "flex", justifyContent: "flex-end"}}>
                 <EditProject id={id} name={name} description={description} />
-                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash />
+                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash />
                 </button>
             </div>
         </div>

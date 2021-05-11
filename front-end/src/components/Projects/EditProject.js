@@ -80,7 +80,7 @@ export default function EditProject(id) {
     <div>
 
       <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
-        Edit   <RiEdit2Line />
+      <RiEdit2Line />
       </Button>
 
       <Modal show={show} onHide={handleClose}>

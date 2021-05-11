@@ -1,14 +1,12 @@
 .App {
-  text-align: center;
-  /* background-image: url(./components/background.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative; 
-  background-color: #d1dce0; */
+  text-align: left;  
 }
 
-.App-logo {
+body {
+  /* padding: 40px; */  font-family: Arial;
+  text-align: left;
+}
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -41,4 +39,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

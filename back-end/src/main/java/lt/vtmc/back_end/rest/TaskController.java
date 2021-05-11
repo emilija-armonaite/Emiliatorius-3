@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import lt.vtmc.back_end.model.ReturnTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -86,22 +87,22 @@ public class TaskController {
         taskService.delete(id);
         return ResponseEntity.noContent().build();
     }
-    
+
     @GetMapping("/export")
     public void exportCSV(HttpServletResponse response) throws Exception {
-    	String filename = "Tasks.csv";
-    	
-    	response.setContentType("txt/csv");
-    	response.setHeader(HttpHeaders.CONTENT_DISPOSITION, 
-    			"attachment; filename=\"" + filename + "\"");
-    	
-    	StatefulBeanToCsv<Task> writer = new StatefulBeanToCsvBuilder<Task>(response.getWriter())
-    			.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-    			.withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-    			.withOrderedResults(false)
-    			.build();
-    	
-    	writer.write(taskService.getAll());
+        String filename = "Tasks.csv";
+
+        response.setContentType("txt/csv");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + filename + "\"");
+
+        StatefulBeanToCsv<ReturnTask> writer = new StatefulBeanToCsvBuilder<ReturnTask>(response.getWriter())
+                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+                .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                .withOrderedResults(false)
+                .build();
+
+        writer.write(taskService.getAll());
     }
 
 }

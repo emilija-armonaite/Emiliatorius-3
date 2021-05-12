@@ -9,6 +9,20 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export default function ProjectList({ projects, id, name, description, status, tasksAmount, tasksLeft }) {
 
+
+    const getStatusText = (statusBack) => {
+
+        switch (statusBack) {
+            case "IN_PROGRESS":
+                return "IN PROGRESS";
+
+
+            default:
+                return "status error";
+        }
+
+    }
+
     const getDeleteAlert = () => {
 
         window.onpopstate = e => {
@@ -59,7 +73,7 @@ export default function ProjectList({ projects, id, name, description, status, t
                             })} />
                     </div>
                     <div>
-                        <p className="card-text mt-4 mx-5">{status}</p>
+                        <p className="card-text mt-4 mx-5">{getStatusText(status)}</p>
                     </div>
                 </div>
                 <div className="card-body">

@@ -66,7 +66,7 @@ export default function EditTask(id) {
                 <Modal.Body>
                     <form onSubmit={submitProject}>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">task name</label>
+                            <label for="exampleInputEmail1">Task name</label>
                             <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" defaultValue={id.name} maxlength={maxSymbolsName} />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
@@ -76,7 +76,7 @@ export default function EditTask(id) {
                             <text className="text-muted float-right"> {userStory.length} / {maxSymbolsStory}</text>
                         </div>
                         <div class="form-group">
-                            <label for="priority">priority</label>
+                            <label for="priority">Priority</label>
                             <select onChange={(e) => setPriority(e.target.value)} defaultValue={id.priority} class="custom-select" >
                                 <option value="LOW">Low</option>
                                 <option selected value="MEDIUM">Medium</option>

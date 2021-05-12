@@ -35,7 +35,12 @@ export default function EditTask(id) {
                 }
             }
         ).then((response) => {
-            window.location.reload(true);
+
+            swal("Nice one! Your task has been updated!", {
+                icon: "success",
+              });
+              setTimeout(() => window.location.reload(), 1500);
+     
             return response;
         },
             (error) => {

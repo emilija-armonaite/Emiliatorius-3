@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { RiEdit2Line } from "react-icons/ri";
 
 
+
 export default function EditProject(id) {
 
   const [show, setShow] = useState(false);
@@ -46,7 +47,12 @@ export default function EditProject(id) {
       }
     )
       .then((response) => {
-        restart();
+
+        swal("Bang! Your project has been updated!", {
+          icon: "success",
+        });
+        setTimeout(() => window.location.reload(), 1500);
+        // restart();
         handleClose();
         return response;
       },
@@ -80,7 +86,7 @@ export default function EditProject(id) {
     <div>
 
       <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
-      <RiEdit2Line />
+        <RiEdit2Line />
       </Button>
 
       <Modal show={show} onHide={handleClose}>

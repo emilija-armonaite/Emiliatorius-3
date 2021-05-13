@@ -117,7 +117,7 @@ export default function EditProject(id) {
           <Button variant="outline-secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="secondary" onClick={submitProject}>
+          <Button variant="info" onClick={submitProject}>
             Save Changes
           </Button>
         </Modal.Footer>

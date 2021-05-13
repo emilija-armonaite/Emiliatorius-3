@@ -64,7 +64,7 @@ export default function AddTask(id) {
                 <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">task name</label>
+                            <label for="exampleInputEmail1">Task name</label>
                             <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" maxlength={maxSymbolsName} required />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
@@ -74,7 +74,7 @@ export default function AddTask(id) {
                             <text className="text-muted float-right"> {userStory.length} / {maxSymbolsStory}</text>
                         </div>
                         <div class="form-group">
-                            <label for="priority">priority</label>
+                            <label for="priority">Priority</label>
                             <select onChange={(e) => setPriority(e.target.value)} class="custom-select" >
                                 <option value="LOW">Low</option>
                                 <option selected value="MEDIUM">Medium</option>

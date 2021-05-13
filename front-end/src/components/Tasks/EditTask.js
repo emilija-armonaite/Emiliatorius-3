@@ -10,7 +10,10 @@ import { RiEdit2Line } from "react-icons/ri";
 export default function EditTask(id) {
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+    setName(id.name);
+    }
     const handleShow = () => setShow(true);
     const maxSymbolsName = 50;
     const maxSymbolsStory = 250;

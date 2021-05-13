@@ -5,6 +5,7 @@ import TaskCard from './TaskCard';
 import AddTask from './AddTask';
 import { useHistory } from "react-router-dom";
 import ExportTask from '../Tasks/ExportTasks';
+import Footer from '../home/Footer';
 
 const Tasks = ({ match }) => {
 
@@ -55,6 +56,7 @@ const Tasks = ({ match }) => {
                     </div>
                 )}
             </div>
+            <Footer/>
         </div>
     )
 }

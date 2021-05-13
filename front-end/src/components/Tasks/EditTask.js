@@ -92,7 +92,7 @@ export default function EditTask(id) {
                     <Button variant="outline-secondary" onClick={handleClose}>
                         Close
             </Button>
-                    <Button variant="secondary" onClick={submitProject}>
+                    <Button variant="info" onClick={submitProject}>
                         Save changes
             </Button>
                 </Modal.Footer>

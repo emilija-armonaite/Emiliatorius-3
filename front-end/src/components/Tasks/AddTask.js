@@ -87,7 +87,7 @@ export default function AddTask(id) {
                     <Button variant="outline-secondary" onClick={handleClose}>
                         Close
           </Button>
-                    <Button variant="secondary" onClick={submitProject}>
+                    <Button variant="info" onClick={submitProject}>
                         Create
           </Button>
                 </Modal.Footer>

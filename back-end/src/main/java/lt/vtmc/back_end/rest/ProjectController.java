@@ -1,12 +1,19 @@
 package lt.vtmc.back_end.rest;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import lt.vtmc.back_end.repos.ProjectRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -60,8 +67,11 @@ public class ProjectController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ReturnProject>> getAllProjects() {
-        return ResponseEntity.ok(projectService.findAll());
+    public ResponseEntity<Map<String, Object>> getAllProjectsPages(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "11") int size) {
+
+        return projectService.getProjectsPages(page, size);
     }
 
     @GetMapping("/{id}")

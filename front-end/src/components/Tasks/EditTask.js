@@ -60,10 +60,10 @@ export default function EditTask(id) {
             </Button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton style={{ backgroundColor: "#faf3f3"}}>
                     <Modal.Title>Edit Task</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ backgroundColor: "#faf3f3"}}>
                     <form onSubmit={submitProject}>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Task name</label>
@@ -85,11 +85,11 @@ export default function EditTask(id) {
                         </div>
                     </form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                <Modal.Footer style={{ backgroundColor: "#faf3f3"}}>
+                    <Button variant="outline-secondary" onClick={handleClose}>
                         Close
             </Button>
-                    <Button variant="primary" onClick={submitProject}>
+                    <Button variant="secondary" onClick={submitProject}>
                         Save changes
             </Button>
                 </Modal.Footer>

@@ -61,7 +61,7 @@ export default function EditTask(id) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create Task</Modal.Title>
+                    <Modal.Title>Edit Task</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={submitProject}>

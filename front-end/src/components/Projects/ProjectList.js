@@ -58,10 +58,10 @@ export default function ProjectList({ projects, id, name, description, status, t
     }
 
     return (
-        <div className="card text-left h-100 w-100" style={{ backgroundColor: "#faf3f3", borderRadius: "20px" }}>
+        <div className="card text-left h-100 flex-fill" style={{ backgroundColor: "#faf3f3", borderRadius: "20px" }}>
             <Link to={`/projects/${id}/tasks`} style={{ textDecoration: "none", color: "black" }}>
-                <div className="cardTop" style={{ display: "flex" }}>
-                    <div style={{ width: "20%", marginLeft: "10px", marginTop: "10px" }}>
+                <div className="cardTop d-flex">
+                    <div style={{ width: "60px", marginLeft: "10px", marginTop: "10px" }}>
                         <CircularProgressbar
                             value={tasksAmount - tasksLeft}
                             text={`${tasksAmount - tasksLeft}/${tasksAmount}`}
@@ -73,15 +73,15 @@ export default function ProjectList({ projects, id, name, description, status, t
                             })} />
                     </div>
                     <div>
-                        <p className="card-text mt-4 mx-5">{getStatusText(status)}</p>
+                        <p className="card-text mt-4 mx-4">{getStatusText(status)}</p>
                     </div>
                 </div>
-                <div className="card-body">
+                <div className="card-body flex-fill">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text text-muted">{description}</p>
                 </div>
             </Link>
-            <div className="buttons mb-3 mr-3" style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div className="buttons mb-3 mr-3 d-flex" style={{ justifyContent: "flex-end" }}>
                 <EditProject id={id} name={name} description={description} />
                 <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash />
                 </button>

@@ -59,15 +59,15 @@ export default function List() {
 
     return (
         <div style={{ backgroundColor: "#e1e5ea" }}>
-          <div className="mx-3" style={{ display: "flex"}}><ExportProject /></div>  
+            <div className="mx-3 d-flex"><ExportProject /></div>
             {/* <ExportTask /> */}
-            <div className="container-fluid content-row">
+            <div className="container">
                 <div className="row">
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
                         <AddProject />
                     </div>
                     {projects.map(project =>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 d-flex">
                             <ProjectsList key={project.id} projects={projects} id={project.id} name={project.name} description={project.description} status={project.status} tasksAmount={project.tasksAmount} tasksLeft={project.tasksLeft} />
                         </div>
                     )}

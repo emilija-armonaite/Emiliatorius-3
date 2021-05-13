@@ -28,7 +28,7 @@ export default function ExportTask() {
   return (
     <div>
 
-      <Button variant="outline-dark" onClick={downloadData} className="my-2 my-sm-0 btn-sm">
+      <Button variant="outline-dark" onClick={downloadData} className="btn-sm ml-3 mr-3 mt-2">
         Export tasks
       </Button>
 

@@ -56,9 +56,9 @@ export default function ProjectList({ projects, id, name, description, status, t
                 }
             });
     }
-
+    
     return (
-        <div className="card text-left h-100 flex-fill" style={{ backgroundColor: "#faf3f3", borderRadius: "20px" }}>
+        <div className="card text-left h-100 flex-fill" style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
             <Link to={`/projects/${id}/tasks`} style={{ textDecoration: "none", color: "black" }}>
                 <div className="cardTop d-flex">
                     <div style={{ width: "60px", marginLeft: "10px", marginTop: "10px" }}>

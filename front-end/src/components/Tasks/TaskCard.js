@@ -9,6 +9,21 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from "react-bootstrap/ListGroup"
 export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
+
+    const getStatusText = (statusBack) => {
+
+        switch (statusBack) {
+            case "TO_DO":
+                return "TO DO";
+
+
+            default:
+                return "status error";
+        }
+
+    }
+
+
     const getDeleteAlert = () => {
         window.onpopstate = e => {
             e.preventDefault();
@@ -47,7 +62,7 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text text-muted">{userStory}</p>
                     <p className="card-text">{priority}</p>
-                    <p className="card-text">{status}</p>
+                    <p className="card-text">{getStatusText(status)}</p>
                     <div className="buttons" style={{ display: "flex", float: "right" }}>
                         <EditTask id={id} name={name} userStory={userStory} priority={priority} />
                         <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>

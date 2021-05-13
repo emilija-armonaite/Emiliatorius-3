@@ -12,7 +12,11 @@ import { RiEdit2Line } from "react-icons/ri";
 export default function EditProject(id) {
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setName(id.name);
+
+  }
   const handleShow = () => {
     setShow(true);
     console.log(id);
@@ -90,10 +94,10 @@ export default function EditProject(id) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton style ={{backgroundColor: "#faf3f3"}}>
+        <Modal.Header closeButton style={{ backgroundColor: "#faf3f3" }}>
           <Modal.Title>Edit Project</Modal.Title>
         </Modal.Header>
-        <Modal.Body style ={{backgroundColor: "#faf3f3"}}>
+        <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
 
           <form onSubmit={submitProject}>
             <div class="form-group">
@@ -109,7 +113,7 @@ export default function EditProject(id) {
           </form>
 
         </Modal.Body>
-        <Modal.Footer style ={{backgroundColor: "#faf3f3"}}>
+        <Modal.Footer style={{ backgroundColor: "#faf3f3" }}>
           <Button variant="outline-secondary" onClick={handleClose}>
             Close
           </Button>

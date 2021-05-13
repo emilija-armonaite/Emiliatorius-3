@@ -36,6 +36,7 @@ export default function Login() {
 
 
   return (
+
     <div style={{
       backgroundImage: `url("https://www.ntaskmanager.com/wp-content/uploads/2019/07/just-sit.png")`,
       backgroundRepeat: "no-repeat",
@@ -72,8 +73,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-      
     </div>
   );
-
 }

@@ -5,8 +5,6 @@ import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ReactDOM from "react-dom";
-
 
 export default function AddProject() {
 
@@ -65,7 +63,7 @@ export default function AddProject() {
 
     return (
         <div>
-            <div className="card text-center h-100" onClick={handleShow} style={{ cursor: "pointer" }}>
+            <div className="card text-center" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "#faf3f3", borderRadius: "20px" }}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 100 }} />
                     <p>Create new project</p>
@@ -74,10 +72,10 @@ export default function AddProject() {
 
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton style={{ backgroundColor: "#faf3f3"}}>
                     <Modal.Title>Create Project</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ backgroundColor: "#faf3f3"}}>
                     <form onSubmit={submitProject}>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Project name</label>
@@ -91,11 +89,11 @@ export default function AddProject() {
                         </div>
                     </form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                <Modal.Footer style={{ backgroundColor: "#faf3f3"}}>
+                    <Button variant="outline-secondary" onClick={handleClose}>
                         Close
           </Button>
-                    <Button variant="primary" onClick={submitProject}>
+                    <Button variant="secondary" onClick={submitProject}>
                         Create
           </Button>
                 </Modal.Footer>

@@ -4,6 +4,7 @@ import NavBar from "../home/Navbar"
 import TaskCard from './TaskCard';
 import AddTask from './AddTask';
 import { useHistory } from "react-router-dom";
+import ExportTask from '../Tasks/ExportTasks';
 
 const Tasks = ({ match }) => {
 
@@ -39,6 +40,7 @@ const Tasks = ({ match }) => {
     return (
         <div>
             <NavBar />
+            <ExportTask />
             <button type="submit" onClick={backToProjects} className="btn btn-outline-dark btn-sm ml-3 mt-2">Go back to projects</button>
             <div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">

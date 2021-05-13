@@ -22,7 +22,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 public class Project {
 
     @Id

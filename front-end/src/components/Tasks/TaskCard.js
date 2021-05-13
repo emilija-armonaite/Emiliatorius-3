@@ -4,7 +4,9 @@ import { FaTrash } from "react-icons/fa";
 import DeleteTask from './DeleteTask';
 import swal from 'sweetalert';
 import EditTask from './EditTask'
-
+import Dropdown from 'react-bootstrap/Dropdown'
+import Card from 'react-bootstrap/Card'
+import ListGroup from "react-bootstrap/ListGroup"
 export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
     const getDeleteAlert = () => {
@@ -40,21 +42,37 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
 
     return (
         <div>
-            <div className="card text-center h-100">
+            <div className="card text-left h-100">
                 <div className="card-body">
-                    <p className="card-text">{id}</p>
                     <h5 className="card-title">{name}</h5>
-                    <p className="card-text">{userStory}</p>
+                    <p className="card-text text-muted">{userStory}</p>
                     <p className="card-text">{priority}</p>
-                    <p className="card-text">{status}</p>
-                    <p className="card-text">{creationDate}</p>
-                    <p className="card-text">{updateDate}</p>
-                    <div className="buttons m-3" style={{ display: "flex" }}>
+                    <div className="buttons m-3" style={{ display: "flex", float: "right" }}>
                         <EditTask id={id} name={name} userStory={userStory} priority={priority} />
-                        <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
+                        <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="outline-dark btn-sm" id="dropdown-basic">More</Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                {/* <Dropdown.Item> */}
+                                <Card style={{ width: '18rem' }}>
+
+                                    <ListGroup.Item>Creation Date {creationDate}</ListGroup.Item>
+                                    <ListGroup.Item>Update Date {updateDate} </ListGroup.Item>
+                                    <ListGroup.Item>Task ID {id}</ListGroup.Item>
+
+                                </Card>
+                                {/* </Dropdown.Item> */}
+                                {/* <Dropdown.Item href="#/action-2">
+                                    <EditTask id={id} name={name} userStory={userStory} priority={priority} />
+                                </Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">
+                                    <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
+                                </Dropdown.Item> */}
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

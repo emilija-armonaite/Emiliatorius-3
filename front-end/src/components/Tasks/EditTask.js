@@ -35,7 +35,12 @@ export default function EditTask(id) {
                 }
             }
         ).then((response) => {
-            window.location.reload(true);
+
+            swal("Nice one! Your task has been updated!", {
+                icon: "success",
+              });
+              setTimeout(() => window.location.reload(), 1500);
+     
             return response;
         },
             (error) => {
@@ -51,18 +56,18 @@ export default function EditTask(id) {
     return (
         <div>
             <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
-            Edit   <RiEdit2Line />
+                <RiEdit2Line />
             </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create Task</Modal.Title>
+                    <Modal.Title>Edit Task</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={submitProject}>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">task name</label>
-                            <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" defaultValue={id.name}  maxlength={maxSymbolsName} />
+                            <label for="exampleInputEmail1">Task name</label>
+                            <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" defaultValue={id.name} maxlength={maxSymbolsName} />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
                         <div class="form-group">
@@ -71,8 +76,8 @@ export default function EditTask(id) {
                             <text className="text-muted float-right"> {userStory.length} / {maxSymbolsStory}</text>
                         </div>
                         <div class="form-group">
-                        <label for="priority">priority</label>
-                            <select  onChange={(e) => setPriority(e.target.value)}  defaultValue={id.priority} class="custom-select" >
+                            <label for="priority">Priority</label>
+                            <select onChange={(e) => setPriority(e.target.value)} defaultValue={id.priority} class="custom-select" >
                                 <option value="LOW">Low</option>
                                 <option selected value="MEDIUM">Medium</option>
                                 <option value="HIGH">High</option>

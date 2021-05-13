@@ -4,8 +4,7 @@ import List from "./List"
 
 export default function Home() {
     return (
-
-        <div className="container">
+        <div>
             <Navbar />
             <List />
         </div>

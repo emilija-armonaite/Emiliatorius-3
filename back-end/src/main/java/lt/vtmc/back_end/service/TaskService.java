@@ -3,7 +3,10 @@ package lt.vtmc.back_end.service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import lt.vtmc.back_end.model.ReturnProject;
+import lt.vtmc.back_end.model.ReturnTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -35,10 +38,12 @@ public class TaskService {
         this.projectRepository = projectRepository;
     }
     
-    public List<Task> getAll() {
+    public List<ReturnTask> getAll() {
     	log.trace("Entering method getAll");
     	log.info("Returning all tasks");
-    	return taskRepository.findAll();
+    	return taskRepository.findAll()
+                .stream().map(task -> mapToReturnTask(task, new ReturnTask()))
+                .collect(Collectors.toList());
     }
 
     public List<Task> findAllByProject(final Long id) {
@@ -177,6 +182,17 @@ public class TaskService {
         project.setTasksLeft((int)project.getProjectTaskTasks().stream()
         		.filter(t -> !t.getStatus().equals(TaskStatus.DONE.toString())).count());
         projectRepository.save(project);
+    }
+
+    private ReturnTask mapToReturnTask(final Task task, final ReturnTask returnTask) {
+        returnTask.setId(task.getId());
+        returnTask.setName(task.getName());
+        returnTask.setUserStory(task.getUserStory());
+        returnTask.setStatus(task.getStatus());
+        returnTask.setPriority(task.getPriority());
+        returnTask.setCreationDate(task.getCreationDate());
+        returnTask.setUpdateDate(task.getUpdateDate());
+        return returnTask;
     }
 
 

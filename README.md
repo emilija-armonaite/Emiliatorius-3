@@ -212,5 +212,5 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[linkedin-url]: https://www.linkedin.com/in/emilija-armonaite/
+[product-screenshot]: https://static.wixstatic.com/media/69785f_3f63e74b071143a9b23029bcf33fc95b.png/v1/fill/w_560,h_318,al_c,q_85,usm_0.66_1.00_0.01/69785f_3f63e74b071143a9b23029bcf33fc95b.webp

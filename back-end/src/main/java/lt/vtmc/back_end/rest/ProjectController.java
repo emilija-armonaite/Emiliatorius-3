@@ -1,19 +1,19 @@
 package lt.vtmc.back_end.rest;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
-import lt.vtmc.back_end.repos.ProjectRepository;
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import io.swagger.annotations.ApiOperation;
+import lt.vtmc.back_end.domain.Project;
+import lt.vtmc.back_end.domain.Task;
+import lt.vtmc.back_end.model.ProjectDTO;
+import lt.vtmc.back_end.model.ReturnProject;
+import lt.vtmc.back_end.model.TaskDTO;
+import lt.vtmc.back_end.repos.TaskRepository;
+import lt.vtmc.back_end.service.ProjectService;
+import lt.vtmc.back_end.service.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,19 +24,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.opencsv.CSVWriter;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
-
-import io.swagger.annotations.ApiOperation;
-import lt.vtmc.back_end.domain.Project;
-import lt.vtmc.back_end.domain.Task;
-import lt.vtmc.back_end.model.ProjectDTO;
-import lt.vtmc.back_end.model.ReturnProject;
-import lt.vtmc.back_end.model.TaskDTO;
-import lt.vtmc.back_end.repos.TaskRepository;
-import lt.vtmc.back_end.service.ProjectService;
-import lt.vtmc.back_end.service.TaskService;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -69,9 +60,10 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<Map<String, Object>> getAllProjectsPages(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "11") int size) {
+            @RequestParam(defaultValue = "11") int size,
+            @RequestParam(required = false) String title) {
 
-        return projectService.getProjectsPages(page, size);
+        return projectService.getProjectsPages(page, size, title);
     }
 
     @GetMapping("/{id}")
@@ -98,8 +90,9 @@ public class ProjectController {
     }
     
     @GetMapping("/{id}/tasks")
-	public ResponseEntity<List<Task>> getAllProjectTasks(@PathVariable final Long id) {
-	    return ResponseEntity.ok(taskService.findAllByProject(id));
+	public ResponseEntity<List<Task>> getAllProjectTasks(@PathVariable final Long id,
+                                                         @RequestParam(required = false) String name) {
+	    return ResponseEntity.ok(taskService.findAllByProject(id, name));
 	}
     
     @PutMapping("/{id}/status")

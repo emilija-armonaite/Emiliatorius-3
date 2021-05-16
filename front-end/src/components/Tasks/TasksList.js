@@ -5,6 +5,7 @@ import TaskCard from './TaskCard';
 import AddTask from './AddTask';
 import { useHistory } from "react-router-dom";
 import ExportTask from '../Tasks/ExportTasks';
+import Footer from '../home/Footer';
 
 const Tasks = ({ match }) => {
 
@@ -39,8 +40,9 @@ const Tasks = ({ match }) => {
     }
 
     return (
-        <div>
+        <div style={{ backgroundColor: "#e1e5ea" }}>
             <NavBar />
+
             <ExportTask />
             <button type="submit" onClick={backToProjects} className="btn btn-outline-dark btn-sm ml-3 mt-2">Go back to projects</button>
             <div class="row py-4 justify-content-center">
@@ -52,6 +54,11 @@ const Tasks = ({ match }) => {
                         </div>
                     </form>
                 </div>
+
+            <div className="buttons mb-3 mr-3 d-flex">
+                <button type="submit" onClick={backToProjects} className="btn btn-outline-dark btn-sm ml-3 mt-2">Go back to projects</button>
+                <ExportTask />
+
             </div>
             <div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
@@ -64,6 +71,7 @@ const Tasks = ({ match }) => {
                     </div>
                 )}
             </div>
+            <Footer/>
         </div>
     )
 }

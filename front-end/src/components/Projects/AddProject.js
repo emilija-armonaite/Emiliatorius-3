@@ -63,7 +63,7 @@ export default function AddProject() {
 
     return (
         <div>
-            <div className="card text-center" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "#faf3f3", borderRadius: "20px" }}>
+            <div className="card text-center card-body flex-fill" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "#faf3f3", borderRadius: "15px"}}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 100 }} />
                     <p>Create new project</p>
@@ -93,7 +93,7 @@ export default function AddProject() {
                     <Button variant="outline-secondary" onClick={handleClose}>
                         Close
           </Button>
-                    <Button variant="secondary" onClick={submitProject}>
+                    <Button variant="info" onClick={submitProject}>
                         Create
           </Button>
                 </Modal.Footer>

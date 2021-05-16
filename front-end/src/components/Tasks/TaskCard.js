@@ -9,6 +9,21 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from "react-bootstrap/ListGroup"
 export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
+
+    const getStatusText = (statusBack) => {
+
+        switch (statusBack) {
+            case "TO_DO":
+                return "TO DO";
+
+
+            default:
+                return "status error";
+        }
+
+    }
+
+
     const getDeleteAlert = () => {
         window.onpopstate = e => {
             e.preventDefault();
@@ -42,23 +57,24 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
 
     return (
         <div>
-            <div className="card text-left h-100">
+            <div className="card text-left" style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text text-muted">{userStory}</p>
                     <p className="card-text">{priority}</p>
-                    <div className="buttons m-3" style={{ display: "flex", float: "right" }}>
+                    <p className="card-text">{getStatusText(status)}</p>
+                    <div className="buttons" style={{ display: "flex", float: "right" }}>
                         <EditTask id={id} name={name} userStory={userStory} priority={priority} />
                         <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>
                         <Dropdown>
                             <Dropdown.Toggle variant="outline-dark btn-sm" id="dropdown-basic">More</Dropdown.Toggle>
-                            <Dropdown.Menu>
+                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3"}}>
                                 {/* <Dropdown.Item> */}
-                                <Card style={{ width: '18rem' }}>
+                                <Card style={{ width: '18rem', backgroundColor: "#faf3f3" }}>
 
-                                    <ListGroup.Item>Creation Date {creationDate}</ListGroup.Item>
-                                    <ListGroup.Item>Update Date {updateDate} </ListGroup.Item>
-                                    <ListGroup.Item>Task ID {id}</ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Creation Date: {creationDate}</ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Update Date: {updateDate} </ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Task ID: {id}</ListGroup.Item>
 
                                 </Card>
                                 {/* </Dropdown.Item> */}

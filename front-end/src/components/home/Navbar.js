@@ -9,11 +9,11 @@ export default function Navbar() {
         <div>
             <nav className="navbar navbar-light justify-content-between" style={{ backgroundColor: "#e1e5ea" }}>
                 <a className="navbar-brand">Emiliatorius'3</a>
-                <Dropdown>
-                    <Dropdown.Toggle variant="outline-dark">
+                <Dropdown> 
+                    <Dropdown.Toggle variant="outline-info">
                         <FaUserAstronaut />
                     </Dropdown.Toggle>
-                    <Dropdown.Menu>
+                    <Dropdown.Menu style={{ backgroundColor: "#faf3f3"}}>
                         <Dropdown.Item> <Username /> </Dropdown.Item>
                         <Dropdown.Item> <Logout /> </Dropdown.Item>
                         {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}

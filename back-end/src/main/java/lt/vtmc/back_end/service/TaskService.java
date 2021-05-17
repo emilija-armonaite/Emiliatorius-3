@@ -46,13 +46,21 @@ public class TaskService {
                 .collect(Collectors.toList());
     }
 
-    public List<Task> findAllByProject(final Long id) {
-    	log.trace("Entering method findAllByProject");
+    public List<Task> findAllByProject(final Long id, String name) {
+        log.trace("Entering method findAllByProject");
         log.debug("Checking if project with id: " + id + " exists");
-    	final Project project = projectRepository.findById(id)
+        final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    	log.info("Returning all task for project with id: " + id);
-    	return taskRepository.findByProjectTask(project);
+        log.info("Returning all task for project with id: " + id);
+        if(name == null || name.isBlank() || name.length() < 2){
+            return  taskRepository.findByProjectTask(project);
+        }
+        if(name.matches("^[+-]?\\d+$")){
+            return taskRepository.findByProjectTask(project).stream()
+                    .filter(task -> task.getId().toString().contains(name)).collect(Collectors.toList());
+        }
+        return taskRepository.findByProjectTask(project).stream()
+                .filter(task -> task.getName().toLowerCase().contains(name)).collect(Collectors.toList());
     }
 
     public Task get(final Long id) {

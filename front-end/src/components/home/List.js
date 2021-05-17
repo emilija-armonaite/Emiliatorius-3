@@ -5,7 +5,6 @@ import AddProject from '../Projects/AddProject';
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
 import ExportProject from '../Projects/ExportProject';
-import ExportTask from '../Tasks/ExportTasks';
 
 export default function List() {
 
@@ -13,11 +12,12 @@ export default function List() {
     const [projects, setProjects] = useState([]);
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const [name, setName] = useState("");
     const user = JSON.parse(localStorage.getItem("token"));
 
 
     useEffect(() => {
-        axios.get(API_URL + "/api/projects?page=" + page, {
+        axios.get(API_URL + "/api/projects?page=" + page + "&title=" + name, {
             headers: {
                 "Authorization": "Bearer " + user.token
             },
@@ -31,7 +31,7 @@ export default function List() {
             .catch(err => {
                 console.log(err);
             })
-    }, [page])
+    }, [page, name])
 
     const goBack = () => {
         if(page !== 0) {
@@ -61,6 +61,19 @@ export default function List() {
         <div style={{ backgroundColor: "#e1e5ea" }}>
             <div className="mx-3 d-flex"><ExportProject /></div>
             {/* <ExportTask /> */}
+
+            <div class="row py-1 justify-content-center">
+                    <div class="col-3 text-center">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Search</label>
+                            <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Project name" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
             <div className="container">
                 <div className="row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">

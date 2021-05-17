@@ -39,17 +39,25 @@ public class ApplicationRunner implements org.springframework.boot.ApplicationRu
 		userService.create(user);
 		
 		log.debug("Creating projects with tasks");
-		for(int i = 0; i <= 100; i++) {
+		for(int i = 1; i <= 50; i++) {
 			ProjectDTO p = new ProjectDTO("Project " + i, "Description");
 			projectService.create(p);
 		}
+		ProjectDTO p1 = new ProjectDTO("geras projektas", "Description");
+		projectService.create(p1);
+		ProjectDTO p2 = new ProjectDTO("Negeras projektas", "Description");
+		projectService.create(p2);
 		
 		List<ReturnProject> projects = projectService.findAll();
 		for (ReturnProject p : projects) {
-			for(int j = 0; j <= 4; j++) {
+			for(int j = 1; j <= 20; j++) {
 				TaskDTO t = new TaskDTO("Task " + j, "UserStory", "MEDIUM");
 				taskService.create(p.getId(), t);
 			}
+			TaskDTO t1 = new TaskDTO("Labai svarbi uzduotis", "UserStory", "HIGH");
+			taskService.create(p.getId(), t1);
+			TaskDTO t2 = new TaskDTO("Visiskai nesvarbi uzduotis", "UserStory", "LOW");
+			taskService.create(p.getId(), t2);
 		}
 		
 	}

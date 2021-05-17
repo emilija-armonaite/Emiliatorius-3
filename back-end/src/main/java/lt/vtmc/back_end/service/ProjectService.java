@@ -32,16 +32,20 @@ public class ProjectService {
     }
 
 
-    public ResponseEntity<Map<String, Object>> getProjectsPages(int page, int size){
+    public ResponseEntity<Map<String, Object>> getProjectsPages(int page, int size, String title){
         try {
-            List<Project> projects = new ArrayList<Project>();
+            List<Project> projects;
             Pageable paging = PageRequest.of(page, size);
 
             Page<Project> pageProjects;
-            pageProjects = projectRepository.findAll(paging);
+            if(title == null || title.isBlank() || title.length() < 2) {
+                pageProjects = projectRepository.findAll(paging);
+            } else {
+                pageProjects = projectRepository.findByNameIgnoreCaseContaining(title, paging);
+            }
 
             projects = pageProjects.getContent();
-            List<ReturnProject> returnProjects = new ArrayList<ReturnProject>();
+            List<ReturnProject> returnProjects;
             returnProjects = projects
                     .stream().map(pro -> mapToReturnProject(pro, new ReturnProject()))
                     .collect(Collectors.toList());

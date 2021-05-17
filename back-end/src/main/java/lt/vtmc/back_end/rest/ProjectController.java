@@ -69,9 +69,10 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<Map<String, Object>> getAllProjectsPages(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "11") int size) {
+            @RequestParam(defaultValue = "11") int size,
+            @RequestParam(required = false) String title) {
 
-        return projectService.getProjectsPages(page, size);
+        return projectService.getProjectsPages(page, size, title);
     }
 
     @GetMapping("/{id}")
@@ -98,8 +99,9 @@ public class ProjectController {
     }
     
     @GetMapping("/{id}/tasks")
-	public ResponseEntity<List<Task>> getAllProjectTasks(@PathVariable final Long id) {
-	    return ResponseEntity.ok(taskService.findAllByProject(id));
+    public ResponseEntity<List<Task>> getAllProjectTasks(@PathVariable final Long id,
+                                                         @RequestParam(required = false) String name) {
+        return ResponseEntity.ok(taskService.findAllByProject(id, name));
 	}
     
     @PutMapping("/{id}/status")

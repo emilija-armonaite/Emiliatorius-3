@@ -26,7 +26,7 @@
 <br />
 <p>
    <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://www.vtmc.lt/uploads/apie-mus/Firminis_stilius/vtmc-logo-zalias-horizontalus-en2.png" alt="Logo">
+    <img src="https://ibb.co/FWxDhNn" alt="Logo">
   </a>
   <h2 align="center"> Projects and tasks managment system</h2>
 

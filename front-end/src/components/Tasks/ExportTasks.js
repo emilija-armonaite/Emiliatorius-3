@@ -2,14 +2,14 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-export default function ExportTask() {
+export default function ExportTask( project ) {
 
   const API_URL = 'http://localhost:8081';
   const user = JSON.parse(localStorage.getItem("token"));
 
 
   const downloadData = () => {
-    fetch(API_URL + '/api/tasks/export', {
+    fetch(API_URL + `/api/tasks/export/${project.project}`, {
       headers: {
         'Authorization': 'Bearer ' + user.token
       }

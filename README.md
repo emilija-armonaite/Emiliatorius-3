@@ -26,7 +26,7 @@
 <br />
 <p>
    <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://ibb.co/FWxDhNn" alt="Logo">
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vtmc.lt%2Ffirminis-stilius%2F&psig=AOvVaw1tKB8ysGyHrj5csdLIlYMt&ust=1621446243060000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCSoI3k0_ACFQAAAAAdAAAAABAV" alt="Logo">
   </a>
   <h2 align="center"> Projects and tasks managment system</h2>
 

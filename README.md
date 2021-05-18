@@ -28,7 +28,7 @@
    <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="https://www.vtmc.lt/uploads/apie-mus/Firminis_stilius/vtmc-logo-zalias-horizontalus-en2.png" alt="Logo">
   </a>
-  <h3 align="center"> Projektu uzduociu valdymo sistema</h3>
+  <h2 align="center"> Projects and tasks managment sistem</h2>
 
 </p>
 

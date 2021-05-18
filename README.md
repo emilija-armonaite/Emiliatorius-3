@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://ibb.co/FWxDhNn)
 
 This generic project for project and project task managment. This project aids with project managment between teams.
 

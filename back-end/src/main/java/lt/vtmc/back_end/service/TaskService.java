@@ -1,25 +1,23 @@
 package lt.vtmc.back_end.service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import lt.vtmc.back_end.model.ReturnProject;
+import lt.vtmc.back_end.domain.Project;
+import lt.vtmc.back_end.domain.Task;
+import lt.vtmc.back_end.domain.TaskPriority;
+import lt.vtmc.back_end.domain.TaskStatus;
 import lt.vtmc.back_end.model.ReturnTask;
+import lt.vtmc.back_end.model.TaskDTO;
+import lt.vtmc.back_end.repos.ProjectRepository;
+import lt.vtmc.back_end.repos.TaskRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import lt.vtmc.back_end.domain.Project;
-import lt.vtmc.back_end.domain.Task;
-import lt.vtmc.back_end.domain.TaskPriority;
-import lt.vtmc.back_end.domain.TaskStatus;
-import lt.vtmc.back_end.model.TaskDTO;
-import lt.vtmc.back_end.repos.ProjectRepository;
-import lt.vtmc.back_end.repos.TaskRepository;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -44,6 +42,17 @@ public class TaskService {
     	return taskRepository.findAll()
                 .stream().map(task -> mapToReturnTask(task, new ReturnTask()))
                 .collect(Collectors.toList());
+    }
+
+    public List<ReturnTask> findAllToCsv(final Long id) {
+        log.trace("Entering method findAllToCsv");
+        log.debug("Checking if project with id: " + id + " exists");
+        final Project project = projectRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        log.info("Returning all task for project with id: " + id);
+
+        return taskRepository.findByProjectTask(project).stream()
+                .map(task -> mapToReturnTask(task, new ReturnTask())).collect(Collectors.toList());
     }
 
     public List<Task> findAllByProject(final Long id, String name) {

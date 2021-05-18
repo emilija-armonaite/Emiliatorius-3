@@ -13,6 +13,7 @@ const Tasks = ({ match }) => {
     const [name, setName] = useState("");
     const user = JSON.parse(localStorage.getItem("token"));
 
+
     useEffect(() => {
         fetchTask();
     }, [name])
@@ -44,7 +45,7 @@ const Tasks = ({ match }) => {
             <NavBar />
             <div className="buttons mb-3 mr-3 d-flex">
                 <button type="submit" onClick={backToProjects} className="btn btn-outline-dark btn-sm ml-3 mt-2">Go back to projects</button>
-                <ExportTask />
+                <ExportTask project={match.params.id} />
             </div>
 
             <div class="row py-1 justify-content-center">

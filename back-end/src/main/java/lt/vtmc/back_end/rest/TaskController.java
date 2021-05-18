@@ -1,40 +1,25 @@
 package lt.vtmc.back_end.rest;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import io.swagger.annotations.ApiOperation;
+import lt.vtmc.back_end.domain.Task;
 import lt.vtmc.back_end.model.ReturnTask;
+import lt.vtmc.back_end.model.TaskDTO;
+import lt.vtmc.back_end.service.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.opencsv.CSVWriter;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
-
-import io.swagger.annotations.ApiOperation;
-import lt.vtmc.back_end.domain.Task;
-import lt.vtmc.back_end.model.ReturnProject;
-import lt.vtmc.back_end.model.TaskDTO;
-import lt.vtmc.back_end.service.TaskService;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 
 @RestController
@@ -88,8 +73,8 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/export")
-    public void exportCSV(HttpServletResponse response) throws Exception {
+    @GetMapping("/export/{id}")
+    public void exportCSV(HttpServletResponse response, @PathVariable final Long id) throws Exception {
         String filename = "Tasks.csv";
 
         response.setContentType("txt/csv");
@@ -102,7 +87,7 @@ public class TaskController {
                 .withOrderedResults(false)
                 .build();
 
-        writer.write(taskService.getAll());
+        writer.write(taskService.findAllToCsv(id));
     }
 
 }

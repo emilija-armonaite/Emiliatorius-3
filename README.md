@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://ibb.co/FWxDhNn)
+[![Product Name Screen Shot][product-screenshot]](https://i.ibb.co/QcbKJzX/log.png)
 
 This generic project for project and project task managment. This project aids with project managment between teams.
 
@@ -195,4 +195,4 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/emilija-armonaite/
-[product-screenshot]: https://ibb.co/FWxDhNn
+[product-screenshot]: https://i.ibb.co/QcbKJzX/log.png

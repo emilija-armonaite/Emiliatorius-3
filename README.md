@@ -84,6 +84,9 @@ This section should list any major frameworks that you built your project using.
 * [SPRING](https://spring.io/)
 * [H2](https://www.h2database.com/html/main.html)
 * [Lombok](https://projectlombok.org/)
+* [SWAGGER](https://swagger.io/)
+* [Maven](https://maven.apache.org/)
+* [Spring security](https://spring.io/projects/spring-security)
 
 
 <!-- GETTING STARTED -->

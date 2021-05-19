@@ -28,7 +28,7 @@
    <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="https://www.vtmc.lt/uploads/apie-mus/Firminis_stilius/vtmc-logo-zalias-horizontalus-en2.png" alt="Logo">
   </a>
-  <h1 align="center">Projects and tasks managment system</h1>
+  <h1 align="center">:bulb: Projects and tasks managment system :bulb:</h1>
 
 </p>
 
@@ -61,7 +61,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+##  :crossed_flags: About The Project :crossed_flags:
 
 [![Product Name Screen Shot][product-screenshot]](https://i.ibb.co/QcbKJzX/log.png)
 
@@ -73,7 +73,7 @@ With this sistem you can:
 * Use full CRUD to manage projects and tasks database.
 
 
-### Built With
+### :man_technologist: Built With :man_technologist:
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Bootstrap](https://getbootstrap.com)
@@ -88,12 +88,12 @@ This section should list any major frameworks that you built your project using.
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+##                                                                :traffic_light: Getting Started :traffic_light:
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### :technologist: Prerequisites :technologist:
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
@@ -101,7 +101,7 @@ This is an example of how to list things you need to use the software and how to
   npm install npm@latest -g
   ```
 
-### Installation
+### :floppy_disk: Installation :floppy_disk:
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -126,7 +126,7 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## :desktop_computer: Usage :desktop_computer:
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -144,7 +144,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## :information_desk_person: Contributing :information_desk_person:
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -156,7 +156,7 @@ Contributions are what make the open source community such an amazing place to b
 
 
 <!-- CONTACT -->
-## Contacts
+##  :calling: Contacts :calling:s
 
 Nedas Bačinskas - [@your_twitter](https://twitter.com/your_username) - email@example.com
 Emilija Armonaitė - [@your_twitter](https://twitter.com/your_username) - email@example.com

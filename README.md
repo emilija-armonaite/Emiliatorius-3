@@ -156,7 +156,7 @@ Contributions are what make the open source community such an amazing place to b
 
 
 <!-- CONTACT -->
-##  :calling: Contacts :calling:s
+##  :calling: Contacts :calling:
 
 Nedas Bačinskas - [@your_twitter](https://twitter.com/your_username) - email@example.com
 Emilija Armonaitė - [@your_twitter](https://twitter.com/your_username) - email@example.com

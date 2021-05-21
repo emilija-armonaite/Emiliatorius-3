@@ -75,7 +75,7 @@ With this sistem you can:
 
 ### :man_technologist: Built With :man_technologist:
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [Bootstrap](https://getbootstrap.com)
 * [React](https://reactjs.org/)
 * [JAVA](https://www.java.com/en/)

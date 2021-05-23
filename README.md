@@ -90,8 +90,12 @@ With this sistem you can:
 <!-- GETTING STARTED -->
 ##                                                                :traffic_light: Getting Started :traffic_light:
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+- Clone the repository git@github.com:emilija-armonaite/Projektu-uzduociu-valdymo-sistema.git
+
+
+### Accessing the database
+
+http://localhost:8081/console/
 
 ### :technologist: Prerequisites :technologist:
 
@@ -103,42 +107,34 @@ This is an example of how to list things you need to use the software and how to
 
 ### :floppy_disk: Installation :floppy_disk:
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-
-
-
-
-
-
+- Clone the repository git@github.com:emilija-armonaite/Projektu-uzduociu-valdymo-sistema.git
+- Install Eclipse with Springtool siute
+- Install Lombok
+- go to project folder
+- run npm install and npm run
+- run project in Eclipse as Spring boot app
 
 
 <!-- USAGE EXAMPLES -->
 ## :desktop_computer: Usage :desktop_computer:
+Login to system with usermail : admin@mail.com and password : password.
+
+In home page you can create new projects. See projects tasks amount. You can update or delete projects by pressing buttons on projects cards.
+
+![Product Name Screen Shot][product-screenshot1]
+
+By pressing projects card itself you will get to tasks page. Where you can create,update,delete project tasks.
+And change tasks status.
 
 
 
+![Product Name Screen Shot][product-screenshot2]
 
 
+In nav-bar you can find export tasks and projects buttons which will start projects list downlownd in Csv format.
 
 
-
-
-
-
-
+![Product Name Screen Shot][product-screenshot3]
 
 <!-- CONTRIBUTING -->
 ## :information_desk_person: Contributing :information_desk_person:
@@ -171,9 +167,10 @@ Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/) -
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/emilija-armonaite/
-[product-screenshot]: https://i.ibb.co/QcbKJzX/log.png
+[product-screenshot]: https://ibb.co/9nKpgbZ
+[product-screenshot1]: https://i.ibb.co/sjxgRKW/home.png
+[product-screenshot2]: https://i.ibb.co/MnXcyHv/tasks.png
+[product-screenshot3]: https://i.ibb.co/z5nr8nx/nav.png
 Copyright ©️ 2021, Emiliatorius`3

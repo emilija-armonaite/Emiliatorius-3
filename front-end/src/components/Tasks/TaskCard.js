@@ -1,5 +1,4 @@
 import React from 'react'
-import { RiEdit2Line } from "react-icons/ri";
 import { FaTrash } from "react-icons/fa";
 import DeleteTask from './DeleteTask';
 import swal from 'sweetalert';
@@ -11,18 +10,18 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
 
 
     const getStatusText = (statusBack) => {
-
         switch (statusBack) {
             case "TO_DO":
-                return "TO DO";
-
-
+                return "To Do";
+            case "IN_PROGRESS":
+                return "In Progress";
+            case "DONE":
+                return "Done";
+            
             default:
                 return "status error";
         }
-
     }
-
 
     const getDeleteAlert = () => {
         window.onpopstate = e => {

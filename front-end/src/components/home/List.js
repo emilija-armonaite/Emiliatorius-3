@@ -97,7 +97,7 @@ export default function List() {
                 </div>
                 <div class="row py-4 justify-content-center">
                     <div class="col-6 text-center">
-                        <button onClick={goBack} type="button" class="btn btn-outline-info m-1">
+                        <button onClick={goBack} type="button" class="btn btn-sm btn-outline-info m-1">
                             <RiArrowLeftSLine />
                         </button >
                         <button onClick={goToFirst} type="button" class="btn btn-outline-info m-1">
@@ -109,7 +109,7 @@ export default function List() {
                         <button onClick={goToLast} type="button" class="btn btn-outline-info m-1">
                             {totalPages}
                         </button>
-                        <button onClick={goforward} type="button" class="btn btn-outline-info m-1">
+                        <button onClick={goforward} type="button" class="btn btn-sm btn-outline-info m-1">
                             <RiArrowRightSLine />
                         </button>
                     </div>

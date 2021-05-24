@@ -58,7 +58,7 @@ export default function ProjectList({ projects, id, name, description, status, t
 
     }
 
-    
+
     const [backColor, setBackColor] = React.useState("");
     const styles = {
         borderRadius: "15px",
@@ -66,20 +66,11 @@ export default function ProjectList({ projects, id, name, description, status, t
         backgroundColor: backColor
     }
 
-    // function MouseOver() {
-    //     styles.background = 'red';
-    // }
-    // function MouseOut() {
-    //     styles.background = "";
-    // }
-
     return (
         <div className="card text-left h-100 flex-fill"
             style={styles}
-            onMouseEnter={() => setBackColor("#dbdbdb")}
-            onMouseLeave={() => setBackColor("")}
-        >
-
+            onMouseEnter={() => setBackColor("#faf3f3")}
+            onMouseLeave={() => setBackColor("")}>
             <Link to={`/projects/${id}/tasks`}
                 style={{ textDecoration: "none", color: "black" }}>
                 <div className="cardTop d-flex">
@@ -90,8 +81,8 @@ export default function ProjectList({ projects, id, name, description, status, t
                             maxValue={tasksAmount}
                             styles={buildStyles({
                                 // textColor: "red",
-                                // pathColor: "lightblue",
-                                // trailColor: "gold"
+                                pathColor: "#39C0ED",
+                                // trailColor: "#39C0ED"
                             })} />
                     </div>
                     <div>

@@ -61,9 +61,21 @@ export default function AddProject() {
         );
     }
 
+    const [backColor, setBackColor] = React.useState("");
+    const styles = {
+        borderRadius: "15px",
+        cursor: "pointer",
+        backgroundColor: "#faf3f3",
+        backgroundColor: backColor
+    }
+
     return (
         <div>
-            <div className="card text-center card-body flex-fill" onClick={handleShow} style={{ cursor: "pointer", borderRadius: "15px"}}>
+            <div className="card text-center card-body flex-fill"
+                onClick={handleShow}
+                style={styles}
+                onMouseEnter={() => setBackColor("#faf3f3")}
+                onMouseLeave={() => setBackColor("")}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 100 }} />
                     <p>Create new project</p>
@@ -72,10 +84,10 @@ export default function AddProject() {
 
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton style={{ backgroundColor: "#faf3f3"}}>
+                <Modal.Header closeButton style={{ backgroundColor: "#faf3f3" }}>
                     <Modal.Title>Create Project</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ backgroundColor: "#faf3f3"}}>
+                <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Project name</label>
@@ -89,7 +101,7 @@ export default function AddProject() {
                         </div>
                     </form>
                 </Modal.Body>
-                <Modal.Footer style={{ backgroundColor: "#faf3f3"}}>
+                <Modal.Footer style={{ backgroundColor: "#faf3f3" }}>
                     <Button variant="outline-secondary" onClick={handleClose}>
                         Close
           </Button>

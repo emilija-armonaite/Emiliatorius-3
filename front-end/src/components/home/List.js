@@ -34,25 +34,25 @@ export default function List() {
     }, [page, name])
 
     const goBack = () => {
-        if(page !== 0) {
+        if (page !== 0) {
             setTimeout(() => setPage(page - 1), 0);
         }
     }
 
     const goforward = () => {
-        if(page + 1 < totalPages) {
+        if (page + 1 < totalPages) {
             setTimeout(() => setPage(page + 1), 0);
         }
     }
 
     const goToLast = () => {
-        if(page !== totalPages) {
+        if (page !== totalPages) {
             setTimeout(() => setPage(totalPages - 1), 0);
         }
     }
 
     const goToFirst = () => {
-        if(page !== 0) {
+        if (page !== 0) {
             setTimeout(() => setPage(0), 0);
         }
     }
@@ -62,19 +62,29 @@ export default function List() {
             <div className="mx-3 d-flex"><ExportProject /></div>
             {/* <ExportTask /> */}
 
-            <div class="row py-1 justify-content-center">
-                    <div class="col-3 text-center">
+            {/* <div className="row py-1 justify-content-center"> */}
+            {/* <div class="col-3 align-self-center text-center">
                     <form>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="name">Search</label>
                             <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Project name" />
                         </div>
                     </form>
-                </div>
-            </div>
+                </div> */}
+            {/* </div> */}
 
 
             <div className="container">
+                <div className="row py-1 justify-content-center">
+                    <div class="col-3 text-center">
+                        <form>
+                            <div className="form-group">
+                                <label for="name">Search</label>
+                                <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Project name" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div className="row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
                         <AddProject />
@@ -105,6 +115,6 @@ export default function List() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

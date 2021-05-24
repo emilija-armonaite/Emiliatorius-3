@@ -55,11 +55,24 @@ export default function ProjectList({ projects, id, name, description, status, t
                     }
                 }
             });
+
     }
-    
+
+
+    const [backColor, setBackColor] = React.useState("");
+    const styles = {
+        borderRadius: "15px",
+        backgroundColor: "#faf3f3",
+        backgroundColor: backColor
+    }
+
     return (
-        <div className="card text-left h-100 flex-fill" style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
-            <Link to={`/projects/${id}/tasks`} style={{ textDecoration: "none", color: "black" }}>
+        <div className="card text-left h-100 flex-fill"
+            style={styles}
+            onMouseEnter={() => setBackColor("#faf3f3")}
+            onMouseLeave={() => setBackColor("")}>
+            <Link to={`/projects/${id}/tasks`}
+                style={{ textDecoration: "none", color: "black" }}>
                 <div className="cardTop d-flex">
                     <div style={{ width: "60px", marginLeft: "10px", marginTop: "10px" }}>
                         <CircularProgressbar
@@ -68,8 +81,8 @@ export default function ProjectList({ projects, id, name, description, status, t
                             maxValue={tasksAmount}
                             styles={buildStyles({
                                 // textColor: "red",
-                                // pathColor: "lightblue",
-                                // trailColor: "gold"
+                                pathColor: "#39C0ED",
+                                // trailColor: "#39C0ED"
                             })} />
                     </div>
                     <div>

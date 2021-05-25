@@ -63,7 +63,7 @@ export default function ProjectList({ projects, id, name, description, status, t
     const styles = {
         borderRadius: "15px",
         backgroundColor: "#faf3f3",
-        backgroundColor: backColor
+        backgroundColor: backColor,
     }
 
     return (
@@ -81,12 +81,12 @@ export default function ProjectList({ projects, id, name, description, status, t
                             maxValue={tasksAmount}
                             styles={buildStyles({
                                 // textColor: "red",
-                                pathColor: "#39C0ED",
+                                pathColor: "#17a2b8",
                                 // trailColor: "#39C0ED"
                             })} />
                     </div>
                     <div>
-                        <p className="card-text mt-4 mx-4">{getStatusText(status)}</p>
+                        <p className="card-text mt-4 mx-4" >{getStatusText(status)}</p>
                     </div>
                 </div>
                 <div className="card-body flex-fill">

@@ -46,10 +46,22 @@ export default function AddTask(id) {
             }
         );
     }
+    const [backColor, setBackColor] = React.useState("");
+    const styles = {
+        borderRadius: "15px",
+        backgroundColor: "#faf3f3",
+        backgroundColor: backColor,
+        cursor: "pointer",
+        width: "300px", 
+        justifyContent: "start"
+    }
 
     return (
         <div>
-            <div className="card text-center" onClick={handleShow} style={{cursor: "pointer", backgroundColor: "white", borderRadius: "15px", width: "300px", justifyContent: "start"}}>
+            <div className="card text-center" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "white", borderRadius: "15px", width: "300px", justifyContent: "start" }}
+                        style={styles}
+                        onMouseEnter={() => setBackColor("#faf3f3")}
+                        onMouseLeave={() => setBackColor("")}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 70 }} />
                     <p>Create new task</p>

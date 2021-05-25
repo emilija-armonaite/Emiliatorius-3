@@ -72,13 +72,23 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
             });
     }
 
+    const [backColor, setBackColor] = React.useState("");
+    const styles = {
+        borderRadius: "15px",
+        backgroundColor: "#faf3f3",
+        backgroundColor: backColor
+    }
+
     return (
         <div>
-            <div className="card text-left" style={{ backgroundColor: "white", borderRadius: "15px" }}>
+            <div className="card text-left" 
+            style={styles}
+            onMouseEnter={() => setBackColor("#faf3f3")}
+            onMouseLeave={() => setBackColor("")}>
                 <div className="card-body">
                     <div className="cardTop d-flex">
-                        <h5 className="card-title">{name}</h5>
-                        <p className="card-text ml-5" style={{ color: getPriorityStyle() }} >{priority}</p>
+                        <h5 className="card-title" numberOfLines={1} style={{ width: 150 }}>{name}</h5>
+                        <p className="card-text ml-5" style={{ color: getPriorityStyle(), marginRight: "0px" }} >{priority}</p>
                     </div>
                     <p className="card-text text-muted">{userStory}</p>
                     {/* <p className="card-text">{getStatusText(status)}</p> */}

@@ -17,10 +17,28 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                 return "In Progress";
             case "DONE":
                 return "Done";
-            
+
             default:
                 return "status error";
         }
+    }
+
+    const getPriorityStyle = () => {
+        let color;
+        switch (priority) {
+            case "LOW":
+                color = "#55a366";
+                break;
+            case "MEDIUM":
+                color = "#e8ed72";
+                break;
+            case "HIGH":
+                color = "#a1151f";
+                break;
+            default:
+                color = "black";
+        }
+        return color;
     }
 
     const getDeleteAlert = () => {
@@ -56,24 +74,26 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
 
     return (
         <div>
-            <div className="card text-left" style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
+            <div className="card text-left" style={{ backgroundColor: "white", borderRadius: "15px" }}>
                 <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
+                    <div className="cardTop d-flex">
+                        <h5 className="card-title">{name}</h5>
+                        <p className="card-text ml-5" style={{ color: getPriorityStyle() }} >{priority}</p>
+                    </div>
                     <p className="card-text text-muted">{userStory}</p>
-                    <p className="card-text">{priority}</p>
-                    <p className="card-text">{getStatusText(status)}</p>
+                    {/* <p className="card-text">{getStatusText(status)}</p> */}
                     <div className="buttons" style={{ display: "flex", float: "right" }}>
                         <EditTask id={id} name={name} userStory={userStory} priority={priority} />
                         <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>
                         <Dropdown>
                             <Dropdown.Toggle variant="outline-dark btn-sm" id="dropdown-basic">More</Dropdown.Toggle>
-                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3"}}>
+                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3" }}>
                                 {/* <Dropdown.Item> */}
                                 <Card style={{ width: '18rem', backgroundColor: "#faf3f3" }}>
 
-                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Creation Date: {creationDate}</ListGroup.Item>
-                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Update Date: {updateDate} </ListGroup.Item>
-                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Task ID: {id}</ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3" }}>Creation Date: {creationDate}</ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3" }}>Update Date: {updateDate} </ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3" }}>Task ID: {id}</ListGroup.Item>
 
                                 </Card>
                                 {/* </Dropdown.Item> */}

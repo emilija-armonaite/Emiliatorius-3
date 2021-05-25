@@ -49,9 +49,9 @@ export default function AddTask(id) {
 
     return (
         <div>
-            <div className="card text-center" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "#faf3f3", borderRadius: "15px" }}>
+            <div className="card text-center" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "white", borderRadius: "15px" }}>
                 <div className="card-body">
-                    <IoAddOutline style={{ fontSize: 100 }} />
+                    <IoAddOutline style={{ fontSize: 70 }} />
                     <p>Create new task</p>
                 </div>
             </div>

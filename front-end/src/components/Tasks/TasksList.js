@@ -103,10 +103,10 @@ const Tasks = ({ match }) => {
             </form>
           </div>
         </div>
-        <div class="text-center " style={{ display: "flex", justifyContent: "center"}}>
-          <AddTask />
-        </div>
         <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+          <div class="col-3 text-center" style={{ display: "flex", justifyContent: "start", marginTop: "40px", marginRight: "45px" }}>
+            <AddTask id={match.params.id} />
+          </div>
           <DragDropContext
             onDragEnd={result => onDragEnd(result, columns, setColumns)}
           >
@@ -116,15 +116,15 @@ const Tasks = ({ match }) => {
                   style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
                   key={columnId}
                 >
-                  <h2>{column.name}</h2>
-                  <div style={{ margin: 8 }}>
+                  <h4>{column.name}</h4>
+                  <div style={{ margin: 1 }}>
                     <Droppable droppableId={columnId} key={columnId}>
                       {(provided, snapshot) => {
                         return (
                           <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
-                            style={{ padding: 4, width: 300, minHeight: 500 }}
+                            style={{ padding: 4, width: 300, minHeight: 500, margin: 4, backgroundColor: "white", borderRadius: "15px" }}
                           >
                             {tasks.filter(task => task.status === column.status).map((task, index) => {
                               return (
@@ -140,8 +140,9 @@ const Tasks = ({ match }) => {
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         style={{
-                                          userSelect: "none", padding: 16, margin: "0 0 8px 0",
+                                          userSelect: "none", padding: 10, margin: "0 0 1px 0",
                                           minHeight: "50px",
+                                          // backgroundColor: "white",
                                           ...provided.draggableProps.style
                                         }}
                                       >

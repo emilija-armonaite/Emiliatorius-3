@@ -90,10 +90,10 @@ public class ProjectController {
     }
     
     @GetMapping("/{id}/tasks")
-    public ResponseEntity<List<Task>> getAllProjectTasks(@PathVariable final Long id,
+    public ResponseEntity<Map<String, Object>> getAllProjectTasks(@PathVariable final Long id,
                                                          @RequestParam(required = false) String name) {
-        return ResponseEntity.ok(taskService.findAllByProject(id, name));
-	}
+        return taskService.findAllByProject(id, name);
+ }
     
     @PutMapping("/{id}/status")
     @ApiOperation(value="updateStatus", notes="Statuses: IN_PROGRESS, DONE")

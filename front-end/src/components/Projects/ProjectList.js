@@ -12,16 +12,35 @@ export default function ProjectList({ projects, id, name, description, status, t
 
     const getStatusText = (statusBack) => {
 
-        switch (statusBack) {
-            case "IN_PROGRESS":
-                return "IN PROGRESS";
+       
+        if (0 == tasksLeft) {
+
+            switch (statusBack) {
+                case "IN_PROGRESS":
+
+                    return "COMPLETE";
 
 
-            default:
-                return "status error";
+                default:
+                    return "status error";
+            }
+
         }
+        else {
 
+            switch (statusBack) {
+                case "IN_PROGRESS":
+                    return "IN PROGRESS";
+
+
+                default:
+                    return "status error";
+            }
+
+
+        }
     }
+
 
     const getDeleteAlert = () => {
 
@@ -58,19 +77,31 @@ export default function ProjectList({ projects, id, name, description, status, t
 
     }
 
+    const tasksCompleteStyle = ()=>{
+              if(tasksLeft===0){
+           return "red";
+        }
+        else{
+            return "blue";
+        }
+    } 
+    const [backColor, setBackColor] = React.useState(tasksCompleteStyle());
 
-    const [backColor, setBackColor] = React.useState("");
     const styles = {
+   
         borderRadius: "15px",
-        backgroundColor: "#faf3f3",
-        backgroundColor: backColor,
+        backgroundColor: backColor
+
     }
+  
 
     return (
-        <div className="card text-left h-100 flex-fill"
+        <div className="card text-left h-100 flex-fill"          
             style={styles}
+            
             onMouseEnter={() => setBackColor("#faf3f3")}
-            onMouseLeave={() => setBackColor("")}>
+            onMouseLeave={() => setBackColor(tasksCompleteStyle())}
+        >
             <Link to={`/projects/${id}/tasks`}
                 style={{ textDecoration: "none", color: "black" }}>
                 <div className="cardTop d-flex">
@@ -79,10 +110,12 @@ export default function ProjectList({ projects, id, name, description, status, t
                             value={tasksAmount - tasksLeft}
                             text={`${tasksAmount - tasksLeft}/${tasksAmount}`}
                             maxValue={tasksAmount}
+
                             styles={buildStyles({
                                 // textColor: "red",
                                 pathColor: "#17a2b8",
                                 // trailColor: "#39C0ED"
+
                             })} />
                     </div>
                     <div>

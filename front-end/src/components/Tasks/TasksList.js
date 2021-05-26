@@ -14,7 +14,7 @@ const Tasks = ({ match }) => {
   const [tasks, setTasks] = useState([]);
   const [name, setName] = useState("");
   const user = JSON.parse(localStorage.getItem("token"));
-
+const [projectName, setProjectName] = useState("");
 
   useEffect(() => {
     fetchTask();
@@ -28,12 +28,18 @@ const Tasks = ({ match }) => {
       },
     })
       .then(response => {
-        setTasks(response.data);
+        setTasks(response.data.tasks);
+        console.log(response.data.project);
+        setProjectName(response.data.project);
+
       })
       .catch(err => {
         console.log(err);
       })
   }
+  // const projectName = () => {
+  //   return response.date.project;
+  // }
 
   const columnsFromBackend = {
     "TO_DO": {
@@ -118,102 +124,81 @@ const Tasks = ({ match }) => {
             </form>
           </div> */}
         </div>
-        <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-          {/* <div class="col-3 text-center" style={{ display: "flex", justifyContent: "start", marginTop: "40px", marginRight: "45px" }}>
-            <AddTask id={match.params.id} />
-          </div> */}
-          <DragDropContext
-            onDragEnd={result => onDragEnd(result, columns, setColumns)}
-          >
-            {Object.entries(columns).map(([columnId, column], index) => {
-              return (
-                <div
-                  style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-                  key={columnId}
-                >
-                  <h4>{column.name}</h4>
-                  <div style={{ margin: 1 }}>
-                    <Droppable droppableId={columnId} key={columnId}>
-                      {(provided, snapshot) => {
-                        return (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            style={{ padding: 4, width: 300, minHeight: 500, margin: 4, backgroundColor: "white", borderRadius: "15px" }}
-                          >
-                            {tasks.filter(task => task.status === column.status).map((task, index) => {
-                              return (
-                                <Draggable
-                                  key={task.id}
-                                  draggableId={'' + task.id}
-                                  index={index}
-                                >
-                                  {(provided, snapshot) => {
-                                    return (
-                                      <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        style={{
-                                          userSelect: "none", padding: 10, margin: "0 0 1px 0",
-                                          minHeight: "50px",
-                                          // backgroundColor: "white",
-                                          ...provided.draggableProps.style
-                                        }}
-                                      >
-                                        <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} status={task.status} creationDate={task.creationDate} updateDate={task.updateDate} />
-                                      </div>
-                                    );
-                                  }}
-                                </Draggable>
-                              );
-                            })}
-                            {provided.placeholder}
-                          </div>
-                        );
-                      }}
-                    </Droppable>
+
+        <div class="col-12">
+
+
+          <div class="row-12 " style={{ display: "flex", justifyContent: "center", marginTop: "40px", marginBottom: "40px"}}>
+            <div class="col-3"></div>
+            <div class="col-6">
+              <AddTask id={match.params.id} />
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+
+            <DragDropContext
+              onDragEnd={result => onDragEnd(result, columns, setColumns)}
+            >
+              {Object.entries(columns).map(([columnId, column], index) => {
+                return (
+                  <div
+                    style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+                    key={columnId}
+                  >
+                    <h4>{column.name}</h4>
+                    <div style={{ margin: 1 }}>
+                      <Droppable droppableId={columnId} key={columnId}>
+                        {(provided, snapshot) => {
+                          return (
+                            <div
+                              {...provided.droppableProps}
+                              ref={provided.innerRef}
+                              style={{ padding: 4, width: 300, minHeight: 500, margin: 4, backgroundColor: "white", borderRadius: "15px" }}
+                            >
+                              {tasks.filter(task => task.status === column.status).map((task, index) => {
+                                return (
+                                  <Draggable
+                                    key={task.id}
+                                    draggableId={'' + task.id}
+                                    index={index}
+                                  >
+                                    {(provided, snapshot) => {
+                                      return (
+                                        <div
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                          style={{
+                                            userSelect: "none", padding: 10, margin: "0 0 1px 0",
+                                            minHeight: "50px",
+                                            // backgroundColor: "white",
+                                            ...provided.draggableProps.style
+                                          }}
+                                        >
+                                          <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} status={task.status} creationDate={task.creationDate} updateDate={task.updateDate} />
+                                        </div>
+                                      );
+                                    }}
+                                  </Draggable>
+                                );
+                              })}
+                              {provided.placeholder}
+                            </div>
+                          );
+                        }}
+                      </Droppable>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </DragDropContext>
+                );
+              })}
+            </DragDropContext>
+          </div>
         </div>
       </div>
       <Footer />
     </div>
 
-    // <div style={{ backgroundColor: "#e1e5ea" }}>
-    //     <NavBar />
-    //     <div className="buttons mb-3 mr-3 d-flex">
-    //         <button type="submit" onClick={backToProjects} className="btn btn-outline-dark btn-sm ml-3 mt-2">Go back to projects</button>
-    //         <ExportTask project={match.params.id} />
-    //     </div>
-
-    //     <div class="row py-1 justify-content-center">
-    //             <div class="col-3 text-center">
-    //             <form>
-    //                 <div class="form-group">
-    //                     <label for="name">Search</label>
-    //                     <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Task name or id" />
-    //                 </div>
-    //             </form>
-    //         </div>
-    //     </div>
-
-    //     <div>
-    //         <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
-    //             <AddTask id={match.params.id} />
-    //         </div>
-
-    //         {tasks.map(task =>
-    //             <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-4">
-    //                 <TaskCard key={task.id} tasks={tasks} id={task.id} name={task.name} userStory={task.userStory} priority={task.priority} status={task.status} creationDate={task.creationDate} updateDate={task.updateDate} />
-    //             </div>
-    //         )}
-    //     </div>
-    //     <Footer/>
-    // </div>
   )
 }
 

@@ -12,6 +12,20 @@ export default function ProjectList({ projects, id, name, description, status, t
 
     const getStatusText = (statusBack) => {
 
+        if(0==tasksLeft){
+
+        switch (statusBack) {
+            case "IN_PROGRESS":
+                return "Complete";
+
+
+            default:
+                return "status error";
+        }
+        
+    }
+    else {
+
         switch (statusBack) {
             case "IN_PROGRESS":
                 return "IN PROGRESS";
@@ -21,7 +35,10 @@ export default function ProjectList({ projects, id, name, description, status, t
                 return "status error";
         }
 
+
+}
     }
+   
 
     const getDeleteAlert = () => {
 
@@ -79,11 +96,13 @@ export default function ProjectList({ projects, id, name, description, status, t
                             value={tasksAmount - tasksLeft}
                             text={`${tasksAmount - tasksLeft}/${tasksAmount}`}
                             maxValue={tasksAmount}
+
                             styles={buildStyles({
                                 // textColor: "red",
                                 pathColor: "#39C0ED",
                                 // trailColor: "#39C0ED"
-                            })} />
+                            
+                        }) } />
                     </div>
                     <div>
                         <p className="card-text mt-4 mx-4">{getStatusText(status)}</p>

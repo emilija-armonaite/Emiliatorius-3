@@ -86,7 +86,7 @@ export default function ProjectList({ projects, id, name, description, status, t
                             })} />
                     </div>
                     <div>
-                        <p className="card-text mt-4 ml-4" >{getStatusText(status)}</p>
+                        <p className="card-text mt-4 mr-1" style={{marginLeft: "70px"}}>{getStatusText(status)}</p>
                     </div>
                 </div>
                 <div className="card-body flex-fill">

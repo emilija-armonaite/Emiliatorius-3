@@ -60,14 +60,7 @@ export default function Login() {
                   <label>Password</label>
                   <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control m-2" placeholder="Enter password" />
                 </div>
-
-
-                {/* <div className="form-group p-2">
-                               <a href="/password">Forgot password?</a>
-                               
-                            </div> */}
                 <button type="submit" className="btn btn-info btn-block">Submit</button>
-
               </form>
             </div>
           </div>

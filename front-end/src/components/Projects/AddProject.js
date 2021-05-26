@@ -61,7 +61,7 @@ export default function AddProject() {
         );
     }
 
-    const [backColor, setBackColor] = React.useState("");
+    const [backColor, setBackColor] = React.useState("#f7f7f7");
     const styles = {
         borderRadius: "15px",
         cursor: "pointer",
@@ -75,7 +75,7 @@ export default function AddProject() {
                 onClick={handleShow}
                 style={styles}
                 onMouseEnter={() => setBackColor("#faf3f3")}
-                onMouseLeave={() => setBackColor("")}>
+                onMouseLeave={() => setBackColor("#f7f7f7")}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 100 }} />
                     <p>Create new project</p>
@@ -89,12 +89,12 @@ export default function AddProject() {
                 </Modal.Header>
                 <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputEmail1">Project name</label>
                             <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" maxlength={maxSymbolsName} />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputPassword1">About project</label>
                             <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." maxLength={maxSymbolsDesc} />
                             <text className="text-muted float-right"> {description.length} / {maxSymbolsDesc}</text>

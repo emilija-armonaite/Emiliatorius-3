@@ -12,7 +12,7 @@ export default function ProjectList({ projects, id, name, description, status, t
 
     const getStatusText = (statusBack) => {
 
-       
+
         if (0 == tasksLeft) {
 
             switch (statusBack) {
@@ -77,31 +77,28 @@ export default function ProjectList({ projects, id, name, description, status, t
 
     }
 
-    const tasksCompleteStyle = ()=>{
-              if(tasksLeft===0){
-           return "red";
+    const tasksCompleteStyle = () => {
+        if (tasksLeft === 0) {
+            return "#ebecf1";
         }
-        else{
-            return "blue";
+        else {
+            return "#f7f7f7";
         }
-    } 
+    }
+
     const [backColor, setBackColor] = React.useState(tasksCompleteStyle());
 
     const styles = {
-   
         borderRadius: "15px",
         backgroundColor: backColor
-
     }
-  
+
 
     return (
-        <div className="card text-left h-100 flex-fill"          
+        <div className="card text-left h-100 flex-fill"
             style={styles}
-            
             onMouseEnter={() => setBackColor("#faf3f3")}
-            onMouseLeave={() => setBackColor(tasksCompleteStyle())}
-        >
+            onMouseLeave={() => setBackColor(tasksCompleteStyle())}>
             <Link to={`/projects/${id}/tasks`}
                 style={{ textDecoration: "none", color: "black" }}>
                 <div className="cardTop d-flex">
@@ -110,16 +107,14 @@ export default function ProjectList({ projects, id, name, description, status, t
                             value={tasksAmount - tasksLeft}
                             text={`${tasksAmount - tasksLeft}/${tasksAmount}`}
                             maxValue={tasksAmount}
-
                             styles={buildStyles({
                                 // textColor: "red",
                                 pathColor: "#17a2b8",
                                 // trailColor: "#39C0ED"
-
                             })} />
                     </div>
                     <div>
-                        <p className="card-text mt-4 mr-1" style={{marginLeft: "70px"}}>{getStatusText(status)}</p>
+                        <p className="card-text mt-4 mr-1" style={{ marginLeft: "70px" }}>{getStatusText(status)}</p>
                     </div>
                 </div>
                 <div className="card-body flex-fill">

@@ -94,19 +94,22 @@ const Tasks = ({ match }) => {
     <div style={{ backgroundColor: "#e1e5ea" }}>
       <NavBar />
       <div className="container-fluid">
-        <div class="row">
-          <div class="col-6 text-center">
+        <div className="row">
+          <div className="col-5 text-center">
             <div className="buttons mr-3 d-flex">
               <button type="submit" onClick={backToProjects} className="btn btn-light btn ml-3">Go back to projects</button>
               <ExportTask project={match.params.id} />
               <AddTask id={match.params.id} />
             </div>
           </div>
-          <div class="col-6">
+          <div className="col-2">
+            <h4 className="text-center">{projectName}</h4>
+          </div>
+          <div className="col-5">
             <form>
-              <div class="form-group mx-2" style={{ display: "flex", float: "right" }}>
+              <div className="form-group mx-2" style={{ display: "flex", float: "right" }}>
                 <label for="name" style={{ margin: "7px" }}>Search</label>
-                <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Task name or id" />
+                <input onChange={e => setName(e.target.value)} type="search" className="form-control" id="name" placeholder="Task name or id" />
               </div>
             </form>
           </div>
@@ -114,9 +117,9 @@ const Tasks = ({ match }) => {
       </div>
 
       <div className="container-fluid">
-        <div class="row py-1 justify-content-center">
+        <div className="row py-1 justify-content-center">
         </div>
-        <div class="col-12">
+        <div className="col-12">
           <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
 
             <DragDropContext

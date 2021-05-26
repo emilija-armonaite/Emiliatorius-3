@@ -9,7 +9,7 @@ export default function Logout() {
     }
     return (
         <div>
-            <p onClick={logout} className= "text-center">LOG OUT <i class="material-icons">exit_to_app</i></p>
+            <p onClick={logout} className= "text-center">LOG OUT <i className="material-icons">exit_to_app</i></p>
             {/* <button type="submit" onClick={logout} className="btn btn-outline-dark btn-block">LOG OUT <i class="material-icons">exit_to_app</i></button> */}
         </div>
     )

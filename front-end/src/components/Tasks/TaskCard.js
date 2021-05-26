@@ -6,8 +6,8 @@ import EditTask from './EditTask'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
 import ListGroup from "react-bootstrap/ListGroup"
-export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
+export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
     const getStatusText = (statusBack) => {
         switch (statusBack) {
@@ -91,7 +91,6 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                         <p className="card-text ml-5" style={{ color: getPriorityStyle(), marginRight: "0px", fontSize: "20px" }} >{priority}</p>
                     </div>
                     <p className="card-text text-muted">{userStory}</p>
-                    {/* <p className="card-text">{getStatusText(status)}</p> */}
                     <div className="buttons" style={{ display: "flex", float: "right" }}>
                         <EditTask id={id} name={name} userStory={userStory} priority={priority} />
                         <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>
@@ -108,6 +107,6 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

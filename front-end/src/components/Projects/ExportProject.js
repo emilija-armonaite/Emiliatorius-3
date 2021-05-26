@@ -28,7 +28,7 @@ export default function ExportProject() {
   return (
     <div>
 
-      <Button variant="outline-dark" onClick={downloadData} className="my-2 my-sm-0 btn-sm">
+      <Button variant="light" onClick={downloadData} className="my-2 ml-3 my-sm-0 btn">
         Export projects
       </Button>
 

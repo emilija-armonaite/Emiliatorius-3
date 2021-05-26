@@ -59,32 +59,23 @@ export default function List() {
 
     return (
         <div style={{ backgroundColor: "#e1e5ea" }}>
-            <div className="mx-3 d-flex"><ExportProject /></div>
-            {/* <ExportTask /> */}
-
-            {/* <div className="row py-1 justify-content-center"> */}
-            {/* <div class="col-3 align-self-center text-center">
-                    <form>
-                        <div className="form-group">
-                            <label for="name">Search</label>
-                            <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Project name" />
-                        </div>
-                    </form>
-                </div> */}
-            {/* </div> */}
-
-
-            <div className="container">
-                <div className="row py-1 justify-content-center">
-                    <div class="col-3 text-center">
+            <div className="container-fluid">
+                <div className="row">
+                    <div class="col-6">
+                        <ExportProject />
+                    </div>
+                    <div class="col-6 text-center">
                         <form>
-                            <div className="form-group">
-                                <label for="name">Search</label>
+                            <div class="form-group mx-2" style={{ display: "flex", float: "right" }}>
+                                <label for="name" style={{ margin: "7px" }}>Search</label>
                                 <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Project name" />
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
+
+            <div className="container">
                 <div className="row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
                         <AddProject />

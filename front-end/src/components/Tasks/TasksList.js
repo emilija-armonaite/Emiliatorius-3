@@ -87,26 +87,41 @@ const Tasks = ({ match }) => {
   return (
     <div style={{ backgroundColor: "#e1e5ea" }}>
       <NavBar />
-      <div className="buttons mb-3 mr-3 d-flex">
-        <button type="submit" onClick={backToProjects} className="btn btn-outline-dark btn-sm ml-3 mt-2">Go back to projects</button>
-        <ExportTask project={match.params.id} />
+      <div className="container-fluid">
+        <div class="row">
+          <div class="col-6 text-center">
+            <div className="buttons mr-3 d-flex">
+              <button type="submit" onClick={backToProjects} className="btn btn-light btn ml-3">Go back to projects</button>
+              <ExportTask project={match.params.id} />
+              <AddTask id={match.params.id} />
+            </div>
+          </div>
+          <div class="col-6">
+            <form>
+              <div class="form-group mx-2" style={{ display: "flex", float: "right" }}>
+                <label for="name" style={{ margin: "7px" }}>Search</label>
+                <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Task name or id" />
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
 
-      <div className="container">
+      <div className="container-fluid">
         <div class="row py-1 justify-content-center">
-          <div class="col-3 text-center">
+          {/* <div class="col-3 text-center">
             <form>
               <div class="form-group">
                 <label for="name">Search</label>
                 <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Task name or id" />
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
         <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-          <div class="col-3 text-center" style={{ display: "flex", justifyContent: "start", marginTop: "40px", marginRight: "45px" }}>
+          {/* <div class="col-3 text-center" style={{ display: "flex", justifyContent: "start", marginTop: "40px", marginRight: "45px" }}>
             <AddTask id={match.params.id} />
-          </div>
+          </div> */}
           <DragDropContext
             onDragEnd={result => onDragEnd(result, columns, setColumns)}
           >

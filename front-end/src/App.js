@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Home from './components/home/Home';
 import ProtectedRoute from "./components/Routes/ProtectedRoute"
-import password from "./components/login/password"
 import TasksList from './components/Tasks/TasksList';
 
 function App() {

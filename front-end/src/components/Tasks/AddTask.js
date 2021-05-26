@@ -47,15 +47,21 @@ export default function AddTask(id) {
         );
     }
 
+
     return (
         <div>
-            <div className="card text-center" onClick={handleShow} style={{ cursor: "pointer", backgroundColor: "#faf3f3", borderRadius: "15px" }}>
-                <div className="card-body">
-                    <IoAddOutline style={{ fontSize: 100 }} />
+            {/* <div className="card text-center" onClick={handleShow}
+                style={styles}
+                onMouseEnter={() => setBackColor("#faf3f3")}
+                onMouseLeave={() => setBackColor("")}>
+                <div className="card-body d-flex pt-2">
+                    <IoAddOutline style={{ fontSize: 20, marginRight: "10px" }} />
                     <p>Create new task</p>
                 </div>
-            </div>
-
+            </div> */}
+            <Button variant="light" className="btn mr-3" onClick={handleShow}>
+                + Create new project
+            </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton style={{ backgroundColor: "#faf3f3" }}>
@@ -63,19 +69,19 @@ export default function AddTask(id) {
                 </Modal.Header>
                 <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputEmail1">Task name</label>
                             <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" maxlength={maxSymbolsName} required />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputPassword1">User story</label>
                             <input type="text" onChange={(e) => setUserStory(e.target.value)} className="form-control m-2" placeholder="User story" maxLength={maxSymbolsStory} />
                             <text className="text-muted float-right"> {userStory.length} / {maxSymbolsStory}</text>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="priority">Priority</label>
-                            <select onChange={(e) => setPriority(e.target.value)} class="custom-select" >
+                            <select onChange={(e) => setPriority(e.target.value)} className="custom-select" >
                                 <option value="LOW">Low</option>
                                 <option selected value="MEDIUM">Medium</option>
                                 <option value="HIGH">High</option>

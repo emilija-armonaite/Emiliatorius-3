@@ -100,12 +100,12 @@ export default function EditProject(id) {
         <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
 
           <form onSubmit={submitProject}>
-            <div class="form-group">
+            <div className="form-group">
               <label for="exampleInputEmail1">Project name</label>
               <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" defaultValue={id.name} maxlength={maxSymbolsName} />
               <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="exampleInputPassword1">About project</label>
               <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." defaultValue={id.description} maxLength={maxSymbolsDesc} />
               <text className="text-muted float-right"> {description.length} / {maxSymbolsDesc}</text>

@@ -6,8 +6,8 @@ import EditTask from './EditTask'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
 import ListGroup from "react-bootstrap/ListGroup"
-export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
+export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
     const getStatusText = (statusBack) => {
         switch (statusBack) {
@@ -17,10 +17,28 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                 return "In Progress";
             case "DONE":
                 return "Done";
-            
+
             default:
                 return "status error";
         }
+    }
+
+    const getPriorityStyle = () => {
+        let color;
+        switch (priority) {
+            case "LOW":
+                color = "#55a366";
+                break;
+            case "MEDIUM":
+                color = "#e69c35";
+                break;
+            case "HIGH":
+                color = "red";
+                break;
+            default:
+                color = "black";
+        }
+        return color;
     }
 
     const getDeleteAlert = () => {
@@ -54,40 +72,41 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
             });
     }
 
+    const [backColor, setBackColor] = React.useState("");
+    const styles = {
+        borderRadius: "15px",
+        backgroundColor: "#faf3f3",
+        backgroundColor: backColor
+    }
+
     return (
         <div>
-            <div className="card text-left" style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
+            <div className="card text-left" 
+            style={styles}
+            onMouseEnter={() => setBackColor("#faf3f3")}
+            onMouseLeave={() => setBackColor("")}>
                 <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
+                    <div className="cardTop d-flex">
+                        <h5 className="card-title" numberOfLines={1} style={{ width: 150 }}>{name}</h5>
+                        <p className="card-text ml-5" style={{ color: getPriorityStyle(), marginRight: "0px", fontSize: "20px" }} >{priority}</p>
+                    </div>
                     <p className="card-text text-muted">{userStory}</p>
-                    <p className="card-text">{priority}</p>
-                    <p className="card-text">{getStatusText(status)}</p>
                     <div className="buttons" style={{ display: "flex", float: "right" }}>
                         <EditTask id={id} name={name} userStory={userStory} priority={priority} />
                         <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>
                         <Dropdown>
-                            <Dropdown.Toggle variant="outline-dark btn-sm" id="dropdown-basic">More</Dropdown.Toggle>
-                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3"}}>
-                                {/* <Dropdown.Item> */}
-                                <Card style={{ width: '18rem', backgroundColor: "#faf3f3" }}>
-
-                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Creation Date: {creationDate}</ListGroup.Item>
-                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Update Date: {updateDate} </ListGroup.Item>
-                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3"}}>Task ID: {id}</ListGroup.Item>
-
+                            <Dropdown.Toggle variant="outline-secondary btn-sm" id="dropdown-basic"></Dropdown.Toggle>
+                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
+                                <Card style={{ width: '19rem', backgroundColor: "#faf3f3", borderRadius: "15px", padding: "0", borderColor: "#faf3f3" }}>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3", borderColor: "#faf3f3" }}>Creation Date: {creationDate}</ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3", borderColor: "#faf3f3" }}>Update Date: {updateDate} </ListGroup.Item>
+                                    <ListGroup.Item style={{ backgroundColor: "#faf3f3", borderColor: "#faf3f3" }}>Task ID: {id}</ListGroup.Item>
                                 </Card>
-                                {/* </Dropdown.Item> */}
-                                {/* <Dropdown.Item href="#/action-2">
-                                    <EditTask id={id} name={name} userStory={userStory} priority={priority} />
-                                </Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">
-                                    <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit">Delete <FaTrash /></button>
-                                </Dropdown.Item> */}
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

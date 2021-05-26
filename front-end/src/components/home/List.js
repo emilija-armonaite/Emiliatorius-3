@@ -34,77 +34,78 @@ export default function List() {
     }, [page, name])
 
     const goBack = () => {
-        if(page !== 0) {
+        if (page !== 0) {
             setTimeout(() => setPage(page - 1), 0);
         }
     }
 
     const goforward = () => {
-        if(page + 1 < totalPages) {
+        if (page + 1 < totalPages) {
             setTimeout(() => setPage(page + 1), 0);
         }
     }
 
     const goToLast = () => {
-        if(page !== totalPages) {
+        if (page !== totalPages) {
             setTimeout(() => setPage(totalPages - 1), 0);
         }
     }
 
     const goToFirst = () => {
-        if(page !== 0) {
+        if (page !== 0) {
             setTimeout(() => setPage(0), 0);
         }
     }
 
     return (
         <div style={{ backgroundColor: "#e1e5ea" }}>
-            <div className="mx-3 d-flex"><ExportProject /></div>
-            {/* <ExportTask /> */}
-
-            <div class="row py-1 justify-content-center">
-                    <div class="col-3 text-center">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Search</label>
-                            <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Project name" />
-                        </div>
-                    </form>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-6">
+                        <ExportProject />
+                    </div>
+                    <div className="col-6 text-center">
+                        <form>
+                            <div className="form-group mx-2" style={{ display: "flex", float: "right" }}>
+                                <label for="name" style={{ margin: "7px" }}>Search</label>
+                                <input onChange={e => setName(e.target.value)} type="search" className="form-control" id="name" placeholder="Project name" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-
             <div className="container">
                 <div className="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
                         <AddProject />
                     </div>
                     {projects.map(project =>
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 d-flex">
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4 d-flex">
                             <ProjectsList key={project.id} projects={projects} id={project.id} name={project.name} description={project.description} status={project.status} tasksAmount={project.tasksAmount} tasksLeft={project.tasksLeft} />
                         </div>
                     )}
                 </div>
-                <div class="row py-4 justify-content-center">
-                    <div class="col-6 text-center">
-                        <button onClick={goBack} type="button" class="btn btn-outline-info m-1">
+                <div className="row py-4 justify-content-center">
+                    <div className="col-6 text-center">
+                        <button onClick={goBack} type="button" className="btn btn-sm btn-outline-info m-1">
                             <RiArrowLeftSLine />
                         </button >
-                        <button onClick={goToFirst} type="button" class="btn btn-outline-info m-1">
+                        <button onClick={goToFirst} type="button" className="btn btn-outline-info m-1">
                             1
                         </button >
-                        <button type="button" class="btn btn-outline-info mx-4">
+                        <button type="button" className="btn btn-outline-info mx-4">
                             {page + 1}
                         </button>
-                        <button onClick={goToLast} type="button" class="btn btn-outline-info m-1">
+                        <button onClick={goToLast} type="button" className="btn btn-outline-info m-1">
                             {totalPages}
                         </button>
-                        <button onClick={goforward} type="button" class="btn btn-outline-info m-1">
+                        <button onClick={goforward} type="button" className="btn btn-sm btn-outline-info m-1">
                             <RiArrowRightSLine />
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

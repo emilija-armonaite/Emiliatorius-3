@@ -11,12 +11,15 @@ import lt.vtmc.back_end.repos.TaskRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -55,23 +58,30 @@ public class TaskService {
                 .map(task -> mapToReturnTask(task, new ReturnTask())).collect(Collectors.toList());
     }
 
-    public List<Task> findAllByProject(final Long id, String name) {
+    public ResponseEntity<Map<String, Object>> findAllByProject(final Long id, String name) {
+        Map<String, Object> response = new HashMap<>();
         log.trace("Entering method findAllByProject");
         log.debug("Checking if project with id: " + id + " exists");
         final Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        log.info("Returning all task for project with id: " + id);
+        response.put("project", project.getName());
+        log.info("Returning all tasks for project with id: " + id);
         if(name == null || name.isBlank() || name.length() < 2){
-            return  taskRepository.findByProjectTask(project);
+            List<Task> tasks = taskRepository.findByProjectTask(project);
+            response.put("tasks", tasks);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
         if(name.matches("^[+-]?\\d+$")){
-            return taskRepository.findByProjectTask(project).stream()
+            List<Task> tasks = taskRepository.findByProjectTask(project).stream()
                     .filter(task -> task.getId().toString().contains(name)).collect(Collectors.toList());
+            response.put("tasks", tasks);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return taskRepository.findByProjectTask(project).stream()
+        List<Task> tasks = taskRepository.findByProjectTask(project).stream()
                 .filter(task -> task.getName().toLowerCase().contains(name)).collect(Collectors.toList());
+        response.put("tasks", tasks);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
     public Task get(final Long id) {
     	log.trace("Entering method get");
     	log.debug("Checking if task with id: " + id + " exists");

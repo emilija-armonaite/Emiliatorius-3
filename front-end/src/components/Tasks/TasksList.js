@@ -14,7 +14,7 @@ const Tasks = ({ match }) => {
   const [tasks, setTasks] = useState([]);
   const [name, setName] = useState("");
   const user = JSON.parse(localStorage.getItem("token"));
-const [projectName, setProjectName] = useState("");
+  const [projectName, setProjectName] = useState("");
 
   useEffect(() => {
     fetchTask();
@@ -115,26 +115,8 @@ const [projectName, setProjectName] = useState("");
 
       <div className="container-fluid">
         <div class="row py-1 justify-content-center">
-          {/* <div class="col-3 text-center">
-            <form>
-              <div class="form-group">
-                <label for="name">Search</label>
-                <input onChange={e => setName(e.target.value)} type="search" class="form-control" id="name" placeholder="Task name or id" />
-              </div>
-            </form>
-          </div> */}
         </div>
-
         <div class="col-12">
-
-
-          <div class="row-12 " style={{ display: "flex", justifyContent: "center", marginTop: "40px", marginBottom: "40px"}}>
-            <div class="col-3"></div>
-            <div class="col-6">
-              <AddTask id={match.params.id} />
-            </div>
-            <div class="col-3"></div>
-          </div>
           <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
 
             <DragDropContext

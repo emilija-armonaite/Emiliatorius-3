@@ -40,7 +40,6 @@ public class User {
     @OneToMany(mappedBy = "userRole")
     private Set<Role> userRoleRoles;
 
-    @OneToMany(mappedBy = "userProject")
-    private Set<Project> userProjectProjects;
+
 
 }

@@ -56,8 +56,5 @@ public class Project {
     @OneToMany(mappedBy = "projectTask", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private Set<Task> projectTaskTasks;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_project_id")
-    private User userProject;
 
 }

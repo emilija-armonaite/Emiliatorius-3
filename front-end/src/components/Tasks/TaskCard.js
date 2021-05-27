@@ -9,19 +9,19 @@ import ListGroup from "react-bootstrap/ListGroup"
 
 export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
-    const getStatusText = (statusBack) => {
-        switch (statusBack) {
-            case "TO_DO":
-                return "To Do";
-            case "IN_PROGRESS":
-                return "In Progress";
-            case "DONE":
-                return "Done";
+    // const getStatusText = (statusBack) => {
+    //     switch (statusBack) {
+    //         case "TO_DO":
+    //             return "To Do";
+    //         case "IN_PROGRESS":
+    //             return "In Progress";
+    //         case "DONE":
+    //             return "Done";
 
-            default:
-                return "status error";
-        }
-    }
+    //         default:
+    //             return "status error";
+    //     }
+    // }
 
     const getPriorityStyle = () => {
         let color;
@@ -72,10 +72,9 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
             });
     }
 
-    const [backColor, setBackColor] = React.useState("#c7ced9");
+    const [backColor, setBackColor] = React.useState("#f7f7f7");
     const styles = {
-        borderRadius: "15px",
-        backgroundColor: "#",
+        borderRadius: "10px",
         backgroundColor: backColor
     }
 
@@ -84,11 +83,11 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
             <div className="card text-left shadow" 
             style={styles}
             onMouseEnter={() => setBackColor("#faf3f3")}
-            onMouseLeave={() => setBackColor("#c7ced9")}>
+            onMouseLeave={() => setBackColor("#f7f7f7")}>
                 <div className="card-body">
                     <div className="cardTop d-flex">
-                        <h5 className="card-title" numberOfLines={1} style={{ width: 150 }}>{name}</h5>
-                        <p className="card-text ml-5" style={{ color: getPriorityStyle(), marginRight: "0px", fontSize: "20px" }} >{priority}</p>
+                        <h5 className="card-title" numberoflines={1} style={{ width: 150 }}>{name}</h5>
+                        <p className="card-text" style={{ color: getPriorityStyle(), marginRight: "0px", marginLeft: "100px", fontSize: "20px" }} >{priority}</p>
                     </div>
                     <p className="card-text text-muted">{userStory}</p>
                     <div className="buttons" style={{ display: "flex", float: "right" }}>
@@ -96,8 +95,8 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
                         <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash /></button>
                         <Dropdown>
                             <Dropdown.Toggle variant="outline-secondary btn-sm" id="dropdown-basic"></Dropdown.Toggle>
-                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3", borderRadius: "15px" }}>
-                                <Card style={{ width: '19rem', backgroundColor: "#faf3f3", borderRadius: "15px", padding: "0", borderColor: "#faf3f3" }}>
+                            <Dropdown.Menu style={{ backgroundColor: "#faf3f3", borderRadius: "10px" }}>
+                                <Card style={{ width: '19rem', backgroundColor: "#faf3f3", borderRadius: "10px", padding: "0", borderColor: "#faf3f3" }}>
                                     <ListGroup.Item style={{ backgroundColor: "#faf3f3", borderColor: "#faf3f3" }}>Creation Date: {creationDate}</ListGroup.Item>
                                     <ListGroup.Item style={{ backgroundColor: "#faf3f3", borderColor: "#faf3f3" }}>Update Date: {updateDate} </ListGroup.Item>
                                     <ListGroup.Item style={{ backgroundColor: "#faf3f3", borderColor: "#faf3f3" }}>Task ID: {id}</ListGroup.Item>

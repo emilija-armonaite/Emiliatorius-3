@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { IoAddOutline } from "react-icons/io5";
 import axios from "axios";
 import swal from 'sweetalert';
 import Modal from "react-bootstrap/Modal";
@@ -70,17 +69,17 @@ export default function AddTask(id) {
                 <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
                         <div className="form-group">
-                            <label for="exampleInputEmail1">Task name</label>
+                            <label htmlFor="exampleInputEmail1">Task name</label>
                             <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Task name" maxlength={maxSymbolsName} required />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputPassword1">User story</label>
+                            <label htmlFor="exampleInputPassword1">User story</label>
                             <input type="text" onChange={(e) => setUserStory(e.target.value)} className="form-control m-2" placeholder="User story" maxLength={maxSymbolsStory} />
                             <text className="text-muted float-right"> {userStory.length} / {maxSymbolsStory}</text>
                         </div>
                         <div className="form-group">
-                            <label for="priority">Priority</label>
+                            <label htmlFor="priority">Priority</label>
                             <select onChange={(e) => setPriority(e.target.value)} className="custom-select" >
                                 <option value="LOW">Low</option>
                                 <option selected value="MEDIUM">Medium</option>

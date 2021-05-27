@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -11,7 +11,7 @@ export default function Login() {
   const history = useHistory();
   const login = (e) => {
     e.preventDefault();
-    const user = { mail, password }
+    // const user = { mail, password }
     return axios.post(API_URL + "authenticate", {
       mail,
       password
@@ -21,7 +21,7 @@ export default function Login() {
         localStorage.setItem('token', JSON.stringify(response.data));
         console.log(localStorage.getItem('token'))
         history.push('/projects')
-        const name = Object.keys(response.data)
+        // const name = Object.keys(response.data)
         return response.mail;
       },
         (error) => {

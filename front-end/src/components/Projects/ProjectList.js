@@ -13,7 +13,7 @@ export default function ProjectList({ projects, id, name, description, status, t
     const getStatusText = (statusBack) => {
 
 
-        if (0 == tasksLeft) {
+        if (0 === tasksLeft && tasksAmount !== 0) {
 
             switch (statusBack) {
                 case "IN_PROGRESS":
@@ -78,19 +78,19 @@ export default function ProjectList({ projects, id, name, description, status, t
     }
 
     const tasksCompleteStyle = () => {
-        if (tasksLeft === 0) {
+        if (tasksLeft === 0 && tasksAmount !== 0) {
             return "#ebecf1";
         }
         else {
-            return "#c7ced9";
+            return "#f7f7f7";
         }
     }
 
     const [backColor, setBackColor] = React.useState(tasksCompleteStyle());
 
     const styles = {
-        borderRadius: "15px",
-        backgroundColor: backColor
+        borderRadius: "10px",
+        backgroundColor: backColor,
     }
 
 

@@ -144,10 +144,10 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ##  :calling: Contacts :calling:
 
-Nedas Bačinskas - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Emilija Armonaitė - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Deividas Bagdonas - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/) - valavicius.algimantas@gmail.com
+Nedas Bačinskas - [@LinkedIn](https://www.linkedin.com/in/nedas-ba%C5%A1inskas-a58592194/)
+Emilija Armonaitė - [@LinkedIn](https://www.linkedin.com/in/emilija-armonaite/)
+Deividas Bagdonas - [@LinkedIn](https://www.linkedin.com/in/deividas-bagdonas/)
+Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

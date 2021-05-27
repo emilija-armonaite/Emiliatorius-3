@@ -61,7 +61,7 @@ export default function AddProject() {
         );
     }
 
-    const [backColor, setBackColor] = React.useState("#f7f7f7");
+    const [backColor, setBackColor] = React.useState("#c7ced9");
     const styles = {
         borderRadius: "15px",
         cursor: "pointer",
@@ -71,11 +71,11 @@ export default function AddProject() {
 
     return (
         <div>
-            <div className="card text-center card-body flex-fill"
+            <div className="card text-center card-body flex-fill shadow-lg"
                 onClick={handleShow}
                 style={styles}
                 onMouseEnter={() => setBackColor("#faf3f3")}
-                onMouseLeave={() => setBackColor("#f7f7f7")}>
+                onMouseLeave={() => setBackColor("#c7ced9")}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 100 }} />
                     <p>Create new project</p>

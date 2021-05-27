@@ -10,7 +10,7 @@ export default function Navbar() {
             <nav className="navbar navbar-light justify-content-between" style={{ backgroundColor: "#e1e5ea" }}>
                 <a className="navbar-brand ml-3">Emiliatorius'3</a>
                 <Dropdown> 
-                    <Dropdown.Toggle variant="outline-info mr-2">
+                    <Dropdown.Toggle variant="info mr-2">
                         <FaUserAstronaut />
                     </Dropdown.Toggle>
                     <Dropdown.Menu style={{ backgroundColor: "#faf3f3"}}>

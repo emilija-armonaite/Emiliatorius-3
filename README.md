@@ -163,7 +163,7 @@ Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/)
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/emilija-armonaite/
 [product-screenshot]: https://i.ibb.co/7zQsHmm/login.png
-[product-screenshot1]: https://i.ibb.co/sjxgRKW/home.png
-[product-screenshot2]: https://i.ibb.co/MnXcyHv/tasks.png
-[product-screenshot3]: https://i.ibb.co/z5nr8nx/nav.png
+[product-screenshot1]: https://i.ibb.co/7nD7RzQ/homepage.png
+[product-screenshot2]: https://i.ibb.co/vHKyCHp/task.png
+[product-screenshot3]: https://i.ibb.co/khvDvjD/nav.png
 Copyright ©️ 2021, Emiliatorius`3

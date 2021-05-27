@@ -26,7 +26,6 @@ export default function List() {
                 setProjects(response.data.projects);
                 setTotalPages(response.data.totalPages)
                 setPage(response.data.currentPage)
-                console.log(response)
             })
             .catch(err => {
                 console.log(err);
@@ -67,7 +66,7 @@ export default function List() {
                     <div className="col-6 text-center">
                         <form>
                             <div className="form-group mx-2" style={{ display: "flex", float: "right" }}>
-                                <label for="name" style={{ margin: "7px" }}>Search</label>
+                                <label htmlFor="name" style={{ margin: "7px" }}>Search</label>
                                 <input onChange={e => setName(e.target.value)} type="search" className="form-control" id="name" placeholder="Project name" />
                             </div>
                         </form>

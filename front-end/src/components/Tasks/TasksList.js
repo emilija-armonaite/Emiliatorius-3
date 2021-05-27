@@ -6,7 +6,6 @@ import AddTask from './AddTask';
 import { useHistory } from "react-router-dom";
 import ExportTask from '../Tasks/ExportTasks';
 import Footer from '../home/Footer';
-import { v4 as uuid } from 'uuid';
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const Tasks = ({ match }) => {
@@ -29,7 +28,7 @@ const Tasks = ({ match }) => {
     })
       .then(response => {
         setTasks(response.data.tasks);
-        console.log(response.data.project);
+        // console.log(response.data.project);
         setProjectName(response.data.project);
 
       })
@@ -103,12 +102,12 @@ const Tasks = ({ match }) => {
             </div>
           </div>
           <div className="col-2">
-            <p className="text-center" style={{fontSize: "20px"}}>{projectName}</p>
+            <p className="text-center" style={{ fontSize: "20px" }}>{projectName}</p>
           </div>
           <div className="col-5">
             <form>
               <div className="form-group mx-2" style={{ display: "flex", float: "right" }}>
-                <label for="name" style={{ margin: "7px" }}>Search</label>
+                <label htmlFor="name" style={{ margin: "7px" }}> Search</label>
                 <input onChange={e => setName(e.target.value)} type="search" className="form-control" id="name" placeholder="Task name or id" />
               </div>
             </form>
@@ -139,7 +138,7 @@ const Tasks = ({ match }) => {
                             <div className="shadow-lg"
                               {...provided.droppableProps}
                               ref={provided.innerRef}
-                              style={{ padding: 4, width: 300, minHeight: 500, margin: 4, backgroundColor: "#f0f4fa", borderRadius: "15px" }}
+                              style={{ padding: 4, width: 400, minHeight: 1000, margin: 4, backgroundColor: "#f0f4fa", borderRadius: "10px" }}
                             >
                               {tasks.filter(task => task.status === column.status).map((task, index) => {
                                 return (

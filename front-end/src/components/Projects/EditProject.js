@@ -24,18 +24,12 @@ export default function EditProject(id) {
   }
 
   const API_URL = 'http://localhost:8081';
-  const nameIsEmpty = "inline";
-  // const [open, setOpen] = React.useState(false);
   const [name, setName] = useState(id.name);
   const [description, setDesc] = useState(id.description);
   const user = JSON.parse(localStorage.getItem("token"));
 
   const maxSymbolsName = 50;
   const maxSymbolsDesc = 250;
-
-  const restart = () => {
-    { window.location.reload(true) }
-  }
 
   const submitProject = (e) => {
     e.preventDefault();
@@ -56,7 +50,6 @@ export default function EditProject(id) {
           icon: "success",
         });
         setTimeout(() => window.location.reload(), 1500);
-        // restart();
         handleClose();
         return response;
       },
@@ -101,12 +94,12 @@ export default function EditProject(id) {
 
           <form onSubmit={submitProject}>
             <div className="form-group">
-              <label for="exampleInputEmail1">Project name</label>
+              <label htmlFor="exampleInputEmail1">Project name</label>
               <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" defaultValue={id.name} maxlength={maxSymbolsName} />
               <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
             </div>
             <div className="form-group">
-              <label for="exampleInputPassword1">About project</label>
+              <label htmlFor="exampleInputPassword1">About project</label>
               <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." defaultValue={id.description} maxLength={maxSymbolsDesc} />
               <text className="text-muted float-right"> {description.length} / {maxSymbolsDesc}</text>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react'
+import React, { useState } from 'react'
 import { IoAddOutline } from "react-icons/io5";
 import axios from "axios";
 import swal from 'sweetalert';
@@ -61,11 +61,10 @@ export default function AddProject() {
         );
     }
 
-    const [backColor, setBackColor] = React.useState("#c7ced9");
+    const [backColor, setBackColor] = React.useState("#f7f7f7");
     const styles = {
-        borderRadius: "15px",
+        borderRadius: "10px",
         cursor: "pointer",
-        backgroundColor: "#faf3f3",
         backgroundColor: backColor
     }
 
@@ -75,7 +74,7 @@ export default function AddProject() {
                 onClick={handleShow}
                 style={styles}
                 onMouseEnter={() => setBackColor("#faf3f3")}
-                onMouseLeave={() => setBackColor("#c7ced9")}>
+                onMouseLeave={() => setBackColor("#f7f7f7")}>
                 <div className="card-body">
                     <IoAddOutline style={{ fontSize: 100 }} />
                     <p>Create new project</p>
@@ -90,12 +89,12 @@ export default function AddProject() {
                 <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
                         <div className="form-group">
-                            <label for="exampleInputEmail1">Project name</label>
+                            <label htmlFor="exampleInputEmail1">Project name</label>
                             <input type="text" onChange={(e) => setName(e.target.value)} className="form-control m-2" placeholder="Project name" maxlength={maxSymbolsName} />
                             <text className="text-muted float-right"> {name.length} / {maxSymbolsName}</text>
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputPassword1">About project</label>
+                            <label htmlFor="exampleInputPassword1">About project</label>
                             <input type="text" onChange={(e) => setDesc(e.target.value)} className="form-control m-2" placeholder="Project is..." maxLength={maxSymbolsDesc} />
                             <text className="text-muted float-right"> {description.length} / {maxSymbolsDesc}</text>
                         </div>

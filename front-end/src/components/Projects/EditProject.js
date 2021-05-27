@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import axios from "axios";
 import swal from 'sweetalert';
@@ -6,7 +5,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { RiEdit2Line } from "react-icons/ri";
-
 
 
 export default function EditProject(id) {
@@ -27,7 +25,6 @@ export default function EditProject(id) {
   const [name, setName] = useState(id.name);
   const [description, setDesc] = useState(id.description);
   const user = JSON.parse(localStorage.getItem("token"));
-
   const maxSymbolsName = 50;
   const maxSymbolsDesc = 250;
 
@@ -82,10 +79,9 @@ export default function EditProject(id) {
   return (
     <div>
 
-      <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
+      <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 " type="submit">
         <RiEdit2Line />
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton style={{ backgroundColor: "#faf3f3" }}>
           <Modal.Title>Edit Project</Modal.Title>
@@ -115,7 +111,6 @@ export default function EditProject(id) {
           </Button>
         </Modal.Footer>
       </Modal>
-
     </div>
   )
 }

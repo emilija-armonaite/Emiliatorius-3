@@ -2,10 +2,13 @@ import React from 'react'
 import DeleteProject from "./DeleteProjects"
 import swal from 'sweetalert';
 import { FaTrash } from "react-icons/fa";
+import { IoMdDoneAll } from "react-icons/io";
 import EditProject from './EditProject';
 import { Link } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { VscLoading } from "react-icons/vsc";
+
 
 export default function ProjectList({ projects, id, name, description, status, tasksAmount, tasksLeft }) {
 
@@ -14,30 +17,21 @@ export default function ProjectList({ projects, id, name, description, status, t
 
 
         if (0 === tasksLeft && tasksAmount !== 0) {
-
             switch (statusBack) {
                 case "IN_PROGRESS":
-
-                    return "COMPLETE";
-
-
+                    return <IoMdDoneAll style={{ color: "#1b6918" }} />;
                 default:
                     return "status error";
             }
-
         }
         else {
 
             switch (statusBack) {
                 case "IN_PROGRESS":
-                    return "IN PROGRESS";
-
-
+                    return <VscLoading style={{ color: "#cfd164" }} />;
                 default:
                     return "status error";
             }
-
-
         }
     }
 
@@ -50,14 +44,12 @@ export default function ProjectList({ projects, id, name, description, status, t
             swal.close();
             console.log("you clicked back button");
         }
-
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this project!",
             icon: "warning",
             buttons: true,
             dangerMode: true
-
         })
             .then((willDelete) => {
                 if (willDelete) {
@@ -74,7 +66,6 @@ export default function ProjectList({ projects, id, name, description, status, t
                     }
                 }
             });
-
     }
 
     const tasksCompleteStyle = () => {
@@ -87,12 +78,10 @@ export default function ProjectList({ projects, id, name, description, status, t
     }
 
     const [backColor, setBackColor] = React.useState(tasksCompleteStyle());
-
     const styles = {
         borderRadius: "10px",
         backgroundColor: backColor,
     }
-
 
     return (
         <div className="card text-left h-100 flex-fill shadow-lg"
@@ -108,13 +97,11 @@ export default function ProjectList({ projects, id, name, description, status, t
                             text={`${tasksAmount - tasksLeft}/${tasksAmount}`}
                             maxValue={tasksAmount}
                             styles={buildStyles({
-                                // textColor: "red",
                                 pathColor: "#17a2b8",
-                                // trailColor: "#39C0ED"
                             })} />
                     </div>
                     <div>
-                        <p className="card-text mt-4 mr-1" style={{ marginLeft: "70px" }}>{getStatusText(status)}</p>
+                        <p className="card-text " style={{ marginLeft: "105px", fontSize: "50px", marginTop: "0px", paddingRight: "0px" }}> {getStatusText(status)} </p>
                     </div>
                 </div>
                 <div className="card-body flex-fill">
@@ -124,7 +111,7 @@ export default function ProjectList({ projects, id, name, description, status, t
             </Link>
             <div className="buttons mb-3 mr-3 d-flex" style={{ justifyContent: "flex-end" }}>
                 <EditProject id={id} name={name} description={description} />
-                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger btn-sm my-2 my-sm-0 m-2" type="submit"><FaTrash />
+                <button onClick={() => getDeleteAlert()} className="btn btn-outline-danger my-2 my-sm-0 m-2" type="submit"><FaTrash />
                 </button>
             </div>
         </div>

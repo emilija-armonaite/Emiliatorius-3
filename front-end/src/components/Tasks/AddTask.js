@@ -60,7 +60,7 @@ export default function AddTask(id) {
                 </div>
             </div> */}
             <Button variant="light" className="btn mr-3" onClick={handleShow}>
-                + Create new project
+                + Create new task
             </Button>
 
             <Modal show={show} onHide={handleClose}>

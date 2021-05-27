@@ -103,7 +103,7 @@ const Tasks = ({ match }) => {
             </div>
           </div>
           <div className="col-2">
-            <h4 className="text-center">{projectName}</h4>
+            <p className="text-center" style={{fontSize: "20px"}}>{projectName}</p>
           </div>
           <div className="col-5">
             <form>
@@ -136,10 +136,10 @@ const Tasks = ({ match }) => {
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
                           return (
-                            <div
+                            <div className="shadow-lg"
                               {...provided.droppableProps}
                               ref={provided.innerRef}
-                              style={{ padding: 4, width: 300, minHeight: 500, margin: 4, backgroundColor: "white", borderRadius: "15px" }}
+                              style={{ padding: 4, width: 300, minHeight: 500, margin: 4, backgroundColor: "#f0f4fa", borderRadius: "15px" }}
                             >
                               {tasks.filter(task => task.status === column.status).map((task, index) => {
                                 return (
@@ -157,7 +157,6 @@ const Tasks = ({ match }) => {
                                           style={{
                                             userSelect: "none", padding: 10, margin: "0 0 1px 0",
                                             minHeight: "50px",
-                                            // backgroundColor: "white",
                                             ...provided.draggableProps.style
                                           }}
                                         >

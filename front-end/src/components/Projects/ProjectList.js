@@ -82,7 +82,7 @@ export default function ProjectList({ projects, id, name, description, status, t
             return "#ebecf1";
         }
         else {
-            return "#f7f7f7";
+            return "#c7ced9";
         }
     }
 
@@ -95,7 +95,7 @@ export default function ProjectList({ projects, id, name, description, status, t
 
 
     return (
-        <div className="card text-left h-100 flex-fill"
+        <div className="card text-left h-100 flex-fill shadow-lg"
             style={styles}
             onMouseEnter={() => setBackColor("#faf3f3")}
             onMouseLeave={() => setBackColor(tasksCompleteStyle())}>

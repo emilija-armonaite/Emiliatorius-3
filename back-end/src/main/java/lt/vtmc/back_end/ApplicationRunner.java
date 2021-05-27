@@ -57,18 +57,7 @@ public class ApplicationRunner implements org.springframework.boot.ApplicationRu
 				"kindhearted parcel", "serene jump", "enigmatic debt", "acceptable zebra");
 
 		List<String> taskNames = List.of("Learn all the Constellations", "See the Pyramids", "Learn a Hilarious Phrase in 10 Languages",
-				"Drink Rum on a Caribbean Beach", "Go to China During Chinese New Year", "Hike the Entire Grand Enchantment Trail",
-				"Build a Computer", "Learn to Hang Glide", "Cruise Mexico", "Make a Quilt", "Prove a Theory", "Hug a Baby Elephant",
-				"Taste Stuffed Grape Leaves", "Wear a Classy Dress & Heels in Public", "Have a Facebook Account",
-				"Make a 7Lb Cheese Burger", "Let Go of a Floating Lantern", "Walk Down a Red Carpet", "Go to all of the U.S. National Parks",
-				"Run 135 Miles Across Death Valley Within 60 Hours", "Inspire Someone Else to Make a Bucket List", "Cover my Bedroom Walls With Lyrics",
-				"Put my Mouth Under an Ice Cream Machine", "Live in a Completely Sustainable Way For a Year", "Own a Professional Football Team",
-				"Fall in Love Accidentally", "Write a Song and Record It", "Learn How to Say Hello in 10 Languages", "Hit on a Stranger",
-				"Learn to Drum Roll", "Meet a Millionaire", "Attend a Big Fashion Show", "Kiss a Stranger", "Go to a Jewish Wedding",
-				"Eat Mexican Food in Mexico", "Go to a Hockey Game", "Help an Elderly Person With Their Bags", "Find a Cause That Will Be in my Heart Forever",
-				"Learn How to Swim", "Go to a Boxing Match", "Build a Huge Lego Model", "Get a Lei in Hawaii", "Own a Bentley",
-				"Try 50 Different Kinds of Beer", "Write a Book to Each of my Children", "Become a Kindergarten Teacher", "Play a New Sport For an Entire Season",
-				"Kiss a Frog", "Work For Disney", "Have a Race on a Segway");
+				"Drink Rum on a Caribbean Beach");
 
 		log.debug("Creating first admin user");
 		UserDTO user = new UserDTO("admin@mail.com", "password");

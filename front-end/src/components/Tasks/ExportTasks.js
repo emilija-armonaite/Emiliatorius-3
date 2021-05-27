@@ -27,11 +27,9 @@ export default function ExportTask( project ) {
 
   return (
     <div>
-
       <Button variant="light" onClick={downloadData} className="btn ml-3 mr-3">
         Export tasks
       </Button>
-
     </div>
   )
 }

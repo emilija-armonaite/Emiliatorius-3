@@ -17,8 +17,6 @@ export default function EditProject(id) {
   }
   const handleShow = () => {
     setShow(true);
-    console.log(id);
-    console.log(maxSymbolsName);
   }
 
   const API_URL = 'http://localhost:8081';
@@ -30,7 +28,6 @@ export default function EditProject(id) {
 
   const submitProject = (e) => {
     e.preventDefault();
-    console.log(id);
     return axios.put(API_URL + "/api/projects/" + id.id, {
       description,
       name

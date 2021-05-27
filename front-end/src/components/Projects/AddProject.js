@@ -34,7 +34,6 @@ export default function AddProject() {
             return response;
         },
             (error) => {
-                // console.log(error.response.status);
 
                 switch (error.response.status) {
 
@@ -80,7 +79,6 @@ export default function AddProject() {
                     <p>Create new project</p>
                 </div>
             </div>
-
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton style={{ backgroundColor: "#faf3f3" }}>

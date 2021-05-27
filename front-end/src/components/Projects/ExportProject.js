@@ -7,7 +7,6 @@ export default function ExportProject() {
   const API_URL = 'http://localhost:8081';
   const user = JSON.parse(localStorage.getItem("token"));
 
-
   const downloadData = () => {
     fetch(API_URL + '/api/projects/export', {
       headers: {
@@ -24,14 +23,11 @@ export default function ExportProject() {
         });
       });
   }
-
   return (
     <div>
-
       <Button variant="light" onClick={downloadData} className="my-2 ml-3 my-sm-0 btn">
         Export projects
       </Button>
-
     </div>
   )
 }

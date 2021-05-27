@@ -28,7 +28,6 @@ const Tasks = ({ match }) => {
     })
       .then(response => {
         setTasks(response.data.tasks);
-        // console.log(response.data.project);
         setProjectName(response.data.project);
 
       })
@@ -36,9 +35,6 @@ const Tasks = ({ match }) => {
         console.log(err);
       })
   }
-  // const projectName = () => {
-  //   return response.date.project;
-  // }
 
   const columnsFromBackend = {
     "TO_DO": {
@@ -114,7 +110,6 @@ const Tasks = ({ match }) => {
           </div>
         </div>
       </div>
-
       <div className="container-fluid">
         <div className="row py-1 justify-content-center">
         </div>
@@ -181,7 +176,6 @@ const Tasks = ({ match }) => {
       </div>
       <Footer />
     </div>
-
   )
 }
 

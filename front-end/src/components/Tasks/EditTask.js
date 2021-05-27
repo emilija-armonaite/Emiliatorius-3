@@ -12,7 +12,7 @@ export default function EditTask(id) {
     const [show, setShow] = useState(false);
     const handleClose = () => {
         setShow(false);
-    setName(id.name);
+        setName(id.name);
     }
     const handleShow = () => setShow(true);
     const maxSymbolsName = 50;
@@ -26,7 +26,6 @@ export default function EditTask(id) {
 
     const submitProject = (e) => {
         e.preventDefault();
-        console.log(id);
         return axios.put(API_URL + "/api/tasks/" + id.id, {
             name,
             priority,
@@ -41,9 +40,9 @@ export default function EditTask(id) {
 
             swal("Nice one! Your task has been updated!", {
                 icon: "success",
-              });
-              setTimeout(() => window.location.reload(), 1500);
-     
+            });
+            setTimeout(() => window.location.reload(), 1500);
+
             return response;
         },
             (error) => {
@@ -61,12 +60,11 @@ export default function EditTask(id) {
             <Button variant="outline-info" onClick={handleShow} className="my-2 my-sm-0 btn-sm" type="submit">
                 <RiEdit2Line />
             </Button>
-
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton style={{ backgroundColor: "#faf3f3"}}>
+                <Modal.Header closeButton style={{ backgroundColor: "#faf3f3" }}>
                     <Modal.Title>Edit Task</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ backgroundColor: "#faf3f3"}}>
+                <Modal.Body style={{ backgroundColor: "#faf3f3" }}>
                     <form onSubmit={submitProject}>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Task name</label>
@@ -88,7 +86,7 @@ export default function EditTask(id) {
                         </div>
                     </form>
                 </Modal.Body>
-                <Modal.Footer style={{ backgroundColor: "#faf3f3"}}>
+                <Modal.Footer style={{ backgroundColor: "#faf3f3" }}>
                     <Button variant="outline-secondary" onClick={handleClose}>
                         Close
             </Button>

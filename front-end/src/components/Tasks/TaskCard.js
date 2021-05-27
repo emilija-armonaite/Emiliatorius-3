@@ -9,19 +9,6 @@ import ListGroup from "react-bootstrap/ListGroup"
 
 export default function TaskCard({ id, name, userStory, priority, status, creationDate, updateDate }) {
 
-    // const getStatusText = (statusBack) => {
-    //     switch (statusBack) {
-    //         case "TO_DO":
-    //             return "To Do";
-    //         case "IN_PROGRESS":
-    //             return "In Progress";
-    //         case "DONE":
-    //             return "Done";
-
-    //         default:
-    //             return "status error";
-    //     }
-    // }
 
     const getPriorityStyle = () => {
         let color;
@@ -46,7 +33,6 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
             e.preventDefault();
             window.history.forward();
             swal.close();
-            console.log("you clicked back button");
         }
         swal({
             title: "Are you sure?",
@@ -80,10 +66,10 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
 
     return (
         <div>
-            <div className="card text-left shadow" 
-            style={styles}
-            onMouseEnter={() => setBackColor("#faf3f3")}
-            onMouseLeave={() => setBackColor("#f7f7f7")}>
+            <div className="card text-left shadow"
+                style={styles}
+                onMouseEnter={() => setBackColor("#faf3f3")}
+                onMouseLeave={() => setBackColor("#f7f7f7")}>
                 <div className="card-body">
                     <div className="cardTop d-flex">
                         <h5 className="card-title" numberoflines={1} style={{ width: "290px" }}>{name}</h5>

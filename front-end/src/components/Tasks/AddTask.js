@@ -49,15 +49,6 @@ export default function AddTask(id) {
 
     return (
         <div>
-            {/* <div className="card text-center" onClick={handleShow}
-                style={styles}
-                onMouseEnter={() => setBackColor("#faf3f3")}
-                onMouseLeave={() => setBackColor("")}>
-                <div className="card-body d-flex pt-2">
-                    <IoAddOutline style={{ fontSize: 20, marginRight: "10px" }} />
-                    <p>Create new task</p>
-                </div>
-            </div> */}
             <Button variant="light" className="btn mr-3" onClick={handleShow}>
                 + Create new task
             </Button>

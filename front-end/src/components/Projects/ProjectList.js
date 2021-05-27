@@ -28,7 +28,7 @@ export default function ProjectList({ projects, id, name, description, status, t
 
             switch (statusBack) {
                 case "IN_PROGRESS":
-                    return <VscLoading style={{ color: "#cfd164" }} />;
+                    return <VscLoading style={{ color: "#ebe6a9" }} />;
                 default:
                     return "status error";
             }
@@ -101,7 +101,7 @@ export default function ProjectList({ projects, id, name, description, status, t
                             })} />
                     </div>
                     <div>
-                        <p className="card-text " style={{ marginLeft: "105px", fontSize: "50px", marginTop: "0px", paddingRight: "0px" }}> {getStatusText(status)} </p>
+                        <p className="card-text d-flex" style={{ marginLeft: "110px", fontSize: "50px", marginTop: "10px", marginRight: "1px" }}> {getStatusText(status)} </p>
                     </div>
                 </div>
                 <div className="card-body flex-fill">

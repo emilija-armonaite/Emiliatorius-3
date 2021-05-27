@@ -86,8 +86,8 @@ export default function TaskCard({ id, name, userStory, priority, status, creati
             onMouseLeave={() => setBackColor("#f7f7f7")}>
                 <div className="card-body">
                     <div className="cardTop d-flex">
-                        <h5 className="card-title" numberoflines={1} style={{ width: 150 }}>{name}</h5>
-                        <p className="card-text" style={{ color: getPriorityStyle(), marginRight: "0px", marginLeft: "100px", fontSize: "20px" }} >{priority}</p>
+                        <h5 className="card-title" numberoflines={1} style={{ width: "290px" }}>{name}</h5>
+                        <p className="card-text" style={{ color: getPriorityStyle(), width: "120px", marginRight: "1px", fontSize: "20px" }} >{priority}</p>
                     </div>
                     <p className="card-text text-muted">{userStory}</p>
                     <div className="buttons" style={{ display: "flex", float: "right" }}>

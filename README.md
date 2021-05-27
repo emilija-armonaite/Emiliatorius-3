@@ -65,7 +65,7 @@
 
 ![Product Name Screen Shot][product-screenshot]
 
-This generic project for project and project task managment. This project aids with project managment between teams.
+This generic project for project and project task management. This project aids with project management between teams.
 
 With this sistem you can:
 * Create projects.

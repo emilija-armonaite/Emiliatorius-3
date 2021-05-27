@@ -28,7 +28,7 @@
    <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="https://www.vtmc.lt/uploads/apie-mus/Firminis_stilius/vtmc-logo-zalias-horizontalus-en2.png" alt="Logo">
   </a>
-  <h1 align="center">:bulb: Projects and tasks managment system :bulb:</h1>
+  <h1 align="center">:bulb: Projects and tasks management system :bulb:</h1>
 
 </p>
 
@@ -65,7 +65,7 @@
 
 ![Product Name Screen Shot][product-screenshot]
 
-This generic project for project and project task managment. This project aids with project managment between teams.
+This generic project for project and project task management. This project aids with project management between teams.
 
 With this sistem you can:
 * Create projects.
@@ -144,10 +144,10 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ##  :calling: Contacts :calling:
 
-Nedas Bačinskas - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Emilija Armonaitė - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Deividas Bagdonas - [@your_twitter](https://twitter.com/your_username) - email@example.com
-Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/) - valavicius.algimantas@gmail.com
+Nedas Bačinskas - [@LinkedIn](https://www.linkedin.com/in/nedas-ba%C5%A1inskas-a58592194/)
+Emilija Armonaitė - [@LinkedIn](https://www.linkedin.com/in/emilija-armonaite/)
+Deividas Bagdonas - [@LinkedIn](https://www.linkedin.com/in/deividas-bagdonas/)
+Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -163,7 +163,7 @@ Algimantas Valavičius - [@LinkedIn](https://www.linkedin.com/in/avalavicius/) -
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/emilija-armonaite/
 [product-screenshot]: https://i.ibb.co/7zQsHmm/login.png
-[product-screenshot1]: https://i.ibb.co/sjxgRKW/home.png
-[product-screenshot2]: https://i.ibb.co/MnXcyHv/tasks.png
-[product-screenshot3]: https://i.ibb.co/z5nr8nx/nav.png
+[product-screenshot1]: https://i.ibb.co/7nD7RzQ/homepage.png
+[product-screenshot2]: https://i.ibb.co/vHKyCHp/task.png
+[product-screenshot3]: https://i.ibb.co/khvDvjD/nav.png
 Copyright ©️ 2021, Emiliatorius`3

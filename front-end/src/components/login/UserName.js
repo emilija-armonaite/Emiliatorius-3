@@ -7,7 +7,7 @@ export default function UserName() {
 
     return (
         <div>
-              <p className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{a}</p>
+            <p className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{a}</p>
         </div>
     )
 }
